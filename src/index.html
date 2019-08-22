@@ -1,0 +1,698 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit">
+  <title>湖里区人民法院互联网法庭</title>
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="keywords" content="厦门市湖里区人民法院" />
+  <link rel="stylesheet" type="text/css" href="./css/style-index.css" />
+  <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/4.2.6/css/swiper.min.css  "> -->
+  <link rel="stylesheet" href="./css/swiper4.2.6.css  ">
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/steps.css" type="text/css" rel="stylesheet">
+  <script src="./js/jquery-1.10.2.min.js"></script>
+  <script src="./js/swiper.min.js"></script>
+  <script src="./js/sweetalert2.all.min.js"></script>
+  <script src="./js/md5.min.js"></script>
+  <script src="./js/steps.js"></script>
+</head>
+
+<body class="language-cn">
+  <!-- 头部 -->
+    <header>
+      <div class="header">
+          <div class="header-box">
+              <ul class="header-content">
+                <li class="topli"><img src="./images/icon/首页资源 12.png" alt="">意见箱</li>
+                <li class="topli"><img src="./images/icon/首页资源 11.png" alt="">使用指南</li>
+              </ul>
+              <ul class="header-content"> 
+                <li class="title"><img src="./images/logo.png" alt="">湖里区人民法院全在线诉讼平台</li>
+              </ul>
+              <ul class="header-content">
+                <li class="login-box" onclick="openSign()">/注册</li>
+                <li class="login-box" onclick="openLogin()">登录</li>
+                <li><img src="" alt=""></li>
+              </ul>
+            <ul class="topleft">
+              <li>
+                <a href="./index.html" class="topa">
+                  首页
+                </a>
+              </li>
+              <li>
+                <a href="/setcase" class="topa" target="_blank">
+                  在线立案
+                </a>
+              </li>
+              <li>
+                <a href="/send" class="topa" target="_blank">
+                  易送达
+                </a>
+              </li>
+              <li>
+                <a href="/witness" class="topa" target="_blank">
+                  在线质证
+                </a>
+              </li>
+              <li>
+                <a href="/rtc/index.html" class="topa" target="_blank">
+                  在线庭审
+                </a>
+              </li>
+              <li>
+                <a href="/bigData/index.html" onclick="jumpBigData()" class="topa" target="blank">
+                  案件大数据
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+      <!-- 登录弹框 -->
+      <div class="back-h hide" style="background-color:rgba(0,0,0,0.4);position:fixed;width:100%;top:0;left:0;height:100%;z-index:998">
+        <div class="form-data pos hide" id="login-d">
+            <span class="quit-b">
+              <img src="./images/cansole.png" alt="" class="quit">
+            </span>
+    
+            <div class="change-login">
+              <p class="account_number on" style='    display: flex;
+              align-items: center;
+              margin: 0;'>当事人/律师</p>
+              <p class="message" style='    display: flex;
+              align-items: center;
+              margin: 0;'>法院工作者</p>
+              <img src="images/codeLogin.png"  style='cursor: pointer;'  alt="" class="codeWeiXin">
+            </div>
+            <div class="form1">
+              <p class="p-input pos">
+                <label for="num">请输入身份证号</label>
+                <input type="text" id="num">
+                <span class="tel-warn num-err hide">
+                  <em>账号或密码错误，请重新输入</em>
+                  <i class="icon-warn"></i>
+                </span>
+              </p>
+              <p class="p-input pos">
+                <label for="pass">请输入密码</label>
+                <input type="password" style="display:none" />
+                <input type="password" id="pass" autocomplete="new-password">
+                <span class="tel-warn pass-err hide">
+                  <em>账号或密码错误，请重新输入</em>
+                  <i class="icon-warn"></i>
+                </span>
+              </p>
+              <p class="p-input pos code">
+                <label for="veri">请输入验证码</label>
+                <input type="text" id="veri1" style="width:250px">
+                <span class="code-wrapper" onclick="changeCode()" style="float:right;z-index:99;cursor:pointer">
+                  <img height="32px" style="vertical-align: middle;" class="code-ch" src="/api/main/code.jhtml" alt="验证码">
+                </span>
+                <span class="tel-warn img-err hide">
+                  <em>账号或密码错误，请重新输入</em>
+                  <i class="icon-warn"></i>
+                </span>
+                <!-- <a href="javascript:;">换一换</a> -->
+              </p>
+            </div>
+            <div class="form2 hide">
+              <p class="p-input pos">
+                <label for="num1">请输入用户名</label>
+                <input type="text" id="num1">
+                <span class="tel-warn num-err hide">
+                  <em>账号或密码错误，请重新输入</em>
+                  <i class="icon-warn"></i>
+                </span>
+              </p>
+              <p class="p-input pos">
+                <label for="pass1">请输入密码</label>
+                <input type="password" style="display:none" />
+                <input type="password" id="pass1" autocomplete="new-password">
+                <span class="tel-warn pass-err hide">
+                  <em>账号或密码错误，请重新输入</em>
+                  <i class="icon-warn"></i>
+                </span>
+              </p>
+              <p class="p-input pos code">
+                <label for="veri">请输入验证码</label>
+                <input type="text" id="veri2" style="width:250px">
+                <span class="code-wrapper" onclick="changeCode()" style="float:right;z-index:99;cursor:pointer">
+                  <img height="32px" style="vertical-align: middle;" class="code-ch" src="/api/main/code.jhtml" alt="验证码">
+                </span>
+                <span class="tel-warn img-err hide">
+                  <em>验证码错误，请重新输入</em>
+                  <i class="icon-warn"></i>
+                </span>
+                <!-- <a href="javascript:;">换一换</a> -->
+              </p>
+            </div>
+            <div class="form3 hide" style='    text-align: center;'>
+                <img class='weiXinCodeImg' src="" alt="" style='width:50%'>
+              </div>
+            <button class="lang-btn off log-btn">登录</button>
+            <div class="r-forget cl" style="height: 20px;">
+              <a href="#" onclick="changeSign()" style="color:#42a5f5" class="z">账号注册</a>
+              <a href="#" id="fogetPwd" class="z" onclick="forgetPwd()">忘记密码</a>
+              <a href="/易送达诉讼服务客户端.url" class="y">下载客户端</a>
+            </div>
+            <p class="right-footer">本网站只支持IE9+等现代浏览器
+              <a href="/chrome/67.0.3396.62_chrome_installer_x64.exe" download="67.0.3396.62_chrome_installer_x64.exe">chrome下载</a>
+            </p>
+        </div>
+
+      <!-- 忘记密码弹框 -->
+      <div class="form-data pos hide" id="forgetPwd-d">
+          <span class="quit-b">
+            <img src="./images/cansole.png" alt="" class="quit">
+          </span>
+
+          <div class="change-login">
+            <p style="color: #42a5f5;font-size:20px;margin:0">忘记密码</p>
+          </div>
+          <div id="steps1">
+
+          </div>
+          <div class="form1">
+            <p class="p-input pos rsPwdPhone">
+              <label for="num">请输入手机号</label>
+              <input type="text" id="phoneNum">
+              <span id="forgetPwd-phone" class="tel-warn num-err hide">
+                <em>请输入正确的手机号</em>
+                <i class="icon-warn"></i>
+              </span>
+            </p>
+            <p class="p-input pos rsPwdPhone">
+              <label for="pass">请输入验证码</label>
+              <input type="text" style="display:none" />
+              <a href="javascript:;" id="sendAutdCode" class="noSend">发送验证码</a>
+              <span id="sending" class="sending hide"></span>
+              <input type="text" id="forgetPwd-cd" autocomplete="new-password">
+              <span class="tel-warn pass-err hide">
+                <em>验证码错误</em>
+                <i class="icon-warn"></i>
+              </span>
+            </p>
+            <p class="p-input pos code hide newPwd">
+              <label for="veri">请输入新密码</label>
+              <input type="password" id="forgetPwd1" style="width:250px">
+              
+              <!-- <a href="javascript:;">换一换</a> -->
+            </p>
+            <p class="p-input pos hide newPwd">
+              <label for="pass">请再一次输入新密码</label>
+              <input type="password" id="forgetPwd2" autocomplete="new-password">
+              <span class="tel-warn pass-err hide">
+                <em>两次输入的密码不一致</em>
+                <i class="icon-warn"></i>
+              </span>
+            </p>
+            <p class="tips hide"></p>
+          </div>
+          <div class="form3 hide" style='    text-align: center;'>
+              <img class='weiXinCodeImg' src="" alt="" style='width:50%'>
+            </div>
+          <button onclick="resetPwd()" class="lang-btn log-btn">下一步</button>
+          <div class="r-forget cl" style="height: 20px;">
+            <a href="#" onclick="changeSign()" style="color:#42a5f5" class="z">账号注册</a>
+            <a href="/易送达诉讼服务客户端.url" class="y">下载客户端</a>
+          </div>
+          <p class="right-footer">本网站只支持IE9+等现代浏览器
+            <a href="/chrome/67.0.3396.62_chrome_installer_x64.exe" download="67.0.3396.62_chrome_installer_x64.exe">chrome下载</a>
+          </p>
+      </div>
+
+      <!-- 注册弹框 -->
+      <div class="form-data pos hide" id="sine">
+        <span class="quit-b">
+          <img src="./images/cansole.png" alt="" class="quit">
+        </span>
+        <div class="change-login">
+          <p class="message" style="color: #42a5f5;font-size:20px;margin:0">注册</p>
+        </div>
+        <div class="signform1 ">
+          <p class="p-input pos">
+            <label for="phonenum">请输入手机号</label>
+            <input type="text" id="phonenum">
+            <span class="tel-warn num2-err hide" id="phoneWarn">
+              <em>账号或密码错误</em>
+              <i class="icon-warn"></i>
+            </span>
+          </p>
+          <p class="p-input pos">
+            <label for="phoneCode">输入验证码</label>
+            <input type="text" id="phoneCode" style="width:250px">
+            <a href="javascript:;" class="send">发送验证码</a>
+            <span class="time hide">
+              <em id="miao">120</em>s</span>
+            <span class="tel-warn error hide">验证码错误</span>
+          </p>
+        </div>
+        <div class="signform2 hide" style="height: 500px;overflow: auto;">
+          <p class="p-input pos">
+            <label for="idCard">请输入身份证号</label>
+            <input type="text" id="idCard">
+            <span class="tel-warn num-err hide" id="idCardWarn">
+              <em>身份证号错误，请重新输入</em>
+              <i class="icon-warn"></i>
+            </span>
+          </p>
+          <p class="p-input pos">
+            <label for="name">请输入姓名</label>
+            <input type="text" id="name">
+          </p>
+          <p class="p-input pos">
+            <label for="password">请输入密码</label>
+            <input type="password" style="display:none" />
+            <input type="password" id="password" autocomplete="new-password">
+            <span class="tel-warn pass-err hide" id="passWarn">
+              <em>账号或密码错误，请重新输入</em>
+              <i class="icon-warn"></i>
+            </span>
+          </p>
+          <p class="p-input pos">
+            <label for="password2">请输入确认密码</label>
+            <input type="password" style="display:none" />
+            <input type="password" id="password2" autocomplete="new-password">
+            <span class="tel-warn pass-err hide" id="pass2Warn">
+              <em>账号或密码错误，请重新输入</em>
+              <i class="icon-warn"></i>
+            </span>
+          </p>
+          <p class="p-input pos">
+            <label for="email">请输入邮箱</label>
+            <input type="text" id="email">
+            <span class="tel-warn num-err hide" id="emailWarn">
+              <em>邮箱错误，请重新输入</em>
+              <i class="icon-warn"></i>
+            </span>
+          </p>
+          <p class="p-input pos">
+            <label for="trueAddress">请输入地址</label>
+            <input type="text" id="trueAddress">
+            <span class="tel-warn num-err hide">
+              <em>地址错误，请重新输入</em>
+              <i class="icon-warn"></i>
+            </span>
+          </p>
+          <div class="row" style="width: 340px;margin: 0 auto 15px;padding: 0px 0px 15px;border-bottom: 1px solid #e5e5e5;">
+            <div class="col-xs-4" style="padding-left: 0px;color:#bdbbbb;">
+              上传身份证照片
+            </div>
+            <div class="col-xs-8">
+              <div id="preview" style="cursor: pointer;">
+                <img id="idCardUrl" border="0" src="./images/pic.png" width="90" height="90" onclick="$('#idCardImg').click();">
+              </div>
+              <input type="file" onchange="previewImage(this)" style="display: none;" id="idCardImg">
+            </div>
+          </div>
+          <div class="row" style="width: 340px;margin: 0 auto 15px;padding: 0px 0px 15px;border-bottom: 1px solid #e5e5e5;">
+            <div class="col-xs-4" style="padding-left: 0px;color:#bdbbbb;">
+              上传手持身份证照片
+            </div>
+            <div class="col-xs-8">
+              <div id="preview" style="cursor: pointer;">
+                <img id="holdIdCardUrl" border="0" src="./images/pic.png" width="90" height="90" onclick="$('#holdIdCardImg').click();">
+              </div>
+              <input type="file" onchange="previewImage(this)" style="display: none;" id="holdIdCardImg">
+            </div>
+          </div>
+          <button class="lang-btn  hide " id="signBtn">注册</button>
+        </div>
+        <button class="lang-btn " id="nextBtn">下一步</button>
+        <div class="r-forget cl" style="height: 20px;">
+          <a href="#" onclick="changeLogin()" style="color:#42a5f5" class="z">返回登录</a>
+          <a href="/易送达诉讼服务客户端.url" class="y">下载客户端</a>
+        </div>
+        <p class="right-footer">本网站只支持IE9+等现代浏览器
+          <a href="/chrome/67.0.3396.62_chrome_installer_x64.exe" download="67.0.3396.62_chrome_installer_x64.exe">chrome下载</a>
+        </p>
+      </div>
+
+      <div class="form-data pos hide" id="legal">
+        <span class="quit-b">
+          <img src="./images/cansole.png" alt="" class="quit">
+        </span>
+        <div class="signform" style="height: 500px;overflow: auto;">
+          <p class="p-input pos">
+            <label for="companyName">公司名称</label>
+            <input type="text" id="companyName">
+          </p>
+          <p class="p-input pos">
+            <label for="companyPassword">密码</label>
+            <input type="text" id="companyPassword">
+          </p>
+          <p class="p-input pos">
+            <label for="companyIdCard">统一信用代码</label>
+            <input type="text" id="companyIdCard">
+          </p>
+          <p class="p-input pos">
+            <label for="companyEmail">电子邮件</label>
+            <input type="text" id="companyEmail">
+          </p>
+          <p class="p-input pos">
+            <label for="companyAddress">地址</label>
+            <input type="text" id="companyAddress">
+          </p>
+          <p class="p-input pos">
+            <label for="companyLegalName">法定代表人/负责人</label>
+            <input type="text" id="companyLegalName">
+          </p>
+          <p class="p-input pos">
+            <label for="companyPhone">手机号码</label>
+            <input type="text" id="companyPhone">
+          </p>
+          <p class="p-input pos">
+            <label for="companyLegalId">法定代表人/负责人身份证</label>
+            <input type="text" id="companyLegalId">
+          </p>
+          <div class="row" style="width: 340px;margin: 0 auto 15px;padding: 0px 0px 15px;border-bottom: 1px solid #e5e5e5;">
+            <div class="col-xs-4" style="padding-left: 0px;color:#bdbbbb;">
+              上传委托书
+            </div>
+            <div class="col-xs-8">
+              <div id="preview" style="cursor: pointer;">
+                <img id="powerAttorneyUrl" border="0" src="./images/pic.png" width="90" height="90" onclick="$('#powerAttorneyImg').click();">
+              </div>
+              <input type="file" onchange="previewImage(this)" style="display: none;" id="powerAttorneyImg">
+            </div>
+          </div>
+          <div class="row" style="width: 340px;margin: 0 auto 15px;padding: 0px 0px 15px;border-bottom: 1px solid #e5e5e5;">
+            <div class="col-xs-4" style="padding-left: 0px;color:#bdbbbb;">
+              上传劳动合同
+            </div>
+            <div class="col-xs-8">
+              <div id="preview" style="cursor: pointer;">
+                <img id="laborContractUrl" border="0" src="./images/pic.png" width="90" height="90" onclick="$('#laborContractImg').click();">
+              </div>
+              <input type="file" onchange="previewImage(this)" style="display: none;" id="laborContractImg">
+            </div>
+          </div>
+          <button class="lang-btn" id="signCompanyBtn">注册</button>
+          <div class="r-forget cl" style="height: 20px;">
+            <a href="#" onclick="changeLogin()" style="color:#42a5f5" class="z">返回登录</a>
+            <a href="/易送达诉讼服务客户端.url" class="y">下载客户端</a>
+          </div>
+          <p class="right-footer">本网站只支持IE9+等现代浏览器
+            <a href="/chrome/67.0.3396.62_chrome_installer_x64.exe" download="67.0.3396.62_chrome_installer_x64.exe">chrome下载</a>
+          </p>
+        </div>
+      </div>
+
+
+      <div class="form-data pos hide" id="lawyer">
+        <span class="quit-b">
+          <img src="./images/cansole.png" alt="" class="quit">
+        </span>
+        <div class="change-login">
+            <p class="message" style="color: #42a5f5;font-size:20px;margin:0">代理人注册</p>
+          </div>
+        <div class="signform1Lawyer">
+            <p class="p-input pos">
+              <label for="phonenumLawyer">请输入手机号</label>
+              <input type="text" id="phonenumLawyer">
+              <span class="tel-warn num2-err hide" id="phoneWarnLawyer">
+                <em>账号或密码错误</em>
+                <i class="icon-warn"></i>
+              </span>
+            </p>
+            <p class="p-input pos">
+              <label for="phoneCodeLawyer">输入验证码</label>
+              <input type="text" id="phoneCodeLawyer" style="width:250px">
+              <a href="javascript:;" class="sendLawyer">发送验证码</a>
+              <span class="timeLawyer hide">
+                <em id="miaoLawyer">120</em>s</span>
+              <span class="tel-warn error hide">验证码错误</span>
+            </p>
+        </div>
+        <div class="signform2Lawyer hide" style="height: 500px;overflow: auto;">
+          <p class="p-input pos">
+            <label for="lawyerName">姓名</label>
+            <input type="text" id="lawyerName">
+          </p>
+          <p class="p-input pos">
+            <label for="lawyerPassword">密码</label>
+            <input type="password" id="lawyerPassword">
+          </p>
+          <p class="p-input pos">
+            <label for="lawyerPassword2">确认密码</label>
+            <input type="password" id="lawyerPassword2">
+          </p>
+          <p class="p-input pos">
+            <label for="lawyerIdCard">身份证号</label>
+            <input type="text" id="lawyerIdCard">
+          </p>
+          <p class="p-input pos" id="">
+            <label for="lawyerEmail">邮箱</label>
+            <input type="text" id="lawyerEmail">
+          </p>
+          <p class="p-input pos" id="lawerNumBox">
+            <label for="lawerNum">律师证件号</label>
+            <input type="text" id="lawerNum">
+          </p>
+          <p class="p-input pos" id="lawFirmBox">
+            <label for="lawFirm">律师事务所</label>
+            <input type="text" id="lawFirm">
+          </p>
+          <div id="lawerImgBox" class="row" style="width: 340px;margin: 0 auto 15px;padding: 0px 0px 15px;border-bottom: 1px solid #e5e5e5;">
+            <div class="col-xs-4" style="padding-left: 0px;color:#bdbbbb;">
+              上传律师证件照片
+            </div>
+            <div class="col-xs-8">
+              <div id="previewLawyer" style="cursor: pointer;">
+                <img id="idCardUrlLawyer" border="0" src="./images/pic.png" width="90" height="90" onclick="$('#idCardImgLawyer').click();">
+              </div>
+              <input type="file" onchange="previewImage(this)" style="display: none;" id="idCardImgLawyer">
+            </div>
+          </div>
+          <button class="lang-btn" id="signLawyerBtn">注册</button>
+        </div>
+        <button class="lang-btn " id="nextBtnLawyerBtn">下一步</button>
+          <div class="r-forget cl" style="height: 20px;">
+            <a href="#" onclick="changeLogin()" style="color:#42a5f5" class="z">返回登录</a>
+            <a href="/易送达诉讼服务客户端.url" class="y">下载客户端</a>
+          </div>
+          <p class="right-footer">本网站只支持IE9+等现代浏览器
+            <a href="/chrome/67.0.3396.62_chrome_installer_x64.exe" download="67.0.3396.62_chrome_installer_x64.exe">chrome下载</a>
+          </p>
+      </div>
+
+
+    </div>
+    </header>
+    
+  <!-- 主体部分 -->
+    <main>
+      <!-- 轮播图 -->
+        <div id="banner">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="./images/banner-1.jpg" alt="banner" width="100%">
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/banner-2.jpg" alt="banner" width="100%">
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/banner-3.jpg" alt="banner" width="100%">
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      <!-- 主体信息部分 -->
+        <ul class="info-box">
+          <li class="info-content">
+            <div class="info-content-title">
+              <span class="title-left">法院新闻</span>
+              <div>
+                  <img src="../images/menu-w.png" alt="">
+                  <span class="title-right">查看更多</span>
+              </div>
+            </div>
+
+            <div class="info-content-box">
+                <div class="swiper-container2">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <img src="./images/banner-1.jpg" alt="banner" width="100%" height="100%">
+                      <div class="news-title">
+                        <a href="#">我院举行新闻发布会1</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <img src="./images/banner-2.jpg" alt="banner" width="100%" height="100%">
+                      <div class="news-title">
+                        <a href="#">我院举行新闻发布会2</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <img src="./images/banner-3.jpg" alt="banner" width="100%" height="100%">
+                      <div class="news-title">
+                        <a href="#">我院举行新闻发布会3</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-pagination2"></div>
+                </div>
+            </div>
+          </li>
+          <li class="info-content">
+              <div class="info-content-title">
+                <span class="title-left">开庭与庭审直播公告</span>
+                <div>
+                    <img src="../images/menu-w.png" alt="">
+                    <span class="title-right">查看更多</span>
+                </div>
+              </div>
+              <div class="info-content-box">
+                <div class="notice-item">
+                  <img src="../images/way-4.png" alt="">
+                  <span>湖里区人民法院定于二〇一九年二月二十五日十五点三十分在湖里区人民法院第十七法庭公开开庭审理赵天先与孙玄江民间借贷纠纷一案。</span>
+                  <br><span>特此公告。</span>
+                  <p>二〇一九年二月二十二日</p>
+                </div>
+                <div class="notice-item">
+                  <img src="../images/way-4.png" alt="">
+                  <span>湖里区人民法院定于二〇一九年二月二十五日十五点三十分在湖里区人民法院第十七法庭公开开庭审理赵天先与孙玄江民间借贷纠纷一案。</span>
+                  <br><span>特此公告。</span>
+                  <p>二〇一九年二月二十二日</p>
+                </div>
+                <div class="notice-item">
+                  <img src="../images/way-4.png" alt="">
+                  <span>湖里区人民法院定于二〇一九年二月二十五日十五点三十分在湖里区人民法院第十七法庭公开开庭审理赵天先与孙玄江民间借贷纠纷一案。</span>
+                  <br><span>特此公告。</span>
+                  <p>二〇一九年二月二十二日</p>
+                </div>
+              </div>
+          </li>
+          <li class="info-content">
+              <div class="info-content-title">
+                <span class="title-left">典型案例</span>
+                <div>
+                    <img src="../images/menu-w.png" alt="">
+                    <span class="title-right">查看更多</span>
+                </div>
+              </div>
+              <div class="info-content-box">
+              
+              </div>
+          </li>
+          <li class="info-content">
+              <div class="info-content-title">
+                <span class="title-left">送达公告</span>
+                <div>
+                    <img src="../images/menu-w.png" alt="">
+                    <span class="title-right">查看更多</span>
+                </div>
+              </div>
+              <div class="info-content-box">
+              
+              </div>
+          </li>
+        </ul>
+    </main>
+
+  <!-- 尾巴 -->
+    <footer>
+      <div class="footer-title">
+        <p></p>
+        <ul>
+          <li class="footer-item">
+            <div>
+                <img src="../images/icon/首页资源 10.png" alt="">
+            </div>
+            <a href="">法律法规</a>
+          </li>
+          <li class="footer-item">
+            <div>
+                <img src="../images/icon/首页资源 8.png" alt="">
+            </div>
+            <a href="">文书样式</a>
+          </li>
+          <li class="footer-item">
+            <div>
+              <img src="../images/icon/首页组 2377.png" alt="">
+            </div>
+            <a href="">诉讼指南</a>
+          </li>
+          <li class="footer-item">
+            <div>
+              <img src="../images/icon/首页资源 7.png" alt="">
+            </div>
+            <a href="">图文识别</a>
+          </li>
+          <li class="footer-item">
+            <div>
+              <img src="../images/icon/首页组 2377.png" alt="">
+            </div>
+            <a href="">诉讼风险评估</a>
+          </li>
+          <li class="footer-item">
+            <div>
+              <img src="../images/icon/首页资源 4.png" alt="">
+            </div>
+            <a href="">诉讼计算</a>
+          </li>
+          <li class="footer-item">
+            <div>
+              <img src="../images/icon/首页组 2382.png" alt="">
+            </div>
+            <a href="">庭审旁听</a>
+          </li>
+          <li class="footer-item">
+            <div>
+              <img src="../images/icon/首页资源 3.png" alt="">
+            </div>
+            <a href="">庭审评论</a>
+          </li>
+          <li class="footer-item">
+            <div>
+              <img src="../images/icon/首页资源 5.png" alt="">
+            </div>
+            <a href="">庭审网上信访</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-coda">
+        <ul>
+          <li>
+            友情链接：
+          </li>
+          <li>
+            <a href="#">中国法院网</a>
+          </li>
+          <li>
+            <a href="#">福建法院网</a>
+          </li>
+          <li>
+            <a href="#">厦门法院网</a>
+          </li>
+          <li>
+            <a href="#">湖里法院网</a>
+          </li>
+          <li>
+            <a href="#">中国裁判文书网</a>
+          </li>
+          <li>
+            <a href="#">中国审判流程信息公开网</a>
+          </li>
+        </ul>
+        <div class="footer-bottom">
+            <p>厦门市湖里区人民政府 版权所有</p>
+            <p>Copyright@2019 All right reserved</p>
+            <p>地址：福建省厦门市湖里区金尚路1789号</p>
+            <p>技术支持：厦门纵横科技股份有限公司 技术服务热线：0592-xxxxxxx</p>
+        </div>
+      </div>
+    </footer>
+      <script src="./js/index.js"></script>
+</body>
+</html>
+
+
