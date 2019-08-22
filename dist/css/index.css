@@ -2,6 +2,10 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+li {
+  
+}
 /* 头部样式 */
 .header {
   width: 100%;
