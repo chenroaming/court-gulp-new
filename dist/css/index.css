@@ -167,10 +167,11 @@ ul {
 }
 .notice-item2 {
   width: 90%;
-  height: 50px;
+  height: 65px;
   border-bottom: 1px solid #BCD5F0;
   margin: 0 auto;
   margin-top: 10px;
+  line-height: 65px;
 }
 .notice-item2 p {
   text-align: right;
