@@ -14,27 +14,62 @@ $(document).ready(function () {
         }
     })
 
+    let wordNews = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pagesize:3,NewsType:2});
+    let picNews = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pagesize:3,NewsType:1});
     let mySwiper2 = new Swiper('.swiper-container2', {
-        direction: 'horizontal',
-        loop: true,
-        autoplay: {
-          disableOnInteraction: false,
-        },
-        clickable :true,
-        // 如果需要分页器
-        pagination: {
-            el: '.swiper-pagination2',
-            clickable :true
-        }
-    })
-
+      direction: 'horizontal',
+      loop: true,
+      autoplay: {
+        disableOnInteraction: false,
+      },
+      // 如果需要分页器
+      pagination: {
+          el: '.swiper-pagination2',
+          clickable :true
+      },
+      //前进后退按钮
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      observer: true,
+      observeParents: false
+    });
     mySwiper2.el.onmouseover = function(){
       mySwiper2.autoplay.stop();
     }
-
     mySwiper2.el.onmouseleave = function(){
       mySwiper2.autoplay.start();
     }
+    console.log(picNews.content);
+    let bigDiv = '';
+    for(let item of picNews.content){
+      bigDiv = ('<div class="swiper-slide"><img src="'+item.home_img_url+'" alt="banner" width="100%" height="100%"></img><div class="news-title"><a href="news.html?id='+item.unique_id+'" target="_Blank">'+item.news_title+'</a></div></div>');
+      mySwiper2.appendSlide(bigDiv);
+    }
+    mySwiper2.updateSlides();
+    mySwiper2.pagination.render();
+    mySwiper2.pagination.update();
+    let holdCourts = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml ');
+    for(const item of holdCourts.data){
+      let div = ('<div class="notice-item"><img src="../images/way-4.png" alt=""><span>'+item.content+'</span><br><span>特此公告。</span><p>'+item.openTime+'</p></div>');
+      $('#box').append(div);
+      $('#box2').append(div);
+    }
+    let top = 0;
+    let top2 = 800;
+    setInterval(function(){
+      top --;
+      top2 --;
+      $('#box').css('top',top);
+      $('#box2').css('top',top2);
+      if(top == -$('.info-content-box').height()*1.5){
+        top2 = $('.info-content-box').height();
+      }
+      if(top2 == -$('.info-content-box').height()*1.5){
+        top = $('.info-content-box').height();
+      }
+    },10);
 })
 
 //忘记密码步骤条
@@ -52,7 +87,7 @@ let steps1 = steps({
 
 
 //ajax的小封装
-function ajaxGet(url,data){
+function ajaxGet(url,data =''){
     let response = '';
     $.ajax({
       url: url,

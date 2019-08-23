@@ -2,10 +2,6 @@ ul {
   margin: 0;
   padding: 0;
 }
-
-li {
-  
-}
 /* 头部样式 */
 .header {
   width: 100%;
@@ -86,7 +82,7 @@ li {
 }
 .info-content {
   width: 45%;
-  height: 365px;
+  height: 390px;
   float: left;
   margin-top: 30px;
   margin-left: 3.5%;
@@ -119,10 +115,11 @@ li {
 }
 .info-content-box {
   width: 100%;
-  height: 280px;
+  height: 320px;
   margin-top: 20px;
   border: 1px solid #F1F6FC;
   position: relative;
+  overflow: hidden;
 }
 .swiper-container2 {
   overflow: hidden;
@@ -133,9 +130,7 @@ li {
   z-index: 10;
   float: right;
   position: absolute;
-}
-.swiper-pagination2 span {
-  float: right;
+  text-align: right;
 }
 .news-title {
   width: 100%;
@@ -155,7 +150,7 @@ li {
 }
 .notice-item {
   width: 90%;
-  height: 32%;
+  height: 100px;
   border-bottom: 1px solid #BCD5F0;
   margin: 0 auto;
   margin-top: 10px;
@@ -169,6 +164,36 @@ li {
 }
 .notice-item span {
   font-size: 12px;
+}
+.notice-item2 {
+  width: 90%;
+  height: 50px;
+  border-bottom: 1px solid #BCD5F0;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.notice-item2 p {
+  text-align: right;
+}
+.notice-item2 img {
+  width: 35px;
+  height: 30px;
+}
+.notice-item2 span:first-child {
+  font-size: 12px;
+}
+.notice-item2 span:nth-child(3) {
+  float: right;
+}
+#box {
+  width: 100%;
+  height: 600px;
+  position: absolute;
+}
+#box2 {
+  width: 100%;
+  height: 600px;
+  position: absolute;
 }
 /* 尾巴部分样式 */
 .footer-title {
@@ -231,65 +256,3 @@ li {
   margin: 0;
   font-size: 12px;
 }
-  height: 60px;
-        background-color: #092754;
-    }
-
-    .footer-title ul{
-        width: 80%;
-        height: 80px;
-        margin: 0 auto;
-        margin-top: 20px;
-    }
-
-    .footer-item {
-        width: 11%;
-        height: 60px;
-        float: left;
-        text-align: center;
-    }
-
-    .footer-item img{
-        width: 50px;
-        height: 45px;
-    }
-
-    .footer-item a{
-        color: #000;
-        font-weight: 700
-    }
-
-    .footer-coda {
-        width: 100%;
-        height: 200px;
-        background-color: #092754;
-        text-align: center;
-    }
-
-    .footer-coda ul{
-        width: 1280px;
-        height: 60px;
-        margin: 0 auto;
-        color: #fff;
-        padding-top: 30px;
-    }
-
-    .footer-coda li{
-        float: left;
-        margin-left: 85px;
-    }
-
-    .footer-coda li a{
-        float: left;
-        color: #fff;
-    }
-
-    .footer-bottom{
-        margin-top: 35px;
-    }
-
-    .footer-bottom p{
-        color: #fff;
-        margin: 0;
-        font-size: 12px;
-    }
