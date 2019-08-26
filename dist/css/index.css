@@ -77,12 +77,12 @@ ul {
 /* 信息栏样式 */
 .info-box {
   width: 1280px;
-  height: 790px;
+  height: 875px;
   margin: 0 auto;
 }
 .info-content {
   width: 45%;
-  height: 390px;
+  height: 420px;
   float: left;
   margin-top: 30px;
   margin-left: 3.5%;
@@ -115,7 +115,7 @@ ul {
 }
 .info-content-box {
   width: 100%;
-  height: 320px;
+  height: 346px;
   margin-top: 20px;
   border: 1px solid #F1F6FC;
   position: relative;
@@ -142,7 +142,6 @@ ul {
 }
 .news-title a {
   color: #fff;
-  height: 40px;
   line-height: 40px;
   font-size: 16px;
   display: inline-block;
@@ -155,7 +154,7 @@ ul {
   margin: 0 auto;
   margin-top: 10px;
 }
-.notice-item p {
+.notice-item p:nth-child(3) {
   text-align: right;
 }
 .notice-item img {
@@ -164,6 +163,11 @@ ul {
 }
 .notice-item span {
   font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 .notice-item2 {
   width: 90%;
@@ -173,18 +177,24 @@ ul {
   margin-top: 10px;
   line-height: 65px;
 }
-.notice-item2 p {
+.notice-item2 p:nth-child(3) {
   text-align: right;
 }
 .notice-item2 img {
   width: 35px;
   height: 30px;
+  vertical-align: middle;
 }
 .notice-item2 span:first-child {
   font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 .notice-item2 span:nth-child(3) {
-  float: right;
+  vertical-align: middle;
 }
 #box {
   width: 100%;
@@ -195,6 +205,14 @@ ul {
   width: 100%;
   height: 600px;
   position: absolute;
+}
+.wordNews {
+  overflow: hidden;
+  width: 73%;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
 }
 /* 尾巴部分样式 */
 .footer-title {
