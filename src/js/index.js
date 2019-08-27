@@ -42,7 +42,7 @@ $(document).ready(function () {
 
     let bigDiv = '';
     for(let item of picNews.content){
-      bigDiv = ('<div class="swiper-slide"><img src="'+item.home_img_url+'" alt="banner" width="100%" height="100%"></img><div class="news-title"><a href="news.html?id='+item.unique_id+'" target="_Blank">'+item.news_title+'</a></div></div>');
+      bigDiv = ('<div class="swiper-slide"><a href="news.html?id='+item.unique_id+'" target="_Blank"><img src="'+item.home_img_url+'" alt="banner" width="100%" height="100%"><div class="news-title">'+item.news_title+'</div></a></div>');
       mySwiper2.appendSlide(bigDiv);
     }
     mySwiper2.updateSlides();
@@ -56,12 +56,12 @@ $(document).ready(function () {
     }
     for(const item of wordNews.content){
       const time = new Date(item.create_date);
-      const content = ('<div class="notice-item2"><img src="../images/way-2.png" alt=""><span class="wordNews" title="'+item.news_title+'">'+item.news_title+'</span><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');
+      const content = ('<div class="notice-item2"><img src="../images/way-2.png" alt=""><a href="news.html?id='+item.unique_id+'" class="wordNews" title="'+item.news_title+'" target="_blank">'+item.news_title+'</a><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');
       $('#caseList').append(content);
     }
     let personalNotice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pagesize:4,pageSize:4});
     for(const item of personalNotice.date){
-      let content = ('<div class="notice-item2"><img src="../images/way-2.png" alt=""><a href="'+item.address+'" class="wordNews" target="_blank" title="致'+item.news_title+'公告">致'+item.litigant_name+'公告</a><span>'+item.holdTime+'</span></div>');
+      let content = ('<div class="notice-item2"><img src="../images/way-2.png" alt=""><a href="'+item.address+'" class="wordNews" target="_blank" title="致'+item.litigant_name+'公告">致'+item.litigant_name+'公告</a><span>'+item.holdTime+'</span></div>');
       $('#personalNotice').append(content);
     }
     //公告栏滚动效果

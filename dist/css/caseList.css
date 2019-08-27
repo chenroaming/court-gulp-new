@@ -40,7 +40,7 @@
   width: 35px;
   height: 35px;
 }
-p:last-child {
+.content p:last-child {
   text-align: right;
 }
 #Pagination {
@@ -59,4 +59,6 @@ p:last-child {
   background-color: #0073A9;
   border-color: #0073A9;
   color: #FFF;
+  width: 30px;
+  text-align: center;
 }

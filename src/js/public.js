@@ -13,6 +13,76 @@ const steps1 = steps({
 });
 
 
+function jumpBigData(e) {
+  if (e && e.preventDefault)
+    e.preventDefault();
+  else
+    window.event.returnValue = false;
+  if (getUserInfo())
+    window.open(window.event.target)
+  else
+    openLogin()
+}
+
+$(function () {
+  getUserInfo()
+})
+
+function noIn(e){
+  if (e && e.preventDefault)
+    e.preventDefault();
+  else
+    window.event.returnValue = false;
+    alert('你好！系统正在优化升级中')
+
+}
+function getUserInfo() {
+  var hasLogin = false
+  $.ajax({
+    url: '/api/main/getUserInfo.jhtml',
+    type: 'get',
+    dataType: 'json',
+    async: false,
+    success: function (data) {
+      if (data.state == 100) {
+        $(".login-wrapper").addClass('hide');
+        $(".user-wrapper").removeClass('hide');
+        if (data.result.name == null) {
+          $('#userName').attr('title','欢迎您，' + data.result.name);
+          $('#userName').text('欢迎您！' + data.result.username);
+        } else {
+          $('#userName').attr('title','欢迎您，' + data.result.name);
+          $('#userName').text('欢迎您！' + data.result.name)
+          $(".topli").removeClass('disabled');
+          hasLogin = true
+        }
+
+      }
+    }
+  })
+  return hasLogin
+}
+
+function logout() {
+  $.ajax({
+    url: '/api/main/loginOut.jhtml',
+    type: 'get',
+    dataType: 'json',
+    success: function (data) {
+      if (data.state == 100) {
+        $(".login-wrapper").removeClass('hide');
+        $(".user-wrapper").addClass('hide');
+        sweetAlert({
+          title: data.message,
+          type: "success",
+          timer: 1500
+        });
+      }
+    }
+  })
+}
+
+
 //ajax的小封装
 function ajaxGet(url,data =''){
     let response = '';
@@ -56,6 +126,41 @@ function ajaxGet(url,data =''){
       }
     });
     return response;
+  }
+
+  function previewImage(target) {
+    console.log($(target).prev().children('img'))
+    console.log(target.files[0])
+    if (target.files[0]) {
+      var formData = new FormData()
+      formData.append('file', target.files[0])
+      $.ajax({
+        url: '/api/main/registerUpload.jhtml',
+        type: 'post',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (res) {
+          console.log(res)
+          
+          if (res.messge=="上传成功") {
+            $(target).prev().children('img')[0].src = res.url
+          }else{
+            sweetAlert({
+        title: res.message,
+        type: 'error',
+        confirmButtonText: "好的"
+      })
+          }
+        }
+      })
+    } else {
+      sweetAlert({
+        title: '请选择正确文件',
+        type: 'error',
+        confirmButtonText: "好的"
+      })
+    }
   }
 
 // 打开登录弹框
@@ -383,6 +488,164 @@ function openLogin() {
     $("#login-d").removeClass("hide");
   }
 
+  var tab = 'account_number';
+  // 选项卡切换
+  $(".account_number").click(function () {
+    $('.log-btn').removeClass('hide')
+    $('.tel-warn').addClass('hide');
+    tab = $(this).attr('class').split(' ')[0];
+    $(this).addClass("on");
+    checkBtn()
+    $(".message").removeClass("on");
+    $(".codeWeiXin").removeClass("on");
+    $(".form2").addClass("hide");
+    $(".form1").removeClass("hide");
+    $(".form3").addClass("hide");
+  });
+  // 选项卡切换
+  $(".message").click(function () {
+    $('.log-btn').removeClass('hide')
+    $('.tel-warn').addClass('hide');
+    tab = $(this).attr('class').split(' ')[0];
+    $(this).addClass("on");
+    checkBtn()
+    $(".account_number").removeClass("on");
+    $(".codeWeiXin").removeClass("on");
+    $(".form2").removeClass("hide");
+    $(".form1").addClass("hide");
+    $(".form3").addClass("hide");
+
+  });
+  $('.weiXinCodeImg').click(function(){
+    $.ajax({
+      url: '/api/main/wxScanLoginEncoder.jhtml',
+      type: 'get',
+      dataType: 'json',
+      async: false,
+      success: function (data) {
+        // if (data.state == 100) {
+          
+          $('.weiXinCodeImg').attr('src','/' +  data.path)
+            window.setTimeout(function(){
+                
+                // console.log(that.isLoginS)
+                // if(that.isLoginS == false){
+                //     console.log(777)
+                //     that.overShow = true;
+                //     // that.websocketclose();
+                // }
+            }
+            , 1000 * 100);
+        // }
+      }
+    })
+  })
+  // 选项卡切换
+  $(".codeWeiXin").click(function () {
+      $('.log-btn').addClass('hide')
+    $('.tel-warn').addClass('hide');
+    tab = $(this).attr('class').split(' ')[0];
+    $(this).addClass("on");
+    checkBtn()
+    $(".account_number").removeClass("on");
+    $(".message").removeClass("on");
+    $(".form2").addClass("hide");
+    $(".form1").addClass("hide");
+    $(".form3").removeClass("hide");
+    $.ajax({
+      url: '/api/main/wxScanLoginEncoder.jhtml',
+      type: 'get',
+      dataType: 'json',
+      async: false,
+      success: function (data) {
+        // if (data.state == 100) {
+          console.log(data)
+            var path = window.location.host
+            var httpNm =  document.location.protocol;
+            var wsuri = "";
+            if(httpNm == 'https:'){
+                wsuri = 'wss://' + path + '/api/login/scan.jhtml';
+            }else{
+                wsuri = 'ws://' + path + '/api/login/scan.jhtml';
+            }
+            var websock = new WebSocket(wsuri);
+            websock.onopen = function (event) {
+                console.log('WebSocket:已连接');
+                console.log(event);
+            };
+            websock.onmessage = function (event) {
+                console.log(event)
+                var data = JSON.parse(event.data);
+                let newList = [];
+                let readList = [];
+                if(data.loginId){
+                    var loginId = data.loginId;
+                    console.log(data)
+                    if(data.roles.length >1){
+                        var arr = data.roles;
+                        getRole(arr);
+                    }else if(data.roles.length == 1){
+                        let ary = data.roles[0].split(',');
+                        // selRole(loginId,ary[2])
+                        $.ajax({
+                        url: '/api/main/optionRole.jhtml',
+                        type: 'get',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        async: false,
+                        data: {
+                            roleType:ary[2],
+                            loginId:loginId
+                        },
+                        success: function (data) {
+                            if (data.state == 100) {
+                            swal({
+                                title: data.message,
+                                type: "success",
+                                confirmButtonText: "好的"
+                            });
+                            localStorage.setItem('roleIdToken',loginId);
+                            getUserInfo();
+                            } else {
+                            swal({
+                                title: data.message,
+                                type: "error",
+                                confirmButtonText: "好的"
+                            });
+                            }
+                        },
+                        error: function () {
+
+                        }
+                        });
+                    }
+                }
+            }
+            websock.onerror = function (event) {
+                console.log('WebSocket:发生错误 ');
+                console.log(event);
+            };
+            // this.websock.onclose = function (event) {
+                
+            //     console.log(event);
+            // }
+            websock.onclose = this.websocketclose;
+          $('.weiXinCodeImg').attr('src','/' +  data.path)
+            window.setTimeout(function(){
+                
+                // console.log(that.isLoginS)
+                // if(that.isLoginS == false){
+                //     console.log(777)
+                //     that.overShow = true;
+                //     // that.websocketclose();
+                // }
+            }
+            , 1000 * 100);
+        // }
+      }
+    })
+  });
+
   //隐藏字体
   $('#num').keyup(function (event) {
     $('.tel-warn').addClass('hide');
@@ -439,7 +702,6 @@ function openLogin() {
   });
 
   // 按钮是否可点击
-  let tab = 'account_number';
   function checkBtn() {
     $(".log-btn").off('click');
     if (tab == 'account_number') {
@@ -462,6 +724,31 @@ function openLogin() {
       } else {
         $(".log-btn").addClass("off");
       }
+    }
+  }
+
+  //更改验证码
+  function changeCode() {
+    $(".code-ch").attr("src", "/api/main/code.jhtml?tm=" + Math.random())
+  }
+
+  function checkAccount(username) {
+    if (username == '') {
+      $('.num-err').removeClass('hide').find("em").text('请输入账户');
+      return false;
+    } else {
+      $('.num-err').addClass('hide');
+      return true;
+    }
+  }
+
+  function checkPass(pass) {
+    if (pass == '') {
+      $('.pass-err').removeClass('hide').text('请输入密码');
+      return false;
+    } else {
+      $('.pass-err').addClass('hide');
+      return true;
     }
   }
 
@@ -928,3 +1215,624 @@ function openLogin() {
     });
     return status;
   }
+
+  //输入框输入时模拟placeholder效果
+  var oInput = $(".form-data input");
+  oInput.focus(function () {
+    $(this).siblings("label").hide();
+  });
+  oInput.blur(function () {
+    if ($(this).val() == "") {
+      $(this).siblings("label").show();
+    }
+  });
+
+  $('.tab-btn > div').on('click', function () {
+    $('.tab-btn > div').removeClass()
+    $('.tab-content > img').removeClass()
+    $($('.tab-content > img')[$(this).addClass('active').data('value')]).addClass('show')
+  })
+
+  sign()
+
+  $('#signCompanyBtn').on('click', function () {
+    var companyName = $('#companyName').val();
+    var companyPassword = $('#companyPassword').val();
+    var companyIdCard = $('#companyIdCard').val();
+    var companyEmail = $('#companyEmail').val();
+    var companyAddress = $('#companyAddress').val();
+    var companyLegalName = $('#companyLegalName').val();
+    var companyPhone = $('#companyPhone').val();
+    var companyLegalId = $('#companyLegalId').val();
+    var laborContractUrl = $('#laborContractUrl').attr('src')
+    var powerAttorneyUrl = $('#powerAttorneyUrl').attr('src')
+    console.log('11')
+    if (laborContractUrl == './images/pic.png' || powerAttorneyUrl == './images/pic.png') {
+      sweetAlert({
+        title: '前上传相应图片',
+        type: 'error',
+        confirmButtonText: "好的"
+      })
+      return
+    }
+    $.ajax({
+      url: '/api/main/registerAdmin.jhtml',
+      type: 'post',
+      dataType: 'json',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      async: false,
+      data: JSON.stringify({
+        name: companyName,
+        password: companyPassword,
+        idCard: companyIdCard,
+        email: companyEmail,
+        trueAddress: companyAddress,
+        legalManName: companyLegalName,
+        legalManPhone: companyPhone,
+        legalManId: companyLegalId,
+        laborContractUrl: laborContractUrl,
+        powerAttorneyUrl: powerAttorneyUrl,
+        litigantType: 1
+      }),
+      success: function (data) {
+        if (data.state == 100) {
+          $('#companyName').val('');
+          $('#companyPassword').val('');
+          $('#companyIdCard').val('');
+          $('#companyEmail').val('');
+          $('#companyAddress').val('');
+          $('#companyLegalName').val('');
+          v$('#companyPhone').val('');
+          $('#companyLegalId').val('');
+          $('#laborContractUrl')[0].src = './images/pic.png';
+          $('#powerAttorneyUrl')[0].src = './images/pic.png';
+          $("#legal").addClass("hide");
+          swal({
+            title: data.message,
+            type: "success",
+            confirmButtonText: "好的"
+          });
+          $(".back-h").addClass('hide');
+        } else {
+          swal({
+            title: data.message,
+            type: "error",
+            confirmButtonText: "好的"
+          });
+          $(".back-h").addClass('hide');
+          $('.form-data').addClass("hide");
+        }
+      },
+      error: function () {
+        status = false;
+      }
+    });
+  })
+  $("#nextBtnLawyerBtn").unbind("click").click(function () {
+      var phone = $.trim($('#phonenumLawyer').val());
+      var phoneCode = $.trim($('#phoneCodeLawyer').val());
+      if (phone == '') {
+        $("#phoneWarnLawyer").removeClass('hide').find("em").text('手机号不能为空');
+        return false;
+      }
+      $.ajax({
+        url: '/api/main/registerPhone.jhtml',
+        type: 'post',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: JSON.stringify({
+          phone: phone,
+          mcode: phoneCode
+        }),
+        success: function (data) {
+          if (data.state == 100) {
+            $('#phonenumLawyer').val('')
+            $('#phoneCodeLawyer').val('')
+            $(".signform1Lawyer").addClass("hide");
+            $(".signform2Lawyer").removeClass("hide");
+            $("#signLawyerBtn").removeClass("hide");
+            $("#nextBtnLawyerBtn").addClass("hide");
+          } else {
+            sweetAlert({
+              title: data.message,
+              type: "error",
+              confirmButtonText: "好的"
+            });
+          }
+        },
+        error: function () {
+          status = false;
+        }
+      });
+    //   $('#phonenumLawyer').val('')
+    //         $('#phoneCodeLawyer').val('')
+    //         $(".signform1Lawyer").addClass("hide");
+    //         $(".signform2Lawyer").removeClass("hide");
+    //         $("#signLawyerBtn").removeClass("hide");
+    //         $("#nextBtnLawyerBtn").addClass("hide");
+    })
+    $('#signLawyerBtn').on('click',function(){
+        var lawyerName = $.trim($('#lawyerName').val());
+        var lawyerPassword = $.trim($('#lawyerPassword').val());
+        var lawyerPassword2 = $.trim($('#lawyerPassword2').val());
+        var lawyerIdCard = $.trim($('#lawyerIdCard').val());
+        var lawyerEmail = $.trim($('#lawyerEmail').val());
+        var lawerNum = $.trim($('#lawerNum').val());
+        var lawFirm = $.trim($('#lawFirm').val());
+        var lawerCardUrl = $('#idCardUrlLawyer').attr('src')
+        if (lawyerName == '') {
+            swal({
+                title: '姓名不能为空',
+                type: "warning",
+                confirmButtonText: "好的"
+            });
+            return false;
+        }
+        if (lawyerPassword == '') {
+            swal({
+                title: '密码不能为空',
+                type: "warning",
+                confirmButtonText: "好的"
+            });
+            return false;
+        }
+        if (lawyerPassword != lawyerPassword2) {
+            swal({
+                title: '两次密码不一致',
+                type: "warning",
+                confirmButtonText: "好的"
+            });
+            return false;
+        }
+        if (lawyerIdCard == '') {
+            swal({
+                title: '身份证号码不能为空',
+                type: "warning",
+                confirmButtonText: "好的"
+            });
+            return false;
+        }
+        var lawyerData={
+
+        }
+        if (LawyerState==1) {
+            if (lawerNum == '') {
+                swal({
+                    title: '律师证件号码不能为空',
+                    type: "warning",
+                    confirmButtonText: "好的"
+                });
+                return false;
+            }
+            if (lawFirm == '') {
+                swal({
+                    title: '律师证件号码不能为空',
+                    type: "warning",
+                    confirmButtonText: "好的"
+                });
+                return false;
+            }
+            if (lawerCardUrl == './images/pic.png') {
+                swal({
+                    title: '请上传正确的律师证件照',
+                    type: "warning",
+                    confirmButtonText: "好的"
+                });
+                return false;
+            }
+            lawyerData={
+                agentType:LawyerState,
+                name: lawyerName,
+                idCard: lawyerIdCard,
+                password: MD5(lawyerPassword),
+                email: lawyerEmail,
+                lawerNum: lawerNum,
+                lawFirm: lawFirm,
+                lawerCardUrl:lawerCardUrl
+            }
+        }else{
+            lawFirm = ''
+            lawerNum = ''
+            lawerCardUrl=''
+            lawyerData={
+                agentType:LawyerState,
+                name: lawyerName,
+                idCard: lawyerIdCard,
+                password: MD5(lawyerPassword),
+                email: lawyerEmail,
+            }
+        }
+        
+        $.ajax({
+            url: '/api/main/registerLawyer.jhtml',
+            type: 'post',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            async: false,
+            data: JSON.stringify(lawyerData),
+            success: function (data) {
+            if (data.state == 100) {
+                console.log(data)
+                $('#lawyerName').val('')
+                $('#lawyerIdCard').val('')
+                $('#lawyerPassword').val('')
+                $('#lawyerPassword2').val('')
+                $('#lawyerEmail').val('')
+                $('#lawerNum').val('')
+                $('#lawFirm').val('')
+                $('#lawerCardUrl').val('')
+                $('#idCardUrlLawyer').attr('src',"./images/pic.png")
+                swal({
+                    title: data.message,
+                    type: "success",
+                    confirmButtonText: "好的"
+                });
+                $(".back-h").addClass('hide');
+            } else {
+                console.log(data)
+                swal({
+                    title: data.message,
+                    type: "error",
+                    confirmButtonText: "好的"
+                });
+                // $(".back-h").addClass('hide');
+            }
+            },
+            error: function () {
+                status = false;
+            }
+      });
+
+    })
+  //注册
+  function sign() {
+    $("#nextBtn").unbind("click").click(function () {
+      var phone = $.trim($('#phonenum').val());
+      var phoneCode = $.trim($('#phoneCode').val());
+      if (phone == '') {
+        $("#phoneWarn").removeClass('hide').find("em").text('手机号不能为空');
+        return false;
+      }
+      $.ajax({
+        url: '/api/main/registerPhone.jhtml',
+        type: 'post',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: JSON.stringify({
+          phone: phone,
+          mcode: phoneCode
+        }),
+        success: function (data) {
+          if (data.state == 100) {
+            $('#phonenum').val('')
+            $('#phoneCode').val('')
+            $(".signform1").addClass("hide");
+            $(".signform2").removeClass("hide");
+            $("#signBtn").removeClass("hide");
+            $("#nextBtn").addClass("hide");
+          } else {
+            sweetAlert({
+              title: data.message,
+              type: "error",
+              confirmButtonText: "好的"
+            });
+          }
+        },
+        error: function () {
+          status = false;
+        }
+      });
+    })
+    $("#signBtn").unbind("click").click(function () {
+      var phone = $.trim($('#phonenum').val());
+      var idCard = $.trim($('#idCard').val());
+      var name = $('#name').val()
+      var idCardUrl = $('#idCardUrl').attr('src')
+      var holdIdCardUrl = $('#holdIdCardUrl').attr('src')
+      if (idCardUrl == './images/pic.png' || holdIdCardUrl == './images/pic.png') {
+        sweetAlert({
+          title: '前上传相应图片',
+          type: 'error',
+          confirmButtonText: "好的"
+        })
+        return
+      }
+      if (idCard == '') {
+        $("#idCardWarn").removeClass('hide').find("em").text('身份证号码不能为空');
+        return false;
+      }
+      var password = $.trim($('#password').val());
+      if (password == '') {
+        $('#passWarn').removeClass('hide').find("em").text('密码不能为空');
+        return false;
+      }
+      var password2 = $.trim($('#password2').val());
+      if (password != password2) {
+        $('#pass2Warn').removeClass('hide').find("em").text('密码不一致');
+        return false;
+      }
+      var email = $.trim($('#email').val());
+      var trueAddress = $.trim($('#trueAddress').val());
+      $.ajax({
+        url: '/api/main/registerAdmin.jhtml',
+        type: 'post',
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: JSON.stringify({
+          idCard: idCard,
+          phone: phone,
+          name: name,
+          password: password,
+          email: email,
+          trueAddress: trueAddress,
+          idCardUrl: idCardUrl,
+          holdIdCardUrl: holdIdCardUrl,
+          litigantType: 0
+        }),
+        success: function (data) {
+          if (data.state == 100) {
+            console.log(data)
+            $('#phonenum').val('')
+            $('#idCard').val('')
+            $('#name').val('')
+            $('#password').val('')
+            $('#password2').val('')
+            $('#email').val('')
+            $('#trueAddress').val('')
+            $('#idCardUrl')[0].src = './images/pic.png';
+            $('#holdIdCardUrl')[0].src = './images/pic.png';
+            swal({
+              title: data.message,
+              type: "success",
+              confirmButtonText: "好的"
+            });
+            $(".back-h").addClass('hide');
+          } else {
+            console.log(data)
+            swal({
+              title: data.message,
+              type: "error",
+              confirmButtonText: "好的"
+            });
+            // $(".back-h").addClass('hide');
+          }
+        },
+        error: function () {
+          status = false;
+        }
+      });
+    })
+  }
+
+  // 登录点击事件
+  function sendBtn() {
+    if (tab == 'account_number') {
+      $(".log-btn").click(function () {
+        var inp = $.trim($('#num').val());
+        var pass = $.trim($('#pass').val());
+        var veri1 = $.trim($('#veri1').val());
+        if (checkAccount(inp) && checkPass(pass)) {
+          var ldata = {
+            'idCard': inp,
+            'password': MD5(pass),
+            'code': veri1
+          };
+          console.log(989)
+          $.ajax({
+            url: '/api/main/login.jhtml',
+            type: 'get',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            async: false,
+            data:{
+              username: inp,
+              password: MD5(pass),
+              code: veri1,
+              loginType:'litigant'
+            },
+            success: function (data) {
+              let ele = data.data;
+              if (data.state == 100) {
+                $('.form-data').addClass("hide");
+                $(".back-h").addClass('hide');
+                if(ele.roles.length == 1){
+                  selRole(ele.roles[0].id,ele.roles[0].type);
+                }else{
+                  var arr = ele.roles;
+                  getRole(arr);
+                }
+                
+              } else if (data.state == 102) {
+                swal({
+                  title: '请用微信扫码进行实名认证',
+                  imageUrl: ele.imagePath,
+                  imageWidth: 300,
+                  imageHeight: 300,
+                  confirmButtonText: "好的"
+                });
+              } else if (data.state == 103){
+                swal({
+                  type: "info",
+                  html:data.message,
+                  confirmButtonText: "点击进行微信扫码实名认证"
+                }).then(function(result) {
+                    console.log(result)
+                    if (result) {
+                        swal({
+                        title: '请用微信扫码进行实名认证',
+                        imageUrl: ele.imagePath,
+                        imageWidth: 300,
+                        imageHeight: 300,
+                        confirmButtonText: "好的"
+                        });
+                    }
+                });
+              }else {
+                swal({
+                //   title: data.message,
+                  type: "warning",
+                  html:data.message,
+                  confirmButtonText: "好的"
+                })
+              }
+              changeCode()
+            },
+            error: function () {
+
+            }
+          });
+        } else {
+          return false;
+        }
+      });
+    } else {
+      $(".log-btn").click(function () {
+        var inp1 = $.trim($('#num1').val());
+        var pass1 = $.trim($('#pass1').val());
+        var veri2 = $.trim($('#veri2').val());
+        if (checkAccount(inp1) && checkPass(pass1)) {
+          $.ajax({
+            url: '/api/main/login.jhtml',
+            type: 'get',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            async: false,
+            data:{
+              username: inp1,
+              password: MD5(pass1),
+              code: veri2,
+              loginType:'court'
+            },
+            //  JSON.stringify({
+            //   username: inp1,
+            //   password: MD5(pass1),
+            //   code: veri2,
+            //   loginType:'court'
+            // }),
+            success: function (data) {
+              if (data.state == 100) {
+                swal({
+                  title: data.message,
+                  type: "success",
+                  confirmButtonText: "好的"
+                });
+                $('.form-data').addClass("hide");
+                $(".back-h").addClass('hide');
+                let ele = data.data;
+                if(ele.roles){
+                  if(ele.roles.length == 1){
+                    selRole(ele.roles[0].id,ele.roles[0].type);
+                  }else{
+                    var arr = ele.roles;
+                    getRole(arr);
+                  }
+                }
+              } else {
+                swal({
+                  title: data.message,
+                  type: "error",
+                  confirmButtonText: "好的"
+                });
+              }
+              changeCode()
+            },
+            error: function () {
+
+            }
+          });
+        } else {
+          $(".log-btn").off('click').addClass("off");
+          // $('.tel-warn').removeClass('hide').text('登录失败');
+          return false;
+        }
+      });
+    }
+  }
+  $(document).on("click",".sButton",function(){
+      var fileId=$(this).attr("fileId");
+      var roleType=$(this).attr("roleType");
+      cliSur(fileId,roleType);
+  })
+  function getHtmlBtton(ary){
+    let str = '';
+    
+    for(let i=0;i<ary.length;i++){
+      str = str + "<Button fileId='"+ ary[i].id+"' roleType='"+ary[i].type+"' class='sButton' type='primary' >"+ ary[i].name + "</Button>"
+    }
+    return str;
+  }
+  function cliSur(id,type){
+    var buttons = $(".sButton");
+    for(let i=0;i<buttons.length;i++){
+      if($(buttons[i]).attr("fileId") == id){
+        $(buttons[i]).addClass("sel");
+      }else{
+        $(buttons[i]).removeClass("sel");
+      }
+    }
+    $("#dex").remove()
+    selRole(id,type);
+  }
+  function selRole(id,type){
+    $.ajax({
+      url: '/api/main/optionRole.jhtml',
+      type: 'get',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      async: false,
+      data: {
+        roleType:type
+      },
+      success: function (data) {
+        if (data.state == 100) {
+          swal({
+            title: data.message,
+            type: "success",
+            confirmButtonText: "好的"
+          });
+          localStorage.setItem('roleIdToken',id);
+          getUserInfo();
+        } else {
+          swal({
+            title: data.message,
+            type: "error",
+            confirmButtonText: "好的"
+          });
+        }
+      },
+      error: function () {
+
+      }
+    });
+  }
+
+  function getRole(ary) {
+    // var ary = ['自然人','法人/非法人','律师','法官'];
+    console.log(ary)
+    var role_div = document.createElement("div");
+    role_div.id="dex";
+    role_div.innerHTML = getHtmlBtton(ary);
+    document.body.appendChild(role_div);
+    swal({
+      title: '请选择角色身份',
+      html:role_div,
+      // confirmButtonText: "关闭",
+      // allowOutsideClick:false,
+      showCancelButton: false,
+      showConfirmButton:false,
+    })
+  }
+
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > 100) {
+      $("#back-to-top").fadeIn(1500);
+    } else {
+      $("#back-to-top").fadeOut(1500);
+    }
+  });

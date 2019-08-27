@@ -31,9 +31,14 @@
               <ul class="header-content"> 
                 <li class="title"><img src="./images/logo.png" alt="">湖里区人民法院全在线诉讼平台</li>
               </ul>
-              <ul class="header-content">
+              <ul class="header-content login-wrapper">
                 <li class="login-box" onclick="openSign()">/注册</li>
                 <li class="login-box" onclick="openLogin()">登录</li>
+                <li><img src="" alt=""></li>
+              </ul>
+              <ul class="header-content user-wrapper hide">
+                <li class="login-box" onclick="logout()">/登出</li>
+                <li class="login-box" onclick="openSign()" id="userName"></li>
                 <li><img src="" alt=""></li>
               </ul>
             <ul class="topleft">
@@ -176,7 +181,7 @@
           <div id="steps1">
 
           </div>
-          <div class="form1">
+          <div class="form5">
             <p class="p-input pos rsPwdPhone">
               <label for="num">请输入手机号</label>
               <input type="text" id="phoneNum">
@@ -510,13 +515,14 @@
               <span class="title-left">法院新闻</span>
               <div>
                   <img src="../images/menu-w.png" alt="">
-                  <a class="title-right">查看更多</a>
+                  <a href="courtNews.html?newsType=1" class="title-right" target="_blank">查看更多</a>
               </div>
             </div>
 
             <div class="info-content-box">
                 <div class="swiper-container2">
                   <div class="swiper-wrapper" id="newsSwiper">
+                      
                   </div>
                   <div class="swiper-pagination2"></div>
                   <div class="swiper-button-prev"></div>
@@ -546,7 +552,7 @@
                 <span class="title-left">典型案例</span>
                 <div>
                     <img src="../images/menu-w.png" alt="">
-                    <a class="title-right">查看更多</a>
+                    <a href="courtNews.html?newsType=2" class="title-right" target="_blank">查看更多</a>
                 </div>
               </div>
               <div class="info-content-box" id="caseList">
