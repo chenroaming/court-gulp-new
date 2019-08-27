@@ -12,8 +12,8 @@ $(document).ready(function () {
         clickable :true
     }
 })
-    let wordNews = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pagesize:3,NewsType:2});
-    let picNews = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pagesize:3,NewsType:1});
+    let wordNews = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pagesize:3,newsType:2});
+    let picNews = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pagesize:3,newsType:1});
     let mySwiper2 = new Swiper('.swiper-container2', {
       direction: 'horizontal',
       loop: true,

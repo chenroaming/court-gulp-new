@@ -1916,7 +1916,7 @@ ul {
 }
 .content {
   width: 90%;
-  height: 110px;
+  height: 60px;
   margin: 0 auto;
   margin-top: 35px;
   border-bottom: 3px dotted #81B0E2;
@@ -1936,6 +1936,9 @@ ul {
 .content img {
   width: 35px;
   height: 35px;
+}
+.content a {
+  float: left;
 }
 p:last-child {
   text-align: right;

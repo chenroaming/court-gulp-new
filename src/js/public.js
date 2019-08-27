@@ -1,17 +1,4 @@
 
-let mySwiper = new Swiper('.swiper-container', {
-    direction: 'horizontal',
-    loop: true,
-    autoplay: {
-      disableOnInteraction: false,
-    },
-    // 如果需要分页器
-    pagination: {
-        el: '.swiper-pagination',
-        clickable :true
-    }
-})
-
 //忘记密码步骤条
 const steps1 = steps({
     el: "#steps1",

@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     let mySwiper = new Swiper('.swiper-container', {
         direction: 'horizontal',
@@ -12,13 +13,29 @@ $(document).ready(function () {
         }
     })
 
-    let notice = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml',{pageSize:7});
+    let notice = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml',{pageNum:1,pageSize:7});
     console.log(notice);
+    let totalPage = Math.ceil(notice.total / 7);
     for (const item of notice.data){
         let div = ('<div class="content"><div><img src="../images/way-4.png" alt=""></div><p>'+item.content+'</p><p>特此公告</p><p>'+item.openTime+'</p></div>');
         $('#list').append(div);
     }
+    $("#Pagination").paging({
+      nowPage: 1, // 当前页码,默认为1
+      pageNum: totalPage, // 总页码
+      buttonNum: 7, //要展示的页码数量，默认为7，若小于5则为5
+      callback: function(num) { //回调函数,num为当前页码
+        let notice = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml',{pageNum:num,pageSize:7});
+        $('#list').empty();
+        for (const item of notice.data){
+          let div = ('<div class="content"><div><img src="../images/way-4.png" alt=""></div><p>'+item.content+'</p><p>特此公告</p><p>'+item.openTime+'</p></div>');
+          $('#list').append(div);
+      }
+        console.log(num);
+      }
+    });
 })
+
 
 //ajax的小封装
 function ajaxGet(url,data =''){
