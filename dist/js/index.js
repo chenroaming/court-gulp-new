@@ -1,6 +1,5 @@
 //轮播图模块
 $(document).ready(function () {
-  alert(1);
   let mySwiper = new Swiper('.swiper-container', {
     direction: 'horizontal',
     loop: true,
