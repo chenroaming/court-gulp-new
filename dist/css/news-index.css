@@ -453,4 +453,7 @@ main {
 }
 .content {
   width: 90%;
+  font-size: 18pt;
+  font-family: 仿宋_GB2312;
+  color: #2b2b2b;
 }
