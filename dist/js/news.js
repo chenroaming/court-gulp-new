@@ -10,7 +10,7 @@ const res = ajaxGet('/api/main/homeNews/getHomeNewsInfo.jhtml',{newsId:newsId});
 console.log(res);
 $('#newsTitle').text(res.data.newsTitle);
 $('#newsPic').attr('src',res.data.imgUrl);
-$('.content').text(res.data.content);
+$('.content').html(res.data.content);
 const time = new Date(res.data.createDate);
 $('#newsTime').text(time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'  '+time.getHours()+':'+time.getMinutes());
 //ajax的小封装
