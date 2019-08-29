@@ -7,7 +7,9 @@ $('.backup').click(function(){
 })
 
 const res = ajaxGet('/api/main/homeNews/getHomeNewsInfo.jhtml',{newsId:newsId});
-console.log(res);
+if(res.state == 101){
+  window.location.href = 'index.html';
+}
 $('#newsTitle').text(res.data.newsTitle);
 const picArr = res.data.imgUrl.split(',');
 for (const item of picArr) {
