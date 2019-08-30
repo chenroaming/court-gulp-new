@@ -1,6 +1,6 @@
 //轮播图模块
 $(document).ready(function () {
-  let mySwiper = new Swiper('.swiper-container', {
+  const mySwiper = new Swiper('.swiper-container', {
     direction: 'horizontal',
     loop: true,
     autoplay: {
@@ -12,9 +12,9 @@ $(document).ready(function () {
         clickable :true
     }
 })
-    let wordNews = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pagesize:3,newsType:2});
-    let picNews = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pagesize:3,newsType:1});
-    let mySwiper2 = new Swiper('.swiper-container2', {
+    const wordNews = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pagesize:3,newsType:2});
+    const picNews = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pagesize:3,newsType:1});
+    const mySwiper2 = new Swiper('.swiper-container2', {
       direction: 'horizontal',
       loop: true,
       autoplay: {
@@ -48,9 +48,9 @@ $(document).ready(function () {
     mySwiper2.updateSlides();
     mySwiper2.pagination.render();
     mySwiper2.pagination.update();
-    let holdCourts = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml');
+    const holdCourts = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml');
     for(const item of holdCourts.data){
-      let content = ('<div class="notice-item"><span title="'+item.content+'"><img src="../images/hammer.png" alt="">'+item.content+'</span><p>特此公告。</p><p>'+item.openTime+'</p></div>');
+      const content = ('<div class="notice-item"><span title="'+item.content+'"><img src="../images/hammer.png" alt="">'+item.content+'</span><p>特此公告。</p><p>'+item.openTime+'</p></div>');
       $('#box').append(content);
       $('#box2').append(content);
     }
@@ -59,9 +59,9 @@ $(document).ready(function () {
       const content = ('<div class="notice-item2"><img src="../images/mark.png" alt=""><a href="news.html?id='+item.unique_id+'" class="wordNews" title="'+item.news_title+'" target="_blank">'+item.news_title+'</a><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');
       $('#caseList').append(content);
     }
-    let personalNotice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pagesize:4,pageSize:4});
+    const personalNotice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pagesize:4,pageSize:4});
     for(const item of personalNotice.date){
-      let content = ('<div class="notice-item2"><img src="../images/laba.png" alt=""><a href="'+item.address+'" class="wordNews" target="_blank" title="致'+item.litigant_name+'公告">致'+item.litigant_name+'公告</a><span>'+item.holdTime+'</span></div>');
+      const content = ('<div class="notice-item2"><img src="../images/laba.png" alt=""><a href="'+item.address+'" class="wordNews" target="_blank" title="致'+item.litigant_name+'公告">致'+item.litigant_name+'公告</a><span>'+item.holdTime+'</span></div>');
       $('#personalNotice').append(content);
     }
     //公告栏滚动效果

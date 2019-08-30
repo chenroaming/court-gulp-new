@@ -1,23 +1,23 @@
 
 $(document).ready(function () {
-    let mySwiper = new Swiper('.swiper-container', {
-        direction: 'horizontal',
-        loop: true,
-        autoplay: {
-          disableOnInteraction: false,
-        },
-        // 如果需要分页器
-        pagination: {
-            el: '.swiper-pagination',
-            clickable :true
-        }
-    })
+    // const mySwiper = new Swiper('.swiper-container', {
+    //     direction: 'horizontal',
+    //     loop: true,
+    //     autoplay: {
+    //       disableOnInteraction: false,
+    //     },
+    //     // 如果需要分页器
+    //     pagination: {
+    //         el: '.swiper-pagination',
+    //         clickable :true
+    //     }
+    // })
 
-    let notice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pageNum:1,pageSize:10});
+    const notice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pageNum:1,pageSize:10});
     console.log(notice);
-    let totalPage = Math.ceil(notice.total / 10);
+    const totalPage = Math.ceil(notice.total / 10);
     for (const item of notice.date){
-        let div = ('<div class="content"><div><img src="../images/laba.png" alt=""></div><a href="'+item.address+'" target="_blank">致'+item.litigant_name+'公告</a><p>'+item.holdTime+'</p></div>');
+        const div = ('<div class="content"><div><img src="../images/laba.png" alt=""></div><a href="'+item.address+'" target="_blank">致'+item.litigant_name+'公告</a><p>'+item.holdTime+'</p></div>');
         $('#list').append(div);
     }
     $("#Pagination").paging({
@@ -25,10 +25,10 @@ $(document).ready(function () {
       pageNum: totalPage, // 总页码
       buttonNum: 7, //要展示的页码数量，默认为7，若小于5则为5
       callback: function(num) { //回调函数,num为当前页码
-        let notice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pageNum:num,pageSize:10});
+        const notice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pageNum:num,pageSize:10});
         $('#list').empty();
         for (const item of notice.date){
-          let div = ('<div class="content"><div><img src="../images/laba.png" alt=""></div><a href="'+item.address+'" target="_blank">致'+item.litigant_name+'公告</a><p>'+item.holdTime+'</p></div>');
+          const div = ('<div class="content"><div><img src="../images/laba.png" alt=""></div><a href="'+item.address+'" target="_blank">致'+item.litigant_name+'公告</a><p>'+item.holdTime+'</p></div>');
           $('#list').append(div);
       }
         console.log(num);

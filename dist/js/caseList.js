@@ -1,23 +1,23 @@
 
 $(document).ready(function () {
-    let mySwiper = new Swiper('.swiper-container', {
-        direction: 'horizontal',
-        loop: true,
-        autoplay: {
-          disableOnInteraction: false,
-        },
-        // 如果需要分页器
-        pagination: {
-            el: '.swiper-pagination',
-            clickable :true
-        }
-    })
+    // const mySwiper = new Swiper('.swiper-container', {
+    //     direction: 'horizontal',
+    //     loop: true,
+    //     autoplay: {
+    //       disableOnInteraction: false,
+    //     },
+    //     // 如果需要分页器
+    //     pagination: {
+    //         el: '.swiper-pagination',
+    //         clickable :true
+    //     }
+    // })
 
-    let notice = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml',{pageNum:1,pageSize:7});
+    const notice = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml',{pageNum:1,pageSize:7});
     console.log(notice);
-    let totalPage = Math.ceil(notice.total / 7);
+    const totalPage = Math.ceil(notice.total / 7);
     for (const item of notice.data){
-        let div = ('<div class="content"><div><img src="../images/hammer.png" alt=""></div><p>'+item.content+'</p><p>特此公告</p><p>'+item.openTime+'</p></div>');
+        const div = ('<div class="content"><div><img src="../images/hammer.png" alt=""></div><p>'+item.content+'</p><p>特此公告</p><p>'+item.openTime+'</p></div>');
         $('#list').append(div);
     }
     $("#Pagination").paging({
@@ -25,10 +25,10 @@ $(document).ready(function () {
       pageNum: totalPage, // 总页码
       buttonNum: 7, //要展示的页码数量，默认为7，若小于5则为5
       callback: function(num) { //回调函数,num为当前页码
-        let notice = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml',{pageNum:num,pageSize:7});
+        const notice = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml',{pageNum:num,pageSize:7});
         $('#list').empty();
         for (const item of notice.data){
-          let div = ('<div class="content"><div><img src="../images/hammer.png" alt=""></div><p>'+item.content+'</p><p>特此公告</p><p>'+item.openTime+'</p></div>');
+          const div = ('<div class="content"><div><img src="../images/hammer.png" alt=""></div><p>'+item.content+'</p><p>特此公告</p><p>'+item.openTime+'</p></div>');
           $('#list').append(div);
       }
         console.log(num);
