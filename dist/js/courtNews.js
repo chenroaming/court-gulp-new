@@ -27,7 +27,7 @@ $(document).ready(function () {
     let totalPage = Math.ceil(notice.total / 7);
     for (const item of notice.content){
         let time = new Date(item.create_date);
-        let div = ('<div class="content"><div><img src="../images/way-3-new.png" alt=""></div><a href="news.html?id='+item.unique_id+'" target="_blank">'+item.news_title+'</a><p>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'</p></div>');
+        let div = ('<div class="content"><div><img src="../images/mark.png" alt=""></div><a href="news.html?id='+item.unique_id+'" target="_blank">'+item.news_title+'</a><p>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'</p></div>');
         $('#list').append(div);
     }
     $("#Pagination").paging({
@@ -40,7 +40,7 @@ $(document).ready(function () {
         $('#list').empty();
         for (const item of notice.content){
             let time = new Date(item.create_date);
-          let div = ('<div class="content"><div><img src="../images/way-3-new.png" alt=""></div><a href="news.html?id='+item.unique_id+'" target="_blank">'+item.news_title+'</a><p>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'</p></div>');
+          let div = ('<div class="content"><div><img src="../images/mark.png" alt=""></div><a href="news.html?id='+item.unique_id+'" target="_blank">'+item.news_title+'</a><p>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'</p></div>');
           $('#list').append(div);
         }
         console.log(num);

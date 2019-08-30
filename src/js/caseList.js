@@ -17,7 +17,7 @@ $(document).ready(function () {
     console.log(notice);
     let totalPage = Math.ceil(notice.total / 7);
     for (const item of notice.data){
-        let div = ('<div class="content"><div><img src="../images/way-4-new.png" alt=""></div><p>'+item.content+'</p><p>特此公告</p><p>'+item.openTime+'</p></div>');
+        let div = ('<div class="content"><div><img src="../images/hammer.png" alt=""></div><p>'+item.content+'</p><p>特此公告</p><p>'+item.openTime+'</p></div>');
         $('#list').append(div);
     }
     $("#Pagination").paging({
@@ -28,7 +28,7 @@ $(document).ready(function () {
         let notice = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml',{pageNum:num,pageSize:7});
         $('#list').empty();
         for (const item of notice.data){
-          let div = ('<div class="content"><div><img src="../images/way-4-new.png" alt=""></div><p>'+item.content+'</p><p>特此公告</p><p>'+item.openTime+'</p></div>');
+          let div = ('<div class="content"><div><img src="../images/hammer.png" alt=""></div><p>'+item.content+'</p><p>特此公告</p><p>'+item.openTime+'</p></div>');
           $('#list').append(div);
       }
         console.log(num);
