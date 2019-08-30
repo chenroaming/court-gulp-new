@@ -50,18 +50,18 @@ $(document).ready(function () {
     mySwiper2.pagination.update();
     let holdCourts = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml');
     for(const item of holdCourts.data){
-      let content = ('<div class="notice-item"><span title="'+item.content+'"><img src="../images/way-4.png" alt="">'+item.content+'</span><p>特此公告。</p><p>'+item.openTime+'</p></div>');
+      let content = ('<div class="notice-item"><span title="'+item.content+'"><img src="../images/way-4-new.png" alt="">'+item.content+'</span><p>特此公告。</p><p>'+item.openTime+'</p></div>');
       $('#box').append(content);
       $('#box2').append(content);
     }
     for(const item of wordNews.content){
       const time = new Date(item.create_date);
-      const content = ('<div class="notice-item2"><img src="../images/way-2.png" alt=""><a href="news.html?id='+item.unique_id+'" class="wordNews" title="'+item.news_title+'" target="_blank">'+item.news_title+'</a><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');
+      const content = ('<div class="notice-item2"><img src="../images/way-3-new.png" alt=""><a href="news.html?id='+item.unique_id+'" class="wordNews" title="'+item.news_title+'" target="_blank">'+item.news_title+'</a><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');
       $('#caseList').append(content);
     }
     let personalNotice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pagesize:4,pageSize:4});
     for(const item of personalNotice.date){
-      let content = ('<div class="notice-item2"><img src="../images/way-2.png" alt=""><a href="'+item.address+'" class="wordNews" target="_blank" title="致'+item.litigant_name+'公告">致'+item.litigant_name+'公告</a><span>'+item.holdTime+'</span></div>');
+      let content = ('<div class="notice-item2"><img src="../images/way-1-new.png" alt=""><a href="'+item.address+'" class="wordNews" target="_blank" title="致'+item.litigant_name+'公告">致'+item.litigant_name+'公告</a><span>'+item.holdTime+'</span></div>');
       $('#personalNotice').append(content);
     }
     //公告栏滚动效果

@@ -17,7 +17,7 @@ $(document).ready(function () {
     console.log(notice);
     let totalPage = Math.ceil(notice.total / 10);
     for (const item of notice.date){
-        let div = ('<div class="content"><div><img src="../images/way-4.png" alt=""></div><a href="'+item.address+'" target="_blank">致'+item.litigant_name+'公告</a><p>'+item.holdTime+'</p></div>');
+        let div = ('<div class="content"><div><img src="../images/way-1-new.png" alt=""></div><a href="'+item.address+'" target="_blank">致'+item.litigant_name+'公告</a><p>'+item.holdTime+'</p></div>');
         $('#list').append(div);
     }
     $("#Pagination").paging({
@@ -28,7 +28,7 @@ $(document).ready(function () {
         let notice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pageNum:num,pageSize:10});
         $('#list').empty();
         for (const item of notice.date){
-          let div = ('<div class="content"><div><img src="../images/way-4.png" alt=""></div><a href="'+item.address+'" target="_blank">致'+item.litigant_name+'公告</a><p>'+item.holdTime+'</p></div>');
+          let div = ('<div class="content"><div><img src="../images/way-1-new.png" alt=""></div><a href="'+item.address+'" target="_blank">致'+item.litigant_name+'公告</a><p>'+item.holdTime+'</p></div>');
           $('#list').append(div);
       }
         console.log(num);
