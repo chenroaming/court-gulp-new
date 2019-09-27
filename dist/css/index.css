@@ -9,6 +9,7 @@ ul {
   height: 450px;
 }
 .header-box {
+  width: 100%;
   min-width: 1280px;
   height: 328px;
   margin: 0 auto;
@@ -60,17 +61,17 @@ ul {
 }
 .topleft {
   width: 100%;
-  height: 25%;
+  height: 90px;
   min-width: 1280px;
   margin: 0 auto;
   background-color: #F5F9FD;
   box-shadow: 1px 3px 5px #DEDEDE;
 }
 .topleft li {
-  width: 16%;
+  width: 16.6%;
   float: left;
-  font-size: 24px;
-  text-align: center;
+  font-size: 22px;
+  text-align: left;
   height: 90px;
   line-height: 90px;
   font-weight: 700;
@@ -82,7 +83,7 @@ ul {
   color: #4064BF;
 }
 .topleft div {
-  width: 90%;
+  width: 1200px;
   height: 100%;
   margin: 0 auto;
 }
@@ -182,17 +183,21 @@ ul {
 }
 /* 信息栏样式 */
 .info-box {
-  width: 95%;
-  min-width: 1280px;
+  width: 1200px;
   height: 1460px;
   margin: 0 auto;
 }
-.info-content {
-  width: 45%;
+.info-content-left {
+  width: 48%;
   height: 420px;
   float: left;
   margin-top: 30px;
-  margin-left: 3.5%;
+}
+.info-content-right {
+  width: 48%;
+  height: 420px;
+  float: right;
+  margin-top: 30px;
 }
 .info-content-title {
   width: 100%;
@@ -210,11 +215,12 @@ ul {
   float: right;
 }
 .info-content-title a {
+  margin-right: 28px;
   color: #fff;
 }
 .title-left {
   font-size: 16px;
-  margin-left: 10px;
+  margin-left: 28px;
 }
 .title-right {
   color: #fff;
@@ -227,12 +233,10 @@ ul {
 .info-content-box {
   width: 100%;
   height: 348px;
-  border-right: 1px solid #F1F6FC;
-  border-left: 1px solid #F1F6FC;
-  border-bottom: 1px solid #F1F6FC;
   position: relative;
   overflow: hidden;
   top: -1px;
+  box-shadow: 0px 1px 10px #DEDEDE;
 }
 .swiper-container2 {
   overflow: hidden;
@@ -259,8 +263,8 @@ ul {
 }
 .notice-item {
   width: 90%;
-  height: 100px;
-  border-bottom: 1px solid #BCD5F0;
+  height: 115px;
+  border-bottom: 1px solid #e6e6e6;
   margin: 0 auto;
   margin-top: 10px;
 }
@@ -271,19 +275,28 @@ ul {
   width: 25px;
   height: 25px;
   margin-right: 5px;
+  position: absolute;
 }
 .notice-item span {
   font-size: 12px;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
+  display: inline-block;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  width: 95%;
+  position: absolute;
+  left: 30px;
+}
+.notice-item div {
+  width: 100%;
+  height: 50px;
+  position: relative;
 }
 .notice-item2 {
   width: 90%;
   height: 65px;
-  border-bottom: 1px solid #BCD5F0;
+  border-bottom: 1px solid #e6e6e6;
   margin: 0 auto;
   margin-top: 10px;
   line-height: 65px;
@@ -320,7 +333,8 @@ ul {
 }
 .wordNews {
   overflow: hidden;
-  width: 73%;
+  color: #000;
+  width: 70%;
   display: inline-block;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -341,10 +355,10 @@ ul {
   height: 100%;
 }
 .court-news-title {
-  width: 90%;
-  height: 20%;
-  border-bottom: 1px solid #BCD5F0;
-  text-align: center;
+  width: 91%;
+  height: 19%;
+  border-bottom: 1px solid #e6e6e6;
+  text-align: left;
   display: table;
   margin: 0 auto;
 }
@@ -409,12 +423,13 @@ ul {
 }
 .footer-coda li {
   float: left;
-  margin-left: 40px;
+  margin-left: 85px;
   font-size: 20px;
 }
 .footer-coda li a {
   float: left;
   color: #53647A;
+  font-weight: 700;
 }
 .footer-bottom {
   margin-top: 35px;
@@ -426,11 +441,10 @@ ul {
 }
 /* 法院新闻的样式 */
 .info-content2 {
-  width: 94%;
+  width: 100%;
   height: 420px;
   float: left;
   margin-top: 30px;
-  margin-left: 3.5%;
 }
 .info-content-title2 {
   width: 100%;
@@ -448,5 +462,6 @@ ul {
   float: right;
 }
 .info-content-title2 a {
+  margin-right: 28px;
   color: #fff;
 }

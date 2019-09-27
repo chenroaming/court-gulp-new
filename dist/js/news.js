@@ -28,7 +28,7 @@ $('.login-wrapper').hover(function() {
   // 鼠标移出时移出hover类
   $(this).removeClass('login-wrapper-hover')
 });
-// $('#newsTime').text('发布时间：'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'  '+time.getHours()+':'+time.getMinutes());
+$('#newsTime').text('发布时间：'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'  '+time.getHours()+':'+time.getMinutes());
 //ajax的小封装
 function ajaxGet(url,data =''){
     let response = '';

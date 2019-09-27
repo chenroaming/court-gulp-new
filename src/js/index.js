@@ -59,7 +59,7 @@ $(document).ready(function () {
       $('#topNewsList').append(content);
     }
     for(const item of holdCourts.data){
-      const content = ('<div class="notice-item"><span title="'+item.content+'"><img src="../images/hammer.png" alt="">'+item.content+'</span><p>特此公告。</p><p>'+item.openTime+'</p></div>');
+      const content = ('<div class="notice-item"><div><img src="../images/hammer.png" alt=""><span title="'+item.content+'">'+item.content+'</span></div><p>特此公告。</p><p>'+item.openTime+'</p></div>');
       $('#box').append(content);
       $('#box2').append(content);
     }
