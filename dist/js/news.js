@@ -14,13 +14,21 @@ $('#newsTitle').text(res.data.newsTitle);
 const picArr = res.data.imgUrl.split(',');
 for (const item of picArr) {
   let pic = ('<img src="'+item+'" class="img-responsive" alt="">');
-  $('.pic-box').append(pic);
+  $('.pic-box2').append(pic);
 }
 $('#newsPic').attr('src',res.data.imgUrl);
 const newsContent = res.data.content.replace(/(\r\n|\n|\r)/gm, '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');//换行符正则替换
 $('.content').html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+newsContent);
 const time = new Date(res.data.createDate);
-$('#newsTime').text('发布时间：'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'  '+time.getHours()+':'+time.getMinutes());
+
+$('.login-wrapper').hover(function() {
+  // 鼠标移入时添加hover类
+  $(this).addClass('login-wrapper-hover')
+  }, function() {
+  // 鼠标移出时移出hover类
+  $(this).removeClass('login-wrapper-hover')
+});
+// $('#newsTime').text('发布时间：'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'  '+time.getHours()+':'+time.getMinutes());
 //ajax的小封装
 function ajaxGet(url,data =''){
     let response = '';

@@ -1,31 +1,34 @@
 ul {
     margin: 0;
-    padding:0;
+    padding: 0;
 }
 
 /* 头部样式 */
 .header {
     min-width: 1280px;
     width: 100%;
-    height: 170px;
-    background: linear-gradient(#7AC5EF, #4B79CF);
+    height: 450px;
 }
 
 .header-box {
     min-width: 1280px;
-    height: 100%;
+    height: 328px;
     margin: 0 auto;
     text-align: center;
+    // background: linear-gradient(#7AC5EF, #4B79CF);
+    background-image: url('../images/bg1.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .topli {
-    float: left;
+    float: right;
     color: #fff;
     font-size: 14px;
     height: 25px;
     line-height: 25px;
     margin-left: 30px;
-    margin-top: 10px;
+    margin-top: 36px;
     cursor: pointer;
     img{
         vertical-align: middle;
@@ -38,13 +41,14 @@ ul {
 .header-content{
     float: left;
     width:33%;
-    height: 100px;
+    height: 100%;
     line-height: 100px;
+    margin: 0;
 }
 
 .title {
     color: #fff;
-    font-size: 24px;
+    font-size: 18px;
     img{
         width: 50px;
         height: 50px;
@@ -55,24 +59,39 @@ ul {
 .login-box {
     color: #fff;
     font-size: 12px;
-    float: right;
+    float: left;
     cursor: pointer;
     height: 25px;
     line-height: 25px;
-    margin-top: 10px;
+    margin-top: 37px;
 }
 
 .topleft {
     width: 100%;
+    height: 25%;
     min-width: 1280px;
     margin: 0 auto;
+    background-color: #F5F9FD;
+    box-shadow: 1px 3px 5px #DEDEDE;
     li{
         width: 16%;
         float: left;
-        font-size: 16px;
+        font-size: 24px;
+        text-align: center;
+        height: 90px;
+        line-height: 90px;
+        font-weight: 700;
     }
     a{
-        color: #fff;
+        color: #99A7B8;
+    }
+    a:hover{
+        color:#4064BF;
+    }
+    div{
+        width: 90%;
+        height: 100%;
+        margin: 0 auto;
     }
 }
 
@@ -90,6 +109,70 @@ ul {
     margin-top: 10px;
     border: 1px dashed #2d8cf0;
     outline: none;
+}
+
+.null {
+    float: left;
+    height: 25px;
+    margin-top: 37px;
+    width: 158px;
+}
+
+.big-title {
+    height: 50px;
+    line-height: 50px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.small-title {
+    font-size: 16px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+}
+
+.middle-title {
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+
+.login-wrapper {
+    width: 45%;
+    margin: 0;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 5px;
+    border: 1px solid #9BB3E2;
+    float: right;
+    margin-right: 10px;
+}
+
+.login-wrapper-hover {
+    color:#4B7DC6;
+    background-color: #fff;
+}
+
+.pic-box {
+    width: 100%;
+    height: 175px;
+    background-image: url(../images/title.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 83px;
+}
+
+.line {
+    width: 130px;
+    height: 2px;
+    background-color: #fff;
+    display: inline-block;
+    margin-bottom: 7px;
 }
 
 //指南部分弹框的样式
@@ -124,7 +207,7 @@ ul {
     .info-box {
         width: 95%;
         min-width: 1280px;
-        height: 875px;
+        height: 1460px;
         margin: 0 auto;
     }
 
@@ -139,7 +222,7 @@ ul {
     .info-content-title {
         width: 100%;
         height: 50px;
-        background-color: #4B79CF;
+        background: linear-gradient(90deg, #3E69C5, #2CB3ED);
         color: #fff;
         line-height: 50px;
         img{
@@ -171,11 +254,13 @@ ul {
 
     .info-content-box {
         width: 100%;
-        height: 346px;
-        margin-top: 20px;
-        border: 1px solid #F1F6FC;
+        height: 348px;
+        border-right: 1px solid #F1F6FC;
+        border-left: 1px solid #F1F6FC;
+        border-bottom: 1px solid #F1F6FC;
         position: relative;
         overflow: hidden;
+        top: -1px;
     }
 
     .swiper-container2 {
@@ -278,6 +363,39 @@ ul {
         vertical-align: middle;
     }
 
+
+    .top-news-pic {
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+
+    .top-news-text {
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+
+    #news-pic {
+        width: 100%;
+        height: 100%;
+    }
+
+    .court-news-title {
+        width: 90%;
+        height: 20%;
+        border-bottom: 1px solid #BCD5F0;
+        text-align: center;
+        display: table;
+        margin: 0 auto;
+        a {
+            font-size: 20px;
+            display:table-cell;
+            vertical-align:middle;
+            color: #000000;
+            font-weight: 700;
+        }
+    }
 /* 尾巴部分样式 */
 
     .footer-title {
@@ -322,10 +440,11 @@ ul {
         width: 100%;
         min-width: 1280px;
         height: 200px;
-        background-color: #4B79CF;
+        background-color: #F5F9FD;
         text-align: center;
         ul{
-            width: 1280px;
+            width: 90%;
+            min-width: 1280px;
             height: 60px;
             margin: 0 auto;
             color: #fff;
@@ -333,10 +452,11 @@ ul {
         }
         li{
             float: left;
-            margin-left: 85px;
+            margin-left: 40px;
+            font-size: 20px;
             a{
                 float: left;
-                color: #fff;
+                color: #53647A;
             }
         }
     }
@@ -344,10 +464,37 @@ ul {
     .footer-bottom{
         margin-top: 35px;
         p{
-            color: #fff;
+            color: #53647A;
             margin: 0;
             font-size: 12px;
         }
     }
 
+/* 法院新闻的样式 */
+.info-content2 {
+    width: 94%;
+    height: 420px;
+    float: left;
+    margin-top: 30px;
+    margin-left: 3.5%;
+}
+
+.info-content-title2 {
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(90deg, #3E69C5, #2CB3ED);
+    color: #fff;
+    line-height: 50px;
+    img{
+        width: 25px;
+        height: 20px;
+        vertical-align: middle;
+    }
+    div{
+        float: right;
+    }
+    a{
+        color: #fff;
+    }
+}
     

@@ -17,7 +17,7 @@ let Config = require('./gulpfile.config.js')
 let proxyMiddleware = require('http-proxy-middleware')
 
 let proxy = proxyMiddleware('/api', {
-  target: 'http://120.78.223.114:8688', //'http://114.115.133.183:8780',
+  target: 'http://47.112.14.54:8688', //'http://114.115.133.183:8780',
 //   target: 'http://47.105.189.44:8780', //'http://114.115.133.183:8780',
   pathRewrite: {
     '^/api': ''

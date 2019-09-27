@@ -25,55 +25,64 @@
       <div class="header">
           <div class="header-box">
               <ul class="header-content">
+                <li class="title"><img src="./images/logo.png" alt="">湖里区人民法院全在线诉讼平台</li>
+              </ul>
+              <div class="header-content">
+                <!-- <p class="big-title">突破时间限制 重塑审判流程</p>
+                <p class="small-title">群众少跑腿 数据多跑路</p>
+                <p class="middle-title"><span class="line"></span>  互联网法庭  <span class="line"></span></p> -->
+                <div class="pic-box"></div>
+                <div style="width: 65%;margin: 0 auto;height: 65px;">
+                  <div class="login-box login-wrapper" onclick="openSign()">注册</div>
+                  <div class="login-box login-wrapper" onclick="openLogin()">登录</div>
+                </div>
+              </div>
+              <!-- <ul class="header-content user-wrapper hide">
+                
+              </ul> -->
+              <ul class="header-content">
+                <li class="null"></li>
+                <li class="login-box user-wrapper hide" id="userName"></li>
+                <li class="login-box user-wrapper hide" onclick="logout()">/登出</li>
+                <!-- <li><img src="" alt=""></li> -->
                 <li class="topli"><img src="./images/icon/首页资源 12.png" alt="">意见箱</li>
                 <li class="topli" onclick="openNotice()"><img src="./images/icon/首页资源 11.png" alt="">使用指南</li>
               </ul>
-              <ul class="header-content">
-                <li class="title"><img src="./images/logo.png" alt="">湖里区人民法院全在线诉讼平台</li>
-              </ul>
-              <ul class="header-content login-wrapper">
-                <li class="login-box" onclick="openSign()">/注册</li>
-                <li class="login-box" onclick="openLogin()">登录</li>
-                <li><img src="" alt=""></li>
-              </ul>
-              <ul class="header-content user-wrapper hide">
-                <li class="login-box" onclick="logout()">/登出</li>
-                <li class="login-box" onclick="openSign()" id="userName"></li>
-                <li><img src="" alt=""></li>
-              </ul>
-            <ul class="topleft">
-              <li>
-                <a href="./index.html" class="topa">
-                  首页
-                </a>
-              </li>
-              <li>
-                <a href="/setcase" class="topa" target="_blank">
-                  在线立案
-                </a>
-              </li>
-              <li>
-                <a href="/send" class="topa" target="_blank">
-                  易送达
-                </a>
-              </li>
-              <li>
-                <a href="/witness" class="topa" target="_blank">
-                  在线质证
-                </a>
-              </li>
-              <li>
-                <a href="/rtc/index.html" class="topa" target="_blank">
-                  在线庭审
-                </a>
-              </li>
-              <li>
-                <a href="/bigData/index.html" onclick="jumpBigData()" class="topa" target="blank">
-                  案件大数据
-                </a>
-              </li>
-            </ul>
           </div>
+          <ul class="topleft">
+            <div>
+                <li>
+                  <a href="./index.html" class="topa" style="color: #4064BF;">
+                    首页
+                  </a>
+                </li>
+                <li>
+                  <a href="/setcase" class="topa" target="_blank">
+                    在线立案
+                  </a>
+                </li>
+                <li>
+                  <a href="/send" class="topa" target="_blank">
+                    易送达
+                  </a>
+                </li>
+                <li>
+                  <a href="/witness" class="topa" target="_blank">
+                    在线质证
+                  </a>
+                </li>
+                <li>
+                  <a href="/rtc/index.html" class="topa" target="_blank">
+                    在线庭审
+                  </a>
+                </li>
+                <li>
+                  <a href="/bigData/index.html" class="topa" target="blank">
+                    案件大数据
+                  </a>
+                </li>
+            </div>
+            </ul>
         </div>
 
 
@@ -492,7 +501,7 @@
   <!-- 主体部分 -->
     <main>
       <!-- 轮播图 -->
-        <div id="banner">
+        <!-- <div id="banner">
           <div class="swiper-container">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
@@ -507,11 +516,11 @@
             </div>
             <div class="swiper-pagination"></div>
           </div>
-        </div>
+        </div> -->
       <!-- 主体信息部分 -->
         <ul class="info-box">
-          <li class="info-content">
-            <div class="info-content-title">
+          <li class="info-content2">
+            <div class="info-content-title2">
               <span class="title-left">法院新闻</span>
               <div>
                   <img src="../images/menu-w.png" alt="">
@@ -520,15 +529,33 @@
             </div>
 
             <div class="info-content-box">
-                <div class="swiper-container2">
+                <!-- <div class="swiper-container2">
                   <div class="swiper-wrapper" id="newsSwiper">
                       
                   </div>
                   <div class="swiper-pagination2"></div>
                   <div class="swiper-button-prev"></div>
                   <div class="swiper-button-next"></div>
+                </div> -->
+                <div class="top-news-pic">
+                  <img id="news-pic" src="" alt="">
+                </div>
+                <div class="top-news-text" id="topNewsList">
+                  
                 </div>
             </div>
+          </li>
+          <li class="info-content">
+              <div class="info-content-title">
+                <span class="title-left">新闻列表</span>
+                <div>
+                    <img src="../images/menu-w.png" alt="">
+                    <a href="courtNews.html?newsType=1" class="title-right" target="_blank">查看更多</a>
+                </div>
+              </div>
+              <div class="info-content-box" id="courtAllNews">
+                  
+              </div>
           </li>
           <li class="info-content">
               <div class="info-content-title">
@@ -576,7 +603,7 @@
 
   <!-- 尾巴 -->
     <footer>
-      <div class="footer-title">
+      <!-- <div class="footer-title">
         <p>诉讼服务</p>
         <ul>
           <li class="footer-item">
@@ -634,11 +661,11 @@
             <a href="">庭审网上信访</a>
           </li>
         </ul>
-      </div>
+      </div> -->
 
       <div class="footer-coda">
         <ul>
-          <li>
+          <li style="color: #53647A;">
             友情链接：
           </li>
           <li>

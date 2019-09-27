@@ -817,6 +817,8 @@ function openLogin() {
               if (data.state == 100) {
                 $('.form-data').addClass("hide");
                 $(".back-h").addClass('hide');
+                $('.user-wraapper').removeClass('hide');
+                $('.login-wrapper').addClass('hide');
                 if(ele.roles.length == 1){
                   selRole(ele.roles[0].id,ele.roles[0].type);
                 }else{
@@ -900,6 +902,8 @@ function openLogin() {
                 });
                 $('.form-data').addClass("hide");
                 $(".back-h").addClass('hide');
+                $('.user-wrapper').removeClass('hide');
+                $('.login-wrapper').addClass('hide');
                 let ele = data.data;
                 if(ele.roles){
                   if(ele.roles.length == 1){
