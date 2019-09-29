@@ -2084,71 +2084,70 @@ body {
   margin-right: 28px;
   color: #fff;
 }
-.list {
-  width: 1000px;
-  height: 1200px;
-  margin: 0 auto;
-}
-.list span {
-  margin-left: 20px;
-}
-.m-title {
-  width: 100%;
-  height: 60px;
-  background-color: #4B79CF;
-  margin-top: 30px;
-  line-height: 60px;
-}
-.m-title span {
-  color: #fff;
-  font-size: 24px;
-}
-.content {
-  width: 95%;
-  height: 60px;
-  margin: 0 auto;
-  margin-top: 35px;
-  border-bottom: 3px dotted #81B0E2;
-}
-.content p {
-  width: 12%;
+html {
   font-size: 14px;
+}
+body {
+  background-color: #EEEEEE;
+}
+main {
+  margin-top: 60px;
+}
+.main {
+  width: 1000px;
+  margin: 0 auto;
+  box-shadow: 0px 1px 10px #DEDEDE;
+}
+/* 法院新闻的样式 */
+.info-content2 {
+  width: 94%;
+  height: 420px;
   float: left;
-  font-weight: 700;
+  margin-top: 30px;
+  margin-left: 3.5%;
 }
-.content div {
-  width: 35px;
-  height: 100%;
-  float: left;
-  margin-right: 20px;
+.info-content-title2 {
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(90deg, #3E69C5, #2CB3ED);
+  color: #fff;
+  line-height: 50px;
 }
-.content img {
-  width: 35px;
-  height: 35px;
+.info-content-title2 img {
+  width: 25px;
+  height: 20px;
+  vertical-align: middle;
 }
-.content a {
-  float: left;
-  width: 82%;
-}
-.content p:last-child {
-  text-align: right;
-}
-#Pagination {
+.info-content-title2 div {
   float: right;
-  text-align: right;
-  margin-top: 35px;
-  margin-right: 85px;
 }
-#Pagination li {
-  float: left;
-  cursor: pointer;
-  margin-top: 35px;
-  margin-left: 35px;
+.info-content-title2 a {
+  color: #fff;
 }
-#Pagination li.xl-active {
-  background-color: #0073A9;
-  border-color: #0073A9;
-  color: #FFF;
-  width: 30px;
+.news-title2 {
   text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 28px;
+  height: 78px;
+  line-height: 78px;
+}
+.news-time {
+  text-align: center;
+  color: #999999;
+  font-size: 16px;
+  font-family: "微软雅黑";
+  border-bottom: 1px solid #BCD5F0;
+  height: 50px;
+}
+.pic-box2 {
+  text-align: center;
+}
+.img-responsive {
+  margin: 0 auto;
+  margin-top: 50px;
+}
+#content {
+  width: 100%;
+  height: 1000px;
 }

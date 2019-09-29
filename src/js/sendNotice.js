@@ -32,9 +32,9 @@ function transform(urlList){
   for (const item of urlList){
     let div = '';
     if(item.address.split('https://').length <= 2){
-      div = ('<div class="content"><div><img src="../images/laba.png" alt=""></div><a href="'+item.address+'" target="_blank">致'+item.litigant_name+'公告</a><p>'+item.holdTime+'</p></div>');
+      div = ('<div class="content"><div><img src="../images/laba.png" alt=""></div><a href="pdfDetail.html?url='+item.address+'" target="_blank">致'+item.litigant_name+'公告</a><p>'+item.holdTime+'</p></div>');
     }else{
-      div = ('<div class="content"><div><img src="../images/laba.png" alt=""></div><a href="https://hlcourt.obs.cn-south-1.myhuaweicloud.com:443/'+ajaxGet('/api/main/getLocalPath.jhtml',{path:item.address}).path+'" target="_blank">致'+item.litigant_name+'公告</a><p>'+item.holdTime+'</p></div>');
+      div = ('<div class="content"><div><img src="../images/laba.png" alt=""></div><a href="pdfDetail.html?url=https://hlcourt.obs.cn-south-1.myhuaweicloud.com:443/'+ajaxGet('/api/main/getLocalPath.jhtml',{path:item.address}).path+'" target="_blank">致'+item.litigant_name+'公告</a><p>'+item.holdTime+'</p></div>');
     }
     $('#list').append(div);
   }

@@ -74,7 +74,7 @@ $(document).ready(function () {
       $('#courtAllNews').append(content);
     }
     for(const item of personalNotice.date){
-      const content = ('<div class="notice-item2"><img src="../images/laba.png" alt=""><a href="'+item.address+'" class="wordNews" target="_blank" title="致'+item.litigant_name+'公告">致'+item.litigant_name+'公告</a><span>'+item.holdTime+'</span></div>');
+      const content = ('<div class="notice-item2"><img src="../images/laba.png" alt=""><a href="pdfDetail.html?url='+item.address+'" class="wordNews" target="_blank" title="致'+item.litigant_name+'公告">致'+item.litigant_name+'公告</a><span>'+item.holdTime+'</span></div>');
       $('#personalNotice').append(content);
     }
     //公告栏滚动效果
