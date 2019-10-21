@@ -501,34 +501,51 @@
     
   <!-- 主体部分 -->
     <main>
-      <!-- 轮播图 -->
-      <!-- <div id="banner">
-        <div class="swiper-container">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="./images/banner-1.jpg" alt="banner" width="100%">
+      <div class="m-left">
+        <p class="m-left-decoration"></p>
+        <p class="m-left-title"><span>公告搜索</span></p>
+        <div class="search-option2">
+            <p>开庭时间范围</p>
+            <input type="text" id="noticeType" placeholder="请输入开庭时间范围">
+            <p>当事人</p>
+            <input type="text" id="litigantName" placeholder="请输入当事人">
+            <p>案号</p>
+            <div class="new-select">
+                <select class="select-box" id="years">
+                    <option value ="(2019)">(2019)</option>
+                    <option value ="(2018)">(2018)</option>
+                    <option value="(2017)">(2017)</option>
+                </select>
+                <i class="arrow2"></i>
+            </div> 
+            <span>闽0206</span>
+            <div class="new-select" style="width:23%;">
+                <select class="select-box" id="types">
+                    <option value ="民初">民初</option>
+                    <option value ="民督">民督</option>
+                    <option value="民终">民终</option>
+                    <option value="民再">民再</option>
+                    <option value="财保">财保</option>
+                </select>
+                <i class="arrow2"></i>
             </div>
-            <div class="swiper-slide">
-              <img src="./images/banner-2.jpg" alt="banner" width="100%">
-            </div>
-            <div class="swiper-slide">
-              <img src="./images/banner-3.jpg" alt="banner" width="100%">
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
+            <input type="text" style="width: 20%;" id="caseNum">号
         </div>
-      </div> -->
+        <div class="search-option2">
+            <button id="searchSubmit">查询</button>
+        </div>
+      </div>
       <!-- 主体信息部分 -->
         <div class="list">
             <p class="m-title">
-               <span>开庭与庭审直播公告</span>
+               <span>开庭公告</span>
             </p>
             <div id="list"></div>
             <div id="Pagination"></div>           
         </div>
         
     </main>
-
+    <div class="main-footer"></div>
   <!-- 尾巴 -->
     <footer>
         <div class="footer-coda">

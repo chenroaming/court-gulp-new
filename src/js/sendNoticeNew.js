@@ -1,12 +1,14 @@
 let nowNum = 1;
+let first = false;
 $(document).ready(function () {
     search();
+    first = true;
 })
 
 function transform(noticeList){
     $('#noticeList').empty();
     for (const item of noticeList){
-        const tr = ('<tr align="center"><td><a href="pdfDetail.html?url='+item.address+'" target="_blank">'+item.caseNo+'</a></td><td><a href="pdfDetail.html?url='+item.address+'" target="_blank">'+item.litigant_name+'</a></td><td>'+item.briefName+'</td><td>'+item.holdTime+'</td><td><a href="'+item.address+'" target="_blank" class="download-box"><i title="下载" class="download"></i></a></td></tr>');
+        const tr = ('<tr align="center"><td><a href="pdfDetail.html?url='+item.address+'" target="_blank">'+item.caseNo+'</a></td><td><a href="pdfDetail.html?url='+item.address+'" target="_blank">'+item.litigant_name+'</a></td><td>'+item.briefName+'</td><td>'+item.holdTime+'</td><td><a href="'+item.address+'" target="_blank" download class="download-box"><i title="下载" class="download"></i></a></td></tr>');
         $('#noticeList').append(tr);
     }
 }
@@ -17,7 +19,9 @@ function search(caseNo = '',litigantName = '',noticeType = ''){
         sweetAlert({title: notice.message,type: "warning",timer: 1500});
         return;
     }
-    sweetAlert({title: notice.message,type: "success",timer: 1500});
+    if(first){
+        sweetAlert({title: notice.message,type: "success",timer: 1500});
+    }
     transform(notice.date);
     $("#Pagination").paging({
         nowPage: 1, // 当前页码,默认为1

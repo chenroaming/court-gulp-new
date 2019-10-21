@@ -17,6 +17,28 @@
   color: #fff;
   font-size: 24px;
 }
+.search-box {
+  display: inline-block;
+  width: 270px;
+  height: 60px;
+  float: right;
+  margin-right: 35px;
+}
+#search {
+  border: none;
+  border-radius: 20px;
+  color: #000;
+}
+::-webkit-input-placeholder {
+  color: #DEDEDE;
+  text-align: center;
+  font-size: 18px;
+}
+:-moz-placeholder {
+  color: #DEDEDE;
+  text-align: center;
+  font-size: 18px;
+}
 .content {
   width: 95%;
   height: 60px;

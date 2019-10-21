@@ -48,16 +48,16 @@ $(document).ready(function () {
     // mySwiper2.pagination.render();
     // mySwiper2.pagination.update();
     const holdCourts = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml');
-    const courtNewsList = ajaxGet('api/main/homeNews/getTopNews.jhtml',{count:5});
-    const wordNews = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pagesize:3,newsType:2});
-    const personalNotice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pagesize:4,pageSize:4});
-    const courtNewsAll = ajaxGet('api/main/homeNews/getTopNews.jhtml',{count:3});
-    console.log(courtNewsList);
-    $('#news-pic').attr('src',courtNewsList.homeNews[0].home_imgUrl);
-    for (const item of courtNewsList.homeNews){
-      const content = ('<div class="court-news-title"><a imgUrl="'+item.home_imgUrl+'" href="news.html?id='+item.id+'">'+item.newsTitle+'</a></div>');
+    const courtNewsList = ajaxGet('api/main/homeNews/getHomeNews.jhtml',{count:5,newsType:'1',top:true});
+    const personalNotice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pagesize:4,pageSize:10});
+    const wordNews = ajaxGet('api/main/homeNews/getHomeNews.jhtml',{count:3,newsType:'3',top:true});
+    let unique_id = '';
+    for (const item of courtNewsList.content){
+      const content = ('<div class="court-news-title"><a imgUrl="'+item.img_url+'" href="news.html?id='+item.unique_id+'">'+item.news_title+'</a></div>');
       $('#topNewsList').append(content);
+      unique_id = unique_id + item.unique_id + ',';
     }
+    const courtNewsAll = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{count:5,newsType:'1,2',top:true,ids:unique_id.slice(0,unique_id.length-1)});
     for(const item of holdCourts.data){
       const content = ('<div class="notice-item"><div><img src="../images/hammer.png" alt=""><span title="'+item.content+'">'+item.content+'</span></div><p>特此公告。</p><p>'+item.openTime+'</p></div>');
       $('#box').append(content);
@@ -68,24 +68,26 @@ $(document).ready(function () {
       const content = ('<div class="notice-item2"><img src="../images/mark.png" alt=""><a href="news.html?id='+item.unique_id+'" class="wordNews" title="'+item.news_title+'" target="_blank">'+item.news_title+'</a><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');
       $('#caseList').append(content);
     }
-    for(const item of courtNewsAll.homeNews){
-      const time = new Date(item.createDate);
-      const content = ('<div class="notice-item2"><img src="../images/mark.png" alt=""><a href="news.html?id='+item.id+'" class="wordNews" title="'+item.newsTitle+'" target="_blank">'+item.newsTitle+'</a><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');
+    for(const item of courtNewsAll.content){
+      const time = new Date(item.create_date);
+      const content = ('<div class="notice-item2"><img src="../images/mark.png" alt=""><a href="news.html?id='+item.id+'" class="wordNews" title="'+item.news_title+'" target="_blank">'+item.news_title+'</a><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');
       $('#courtAllNews').append(content);
     }
     for(const item of personalNotice.date){
       const content = ('<div class="notice-item2"><img src="../images/laba.png" alt=""><a href="pdfDetail.html?url='+item.address+'" class="wordNews" target="_blank" title="致'+item.litigant_name+'公告">致'+item.litigant_name+'公告</a><span>'+item.holdTime+'</span></div>');
-      $('#personalNotice').append(content);
+      $('#personalNoticeBox').append(content);
+      $('#personalNoticeBox2').append(content);
     }
     //公告栏滚动效果
     let top = 0;
     let top2 = 1000;
-    console.log(parseInt(-$('.info-content-box').height()*1.5));
     setInterval(function(){
       top --;
       top2 --;
       $('#box').css('top',top);
+      $('#personalNoticeBox').css('top',top);
       $('#box2').css('top',top2);
+      $('#personalNoticeBox2').css('top',top2);
       if(top == parseInt(-$('.info-content-box').height()*1.5)){
         top2 = $('.info-content-box').height();
       }

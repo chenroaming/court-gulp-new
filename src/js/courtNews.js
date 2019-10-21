@@ -15,9 +15,9 @@ $(document).ready(function () {
 
     const type = window.location.href.split('newsType=')[1];
     if(type == 1){
-        $('.m-title span').text('法院新闻');
+        $('.m-title-text').text('法院新闻');
     }else if(type == 2){
-        $('.m-title span').text('典型案例');
+        $('.m-title-text').text('典型案例');
     }else{
         window.location.href = 'index.html';
         return false;
