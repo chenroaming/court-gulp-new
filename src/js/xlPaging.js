@@ -1,3 +1,5 @@
+//作者：懒羊羊  https://github.com/BBREEZE/xlPaging
+
 ;(function ($, window, document, undefined) {
     'use strict';
     function Paging(element, options) {

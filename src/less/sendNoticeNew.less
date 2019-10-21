@@ -1,0 +1,241 @@
+main {
+    width: 1280px;
+    min-width: 1280px;
+    height: 985px;
+    margin: 0 auto;
+}
+
+.mainNull {
+    height: 80px;
+}
+
+.main-footer {
+    height: 80px;
+}
+
+.m-left {
+    width: 25%;
+    height: 100%;
+    float: left;
+    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.16);
+}
+
+.m-right {
+    width: 74%;
+    height: 100%;
+    float: left; 
+}
+.m-left-decoration{
+    background:linear-gradient(90deg,#3D6AC6,#37B6ED);
+    height: 5px;
+    margin: 0;
+ }
+
+ .m-left-title {
+     margin: 0;
+     height: 50px;
+     line-height: 50px;
+     span{
+        margin-left: 10px;
+        color: #3D6DC7;
+        font-size: 20px;
+        font-weight: 700;
+     }
+ }
+
+ .m-left-search-icon {
+    float: left;
+    display: inline-block;
+    width: 35px;
+    height: 34px;
+    background-image: url('../images/icons8_View_64px.png');
+ }
+
+ .m-left-search {
+    width: 85%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid #e8eaec;
+    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.16);
+    p{
+        margin: 0;
+        height: 50px;
+        padding: 10px;
+        border-bottom: 1px solid rgba(0,0,0,0.16);
+    }
+ }
+
+ .m-left-search-title {
+    display: inline-block;
+    width: 110px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #3D6EC8;
+    float: left;
+    margin-left: 10px;
+ }
+
+ .title-icon {
+    background-image: url(../images/arrow.png);
+    width: 10px;
+    height: 9px;
+    display: inline-block;
+    margin-top: 12px;
+    float: right;
+    cursor: pointer;
+ }
+
+ .icon_arrowDown{
+    transition: 0.8s;
+    transform-origin:center center;
+    transform: rotateZ(0deg);
+}
+.icon_arrowUp{
+    transition: 0.8s;
+    transform-origin:center center;
+    transform: rotateZ(180deg);
+}
+
+ .search-option {
+     li {
+        height: 50px;
+        line-height: 50px;
+        font-size: 18px;
+        text-align: center;
+        border-bottom: 1px solid #e8eaec;
+        cursor: pointer;
+        font-weight: 550;
+        color: #53647A;
+     }
+ }
+
+ .search-option2 {
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 20px;
+     p {
+        font-size: 16px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+     }
+     input {
+        width: 100%;
+        height: 30px;
+        padding:4px 7px;
+        border-radius: 5px;
+        border: 1px solid rgba(0,0,0,0.16);
+     }
+ }
+
+ .new-select {
+    display: inline-block;
+    width: 30%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    position: relative;
+ }
+
+ .select-box{
+    width: 100%;
+     height: 100%;
+     -webkit-appearance: none;
+     -moz-appearance: none; 
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    border-radius: 5px;
+    option{
+        text-align: center;
+        border-radius: 5px;
+        -moz-appearance:none; /* Firefox */
+        -webkit-appearance:none; /* Safari 和 Chrome */
+        appearance:none;
+    }
+ }
+ 
+ .arrow2 {
+    width: 9px;
+    height: 8px;
+    background: url(../images/arrow.png) no-repeat;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+ }
+
+ #searchSubmit {
+    width: 100%;
+    height: 50px;
+    border-style: none;
+    border-radius: 5px;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #3D6DC7;
+ }
+
+// 表格部分样式
+    table {
+        border: none;
+        border-collapse: collapse;
+    }
+    th {
+        height: 50px;
+        text-align: center;
+        color: #FFF;
+        font-size: 16px;
+        background:linear-gradient(270deg,#2CB3ED,#3E69C5);
+        border: 1px solid rgba(0,0,0,0.16);
+    }
+
+    td {
+        height: 85px;
+        color: #262626;
+        font-family: Microsoft Yahei;
+        font-size: 12px;
+        border-color: #e8eaec;
+        a{
+            cursor: pointer;
+            width: 180px;
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+    .download-box {
+        width: 30px;
+        height: 30px;
+    }
+
+    .download {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-image:url('../images/icons8_Download_64px.png');
+        cursor: pointer;
+    }
+
+    // 分页样式
+    #Pagination {
+        float: right;
+        text-align: right;
+        margin-right: 85px;
+        li{
+            float: left;
+            cursor: pointer;
+            margin-top: 35px;
+            margin-left: 35px;
+        }
+        li.xl-active {
+            background-color: #0073A9;
+            border-color: #0073A9;
+            color: #FFF;
+            width: 30px;
+            text-align: center;
+        }
+    }

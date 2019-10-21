@@ -12,7 +12,13 @@ const steps1 = steps({
     dataOrder: ["line","description"]
 });
 
-
+$('.login-wrapper').hover(function() {
+  // 鼠标移入时添加hover类
+  $(this).addClass('login-wrapper-hover')
+  }, function() {
+  // 鼠标移出时移出hover类
+  $(this).removeClass('login-wrapper-hover')
+});
 function jumpBigData(e) {
   if (e && e.preventDefault)
     e.preventDefault();

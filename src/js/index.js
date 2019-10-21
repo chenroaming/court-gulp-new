@@ -93,13 +93,6 @@ $(document).ready(function () {
         top = $('.info-content-box').height();
       }
     },30);
-    $('.login-wrapper').hover(function() {
-      // 鼠标移入时添加hover类
-      $(this).addClass('login-wrapper-hover')
-      }, function() {
-      // 鼠标移出时移出hover类
-      $(this).removeClass('login-wrapper-hover')
-    });
 
     $('.court-news-title a').mouseover(function(){
       $('#news-pic').attr('src',$(this).attr('imgUrl'));
