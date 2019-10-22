@@ -16,8 +16,10 @@ function transform(noticeList){
 function search(caseNo = '',litigantName = '',noticeType = ''){
     const notice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pageNum:1,pageSize:11,caseNo:caseNo,litigantName:litigantName,noticeType:noticeType});
     if(notice.state == 101){
-        sweetAlert({title: notice.message,type: "warning",timer: 1500});
-        return;
+        return sweetAlert({title: notice.message,type: "warning",timer: 1500});
+    }
+    if(notice.total == 0){
+        return sweetAlert({title: '查无数据！',type: "warning",timer: 1500});
     }
     if(first){
         sweetAlert({title: notice.message,type: "success",timer: 1500});
@@ -54,24 +56,4 @@ $('.search-option li').click(function(){
     search('','',$(this)[0].innerText);
 })
 
-//ajax的小封装
-function ajaxGet(url,data =''){
-    let response = '';
-    $.ajax({
-      url: url,
-      type: 'get',
-      async: false,
-      data:data,
-      success: (res)=> {
-        response = res;
-      },
-      error: ()=> {
-        sweetAlert({
-            title: '网络错误，请重试！',
-            type: "warning",
-            timer: 1500
-          });
-      }
-    });
-    return response;
-  }
+function ajaxGet(url,data =''){let response = '';$.ajax({url: url,type: 'get',async: false,data:data,success: (res)=> {response = res;},error: ()=> {sweetAlert({title: '网络错误，请重试！',type: "warning",timer: 1500});}});return response;}

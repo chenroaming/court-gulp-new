@@ -11,6 +11,7 @@
   <link rel="stylesheet" type="text/css" href="./css/style-caseList.css" />
   <link rel="stylesheet" href="./css/swiper4.2.6.css">
   <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/flatpickr.min.css" rel="stylesheet">
   <link href="./css/steps.css" type="text/css" rel="stylesheet">
   <script src="./js/jquery-1.10.2.min.js"></script>
   <script src="./js/swiper.min.js"></script>
@@ -506,9 +507,13 @@
         <p class="m-left-title"><span>公告搜索</span></p>
         <div class="search-option2">
             <p>开庭时间范围</p>
-            <input type="text" id="noticeType" placeholder="请输入开庭时间范围">
+            <div style="width: 100%;height: 31px;">
+              <input class="time" id="startTime" placeholder="请选择开始时间">
+              <span style="float:left;margin:0 5px;">至</span>
+              <input class="time" id="endTime" placeholder="请选择结束时间">
+            </div>
             <p>当事人</p>
-            <input type="text" id="litigantName" placeholder="请输入当事人">
+            <input type="text" id="litigantName" maxlength="10" placeholder="请输入当事人">
             <p>案号</p>
             <div class="new-select">
                 <select class="select-box" id="years">
@@ -517,7 +522,7 @@
                     <option value="(2017)">(2017)</option>
                 </select>
                 <i class="arrow2"></i>
-            </div> 
+            </div>
             <span>闽0206</span>
             <div class="new-select" style="width:23%;">
                 <select class="select-box" id="types">
@@ -584,6 +589,8 @@
         </div>
     </footer>
     <script src="./js/xlPaging.js"></script>
+    <script src="./js/flatpickr.js"></script>
+    <script src="./js/flatpickr.l10n.zh.js"></script>
     <script src="./js/public.js"></script>
     <script src="./js/caseList.js"></script>
 </body>

@@ -20,14 +20,33 @@
 .search-box {
   display: inline-block;
   width: 270px;
-  height: 60px;
+  height: 35px;
   float: right;
   margin-right: 35px;
+  position: relative;
+  top: 13px;
+  background-color: #fff;
+  border-radius: 20px;
 }
 #search {
   border: none;
-  border-radius: 20px;
   color: #000;
+  position: absolute;
+  top: 2px;
+  left: 18px;
+  width: 212px;
+  height: 30px;
+  outline: none;
+}
+#searchIcon {
+  background-image: url(../images/searchIcon.png);
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 3px;
+  right: 9px;
+  cursor: pointer;
 }
 ::-webkit-input-placeholder {
   color: #DEDEDE;
