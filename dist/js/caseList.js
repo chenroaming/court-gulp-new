@@ -12,7 +12,7 @@ function transform(){
   const litigantName = $('#litigantName').val();
   const startT = $("#startTime").val();
   const enT = $('#endTime').val();
-  const notice = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml',{pageNum:1,pageSize:7,caseNo:caseNo,name:litigantName,startT:startT,enT:enT});
+  const notice = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml',{pageNum:1,pageSize:7,caseNo:caseNo,name:litigantName,startT:startT,endT:enT});
   if(notice.total == 0) {
     return sweetAlert({title: '查无数据！',type: "warning",timer: 1500});
   }
@@ -27,7 +27,8 @@ function transform(){
     buttonNum: 7, //要展示的页码数量，默认为7，若小于5则为5
     callback: function(num) { //回调函数,num为当前页码
       if(nowPage == num) return;
-      const notice = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml',{pageNum:num,pageSize:7,caseNo:caseNo,name:litigantName,startT:startT,enT:enT});
+      nowPage = num;
+      const notice = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml',{pageNum:num,pageSize:7,caseNo:caseNo,name:litigantName,startT:startT,endT:enT});
       $('#list').empty();
       for (const item of notice.data){
         const div = ('<div class="content"><div><img src="../images/hammer.png" alt=""></div><p>'+item.content+'</p><p>特此公告</p><p>'+item.openTime+'</p></div>');

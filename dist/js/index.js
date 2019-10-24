@@ -57,7 +57,8 @@ $(document).ready(function () {
       $('#topNewsList').append(content);
       unique_id = unique_id + item.unique_id + ',';
     }
-    const courtNewsAll = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{count:5,newsType:'1,2',top:true,ids:unique_id.slice(0,unique_id.length-1)});
+    $('#news-pic').attr('src',courtNewsList.content[0].img_url);
+    const courtNewsAll = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{count:5,newsType:'1,2',pageSize:4,top:true,ids:unique_id.slice(0,unique_id.length-1)});
     for(const item of holdCourts.data){
       const content = ('<div class="notice-item"><div><img src="../images/hammer.png" alt=""><span title="'+item.content+'">'+item.content+'</span></div><p>特此公告。</p><p>'+item.openTime+'</p></div>');
       $('#box').append(content);

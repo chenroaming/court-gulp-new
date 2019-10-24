@@ -1,8 +1,8 @@
 $(document).ready(function () {
-    const type = window.location.href.split('newsType=')[1];
+    const type = window.location.href.split('newsType=')[1] == 1 ? '1,2' : 3;
     let nowPage = 1;
     let nowWord = '';
-    type == 1 ? $('.m-title-text').text('法院新闻') : (type == 2 ? $('.m-title-text').text('典型案例') : window.location.href = 'index.html');
+    type == '1,2' ? $('.m-title-text').text('法院新闻') : (type == 3 ? $('.m-title-text').text('典型案例') : window.location.href = 'index.html');
     transform();
     function transform(){
       $('#list').empty();
