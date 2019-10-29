@@ -1,3 +1,12 @@
+//轮播图
+$(document).ready(function () {
+  const mySwiper = new Swiper ('.pic-box', {
+    autoplay:{
+      stopOnLastSlide: true,
+    },
+    loop: true, // 循环模式选项
+  })
+})
 
 //忘记密码步骤条
 const steps1 = steps({

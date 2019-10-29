@@ -1633,7 +1633,7 @@ body {
   height: 328px;
   margin: 0 auto;
   text-align: center;
-  background-image: url('../images/bg1.png');
+  background-image: url('../images/bg2.png');
   background-size: 100%;
   background-repeat: no-repeat;
 }
@@ -1761,11 +1761,16 @@ body {
 .pic-box {
   width: 100%;
   height: 175px;
-  background-image: url(../images/title.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   margin-top: 83px;
+  overflow: hidden;
+}
+.swiper-slide {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .line {
   width: 130px;
@@ -2048,7 +2053,7 @@ body {
 }
 .footer-coda li {
   float: left;
-  margin-left: 5%;
+  margin-left: 2.5%;
   font-size: 20px;
 }
 .footer-coda li a {

@@ -1,56 +1,9 @@
-//轮播图模块
 $(document).ready(function () {
-//   const mySwiper = new Swiper('.swiper-container', {
-//     direction: 'horizontal',
-//     loop: true,
-//     autoplay: {
-//       disableOnInteraction: false,
-//     },
-//     // 如果需要分页器
-//     pagination: {
-//         el: '.swiper-pagination',
-//         clickable :true
-//     }
-// })
-    // const picNews = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pagesize:3,newsType:1});
-    // const mySwiper2 = new Swiper('.swiper-container2', {
-    //   direction: 'horizontal',
-    //   loop: true,
-    //   autoplay: {
-    //     disableOnInteraction: false,
-    //   },
-    //   // 如果需要分页器
-    //   pagination: {
-    //       el: '.swiper-pagination2',
-    //       clickable :true
-    //   },
-    //   //前进后退按钮
-    //   navigation: {
-    //     nextEl: '.swiper-button-next',
-    //     prevEl: '.swiper-button-prev',
-    //   },
-    //   observer: true,
-    //   observeParents: false
-    // });
-    // mySwiper2.el.onmouseover = function(){
-    //   mySwiper2.autoplay.stop();
-    // }
-    // mySwiper2.el.onmouseleave = function(){
-    //   mySwiper2.autoplay.start();
-    // }
-
-    // let bigDiv = '';
-    // for(let item of picNews.content){
-    //   bigDiv = ('<div class="swiper-slide"><a href="news.html?id='+item.unique_id+'" target="_Blank"><img src="'+item.home_img_url+'" alt="banner" width="100%" height="100%"><div class="news-title">'+item.news_title+'</div></a></div>');
-    //   mySwiper2.appendSlide(bigDiv);
-    // }
-    // mySwiper2.updateSlides();
-    // mySwiper2.pagination.render();
-    // mySwiper2.pagination.update();
+    
     const holdCourts = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml');
     const courtNewsList = ajaxGet('api/main/homeNews/getHomeNews.jhtml',{count:5,newsType:'1',top:true});
-    const personalNotice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pagesize:4,pageSize:10});
-    const wordNews = ajaxGet('api/main/homeNews/getHomeNews.jhtml',{count:3,newsType:'3',top:true});
+    const personalNotice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pageSize:10});
+    const wordNews = ajaxGet('api/main/homeNews/getHomeNews.jhtml',{pageSize:4,count:3,newsType:'3',top:true});
     let unique_id = '';
     for (const item of courtNewsList.content){
       const content = ('<div class="court-news-title"><a imgUrl="'+item.img_url+'" href="news.html?id='+item.unique_id+'">'+item.news_title+'</a></div>');
@@ -101,48 +54,4 @@ $(document).ready(function () {
       $('#news-pic').attr('src',$(this).attr('imgUrl'));
     })
 })
-
-//ajax的小封装
-function ajaxGet(url,data =''){
-  let response = '';
-  $.ajax({
-    url: url,
-    type: 'get',
-    async: false,
-    data:data,
-    success: (res)=> {
-      response = res;
-    },
-    error: ()=> {
-      sweetAlert({
-          title: '网络错误，请重试！',
-          type: "warning",
-          timer: 1500
-        });
-    }
-  });
-  return response;
-}
-
-function ajaxPost(url,data){
-  let response = '';
-  $.ajax({
-    url: url,
-    type: 'post',
-    contentType: 'application/json; charset=utf-8',
-    dataType: 'json',
-    async: false,
-    data:JSON.stringify(data),
-    success:(res)=> {
-      response = res;
-    },
-    error: ()=> {
-      sweetAlert({
-          title: '网络错误，请重试！',
-          type: "warning",
-          timer: 1500
-        });
-    }
-  });
-  return response;
-}
+function ajaxGet(url,data =''){let response = '';$.ajax({url: url,type: 'get',async: false,data:data,success: (res)=> {response = res;},error: ()=> {sweetAlert({title: '网络错误，请重试！',type: "warning",timer: 1500});}});return response;}
