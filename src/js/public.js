@@ -1,4 +1,14 @@
-
+//轮播图
+$(document).ready(function () {
+  const mySwiper = new Swiper ('.pic-box', {
+    autoplay:{
+      delay: 2500,
+      stopOnLastSlide: false,
+      disableOnInteraction: false,
+    },
+    loop: true, // 循环模式选项
+  })
+})
 //忘记密码步骤条
 const steps1 = steps({
     el: "#steps1",
@@ -407,6 +417,14 @@ function openLogin() {
           title: '两次输入的密码不一致！',
           type: "warning",
           timer: 1500
+        });
+      }
+      const regx = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{9,20}$/;
+      if(!regx.test(firPwd) || !regx.test(secPwd)){
+        return sweetAlert({
+          title: '密码需为8-20位的数字和英文字母组合！',
+          type: "warning",
+          timer: 3000
         });
       }
       let data = {phone: phoneNum,code: authCode,fir_password: MD5(firPwd),sec_password: MD5(secPwd)};

@@ -101,48 +101,5 @@ $(document).ready(function () {
       $('#news-pic').attr('src',$(this).attr('imgUrl'));
     })
 })
+function ajaxGet(url,data =''){let response = '';$.ajax({url: url,type: 'get',async: false,data:data,success: (res)=> {response = res;},error: ()=> {sweetAlert({title: '网络错误，请重试！',type: "warning",timer: 1500});}});return response;}
 
-//ajax的小封装
-function ajaxGet(url,data =''){
-  let response = '';
-  $.ajax({
-    url: url,
-    type: 'get',
-    async: false,
-    data:data,
-    success: (res)=> {
-      response = res;
-    },
-    error: ()=> {
-      sweetAlert({
-          title: '网络错误，请重试！',
-          type: "warning",
-          timer: 1500
-        });
-    }
-  });
-  return response;
-}
-
-function ajaxPost(url,data){
-  let response = '';
-  $.ajax({
-    url: url,
-    type: 'post',
-    contentType: 'application/json; charset=utf-8',
-    dataType: 'json',
-    async: false,
-    data:JSON.stringify(data),
-    success:(res)=> {
-      response = res;
-    },
-    error: ()=> {
-      sweetAlert({
-          title: '网络错误，请重试！',
-          type: "warning",
-          timer: 1500
-        });
-    }
-  });
-  return response;
-}
