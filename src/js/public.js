@@ -419,7 +419,7 @@ function openLogin() {
           timer: 1500
         });
       }
-      const regx = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{9,20}$/;
+      const regx = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
       if(!regx.test(firPwd) || !regx.test(secPwd)){
         return sweetAlert({
           title: '密码需为8-20位的数字和英文字母组合！',

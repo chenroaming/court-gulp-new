@@ -505,64 +505,89 @@
 
     </div>
     </header>
-    <div class="mainNull"></div>
-  <!-- 主体部分 -->
-    <main>
-      <div class="m-left">
-        <p class="m-left-decoration"></p>
-        <p class="m-left-title"><span>公告搜索</span></p>
-        <div class="m-left-search">
-            <p>
-                <span class="m-left-search-icon"></span>
-                <span class="m-left-search-title">公告类型</span>
-                <i class="title-icon"></i>
-            </p>
-            <ul class="search-option">
-                <li>起诉状、上诉状副本</li>
-                <li>开庭传票</li>
-                <li>裁判文书</li>
-                <li>公示催告</li>
-                <li>破产文书</li>
-                <li>宣告失踪、死亡</li>
-                <li>执行文书</li>
-                <li>无主财产认领公告</li>
-                <li>起诉状副本及开庭传票</li>
-                <li style="border: none;">其他</li>
-            </ul>
+    <div class="mainNull">
+      <div class="choice-box">
+        <div id="financial" class="unChoice-case">
+            <p>涉自贸金融案件</p>
+            <p>送达公告</p>
         </div>
-        <div class="search-option2">
-            <p>公告类型</p>
-            <input type="text" id="noticeType" placeholder="请输入要查询的公告类型">
-            <p>当事人</p>
-            <input type="text" id="litigantName" placeholder="请输入当事人">
-            <p>案号</p>
-            <div class="new-select">
-                <select class="select-box" id="years">
-                    <option value ="(2019)">(2019)</option>
-                    <option value ="(2018)">(2018)</option>
-                    <option value="(2017)">(2017)</option>
-                </select>
-                <i class="arrow2"></i>
-            </div> 
-            <span>闽0206</span>
-            <div class="new-select" style="width:23%;">
-                <select class="select-box" id="types">
-                    <option value ="民初">民初</option>
-                    <option value ="民督">民督</option>
-                    <option value="民终">民终</option>
-                    <option value="民再">民再</option>
-                    <option value="财保">财保</option>
-                </select>
-                <i class="arrow2"></i>
-            </div>
-            <input type="text" style="width: 20%;" id="caseNum">号
-        </div>
-        <div class="search-option2">
-            <button id="searchSubmit">查询</button>
+        <div id="other" class="choice-case unChoice-case">
+            <p>其他案件</p>
+            <p>送达公告</p>
         </div>
       </div>
+    </div>
+  <!-- 主体部分 -->
+    <main>
+      <div class="m-left-box">
+        <div class="m-left">
+            <p class="m-left-decoration"></p>
+            <p class="m-left-title"><span>公告搜索</span></p>
+            <div class="m-left-search">
+                <p>
+                    <span class="m-left-search-icon"></span>
+                    <span class="m-left-search-title">公告类型</span>
+                    <i class="title-icon"></i>
+                </p>
+                <ul class="search-option">
+                    <li>起诉状、上诉状副本</li>
+                    <li>开庭传票</li>
+                    <li>裁判文书</li>
+                    <li>公示催告</li>
+                    <li>破产文书</li>
+                    <li>宣告失踪、死亡</li>
+                    <li>执行文书</li>
+                    <li>无主财产认领公告</li>
+                    <li>起诉状副本及开庭传票</li>
+                    <li style="border: none;">其他</li>
+                </ul>
+            </div>
+            <div class="search-option2">
+                <p class="other-option">公告类型</p>
+                <input type="text" class="other-option" id="noticeType" placeholder="请输入要查询的公告类型">
+                <p>当事人</p>
+                <input type="text" id="litigantName" placeholder="请输入当事人">
+                <p class="other-option">案号</p>
+                <div class="new-select other-option">
+                    <select class="select-box" id="years">
+                        <option value ="(2019)">(2019)</option>
+                        <option value ="(2018)">(2018)</option>
+                        <option value="(2017)">(2017)</option>
+                    </select>
+                    <i class="arrow2"></i>
+                </div> 
+                <span class="other-option">闽0206</span>
+                <div class="new-select other-option" style="width:23%;">
+                    <select class="select-box" id="types">
+                        <option value ="民初">民初</option>
+                        <option value ="民督">民督</option>
+                        <option value="民终">民终</option>
+                        <option value="民再">民再</option>
+                        <option value="财保">财保</option>
+                    </select>
+                    <i class="arrow2"></i>
+                </div>
+                <input class="other-option" type="text" style="width: 20%;" id="caseNum"><span class="other-option">号</span>
+            </div>
+            <div class="search-option2">
+                <button id="searchSubmit">查询</button>
+            </div>
+          </div>
+      </div>
+      
       <div class="m-right">
-            <table border="1" width="930" align="center" cellspacing="0" cellpadding="6">
+          <table id="financialBox" class="hide" border="1" width="930" align="center" cellspacing="0" cellpadding="6">
+              <thead>
+                  <tr align="center">
+                      <th style="width: 70%;">名称</th>
+                      <th style="width: 30%;">时间</th>
+                  </tr>
+              </thead>
+              <tbody id="financialList">
+
+              </tbody>
+          </table>
+            <table id="otherBox" border="1" width="930" align="center" cellspacing="0" cellpadding="6">
                 <thead>
                     <tr align="center">
                         <th style="width: 10%;">案号</th>

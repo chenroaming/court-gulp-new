@@ -1962,13 +1962,14 @@ body {
   height: 600px;
   position: absolute;
 }
-.choice-case {
-  background-color: #A8AEDF;
-  color: #FFF;
-}
 .unChoice-case {
   background-color: #FFF;
   color: #000;
+  border: 1px solid #e8eaec;
+}
+.choice-case {
+  background-color: #A8AEDF;
+  color: #FFF;
 }
 #financialCase {
   font-size: 12px;
@@ -2011,6 +2012,7 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
   vertical-align: middle;
+  cursor: pointer;
 }
 .top-news-pic {
   width: 50%;

@@ -1,5 +1,6 @@
 let nowNum = 1;
 let first = false;
+let type = '';
 $(document).ready(function () {
     search();
     first = true;
@@ -46,14 +47,74 @@ $('.title-icon').click(function(){
 })
 
 $('#searchSubmit').click(() => {
-    const caseNo = $('#years').val()+$('.search-option2 span')[0].innerText+$('#types').val()+$('#caseNum').val();
     const litigantName = $('#litigantName').val();
-    const noticeType = $('#noticeType').val();
-    search(caseNo,litigantName,noticeType);
+    if(type == 'financial'){
+        $('.m-left-search').addClass('hide');
+        $('.other-option').addClass('hide');
+        $('#otherBox').addClass('hide');
+        $('#financialBox').removeClass('hide');
+        financialSearch(litigantName);
+    }else{
+        const caseNo = $('#years').val()+$('.search-option2 span')[0].innerText+$('#types').val()+$('#caseNum').val();
+        const noticeType = $('#noticeType').val();
+        search(caseNo,litigantName,noticeType);
+    }
 })
 
 $('.search-option li').click(function(){
     search('','',$(this)[0].innerText);
 })
 
+function financialSearch (name = ''){
+    const financial = ajaxGet('/api/main/homeNews/getFinanceInfo.jhtml',{name:name,pageNum:1,pageSize:10});
+    if(financial.data.total == 0){
+        return sweetAlert({title: '查无数据！',type: "warning",timer: 1500});
+    }
+    if(first){
+        sweetAlert({title: financial.message,type: "success",timer: 1500});
+    }
+    $('#financialList').empty();
+    for (const item of financial.data.data){
+        const tr = ('<tr align="center"><td><a class="financial-word" index="'+item.id+'" name="'+item.name+'">'+item.noticeName+'</a></td><td>'+item.date+'</td></tr>');
+        $('#financialList').append(tr);
+    }
+    $("#Pagination").paging({
+        nowPage: 1, // 当前页码,默认为1
+        pageNum: financial.data.totalPages, // 总页码
+        buttonNum: 7, //要展示的页码数量，默认为7，若小于5则为5
+        callback: function(num) { //回调函数,num为当前页码
+            const financial = ajaxGet('/api/main/homeNews/getFinanceInfo.jhtml',{pageNum:num,pageSize:10});
+            $('#financialList').empty();
+            for (const item of financial.data.data){
+                const tr = ('<tr align="center"><td><a class="financial-word" index="'+item.id+'" name="'+item.name+'">'+item.noticeName+'</a></td><td>'+item.date+'</td></tr>');
+                $('#financialList').append(tr);
+            }
+        }
+    });
+}
+
+
+$('.unChoice-case').click(function(){
+    $('.unChoice-case').removeClass('choice-case');
+    $(this).addClass('choice-case');
+    type = $(this).attr('id');
+    if(type == 'financial'){
+        $('.m-left-search').addClass('hide');
+        $('.other-option').addClass('hide');
+        $('#otherBox').addClass('hide');
+        $('#financialBox').removeClass('hide');
+        financialSearch();
+    }else{
+        $('.m-left-search').removeClass('hide');
+        $('.other-option').removeClass('hide');
+        $('#otherBox').removeClass('hide');
+        $('#financialBox').addClass('hide');
+        search();
+    }
+})
+
+$('#financialList').on('click','.financial-word',function(){
+    const res = ajaxGet('/api/main/homeNews/getOutNotice.jhtml',{id:$(this).attr('index'),name:$(this).attr('name')});
+    window.open(res.data,'_blank');
+})
 function ajaxGet(url,data =''){let response = '';$.ajax({url: url,type: 'get',async: false,data:data,success: (res)=> {response = res;},error: ()=> {sweetAlert({title: '网络错误，请重试！',type: "warning",timer: 1500});}});return response;}

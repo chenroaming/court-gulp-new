@@ -14,6 +14,11 @@ main {
   width: 25%;
   height: 100%;
   float: left;
+}
+.m-left {
+  width: 25%;
+  height: auto;
+  float: left;
   box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.16);
 }
 .m-right {
@@ -101,7 +106,7 @@ main {
 .search-option2 {
   width: 85%;
   margin: 0 auto;
-  margin-top: 20px;
+  margin: 20px;
 }
 .search-option2 p {
   font-size: 16px;
@@ -197,6 +202,46 @@ td a {
   height: 30px;
   background-image: url('../images/icons8_Download_64px.png');
   cursor: pointer;
+}
+.choice-box {
+  width: 1280px;
+  margin: 0 auto;
+}
+#financial {
+  font-size: 12px;
+  width: 102px;
+  height: 78%;
+  cursor: pointer;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  float: left;
+  margin-top: 25px;
+  margin-left: 330px;
+}
+#financial p {
+  height: 20px;
+  line-height: 20px;
+  margin: 0;
+  text-align: center;
+}
+#other {
+  font-size: 12px;
+  width: 102px;
+  height: 78%;
+  cursor: pointer;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  float: left;
+  margin-top: 25px;
+}
+#other p {
+  height: 20px;
+  line-height: 20px;
+  margin: 0;
+  text-align: center;
+}
+.hide {
+  display: none;
 }
 #Pagination {
   float: right;
