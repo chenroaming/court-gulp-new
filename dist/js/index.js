@@ -51,6 +51,7 @@ $(document).ready(function () {
     const courtNewsList = ajaxGet('api/main/homeNews/getHomeNews.jhtml',{count:5,newsType:'1',top:true});
     const personalNotice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pageSize:10});
     const wordNews = ajaxGet('api/main/homeNews/getHomeNews.jhtml',{count:3,newsType:'3',top:true});
+    const financial = ajaxGet('/api/main/homeNews/getFinanceInfo.jhtml',{pageNum:1,pageSize:10});
     let unique_id = '';
     for (const item of courtNewsList.content){
       const content = ('<div class="court-news-title"><a imgUrl="'+item.img_url+'" href="news.html?id='+item.unique_id+'">'+item.news_title+'</a></div>');
@@ -60,7 +61,7 @@ $(document).ready(function () {
     $('#news-pic').attr('src',courtNewsList.content[0].img_url);
     const courtNewsAll = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{count:5,newsType:'1,2',pageSize:4,top:true,ids:unique_id.slice(0,unique_id.length-1)});
     for(const item of holdCourts.data){
-      const content = ('<div class="notice-item"><div><img src="../images/hammer.png" alt=""><span title="'+item.content+'">'+item.content+'</span></div><p>特此公告。</p><p>'+item.openTime+'</p></div>');
+      const content = ('<div class="notice-item"><div><img src="../images/hammer.png" alt=""><span title="'+item.content+'">'+item.content+'</span></div><p>承办法官：<strong>'+item.judge+'&nbsp&nbsp&nbsp&nbsp&nbsp</strong><strong>'+item.caseNo+'</strong></p></div>');
       $('#box').append(content);
       $('#box2').append(content);
     }
@@ -100,20 +101,19 @@ $(document).ready(function () {
     $('.court-news-title a').mouseover(function(){
       $('#news-pic').attr('src',$(this).attr('imgUrl'));
     })
+
     $('.unChoice-case').click(function(){
       $('.unChoice-case').removeClass('choice-case');
       $(this).addClass('choice-case');
       $('#personalNoticeBox').empty();
       $('#personalNoticeBox2').empty();
       if($(this).attr('id') == 'financialCase'){
-        const financial = ajaxGet('/api/main/homeNews/getFinanceInfo.jhtml',{pageNum:1,pageSize:10});
         for(const item of financial.data.data){
           const content = ('<div class="notice-item2"><img src="../images/laba.png" alt=""><a class="wordNews financial-word" target="_blank" index="'+item.id+'" name="'+item.name+'" title='+item.noticeName+'>'+item.noticeName+'</a><span>'+item.date+'</span></div>');
           $('#personalNoticeBox').append(content);
           $('#personalNoticeBox2').append(content);
         }
       }else{
-        const personalNotice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pageSize:10});
         for(const item of personalNotice.date){
           const content = ('<div class="notice-item2"><img src="../images/laba.png" alt=""><a href="pdfDetail.html?url='+item.address+'" class="wordNews" target="_blank" title="致'+item.litigant_name+'公告">致'+item.litigant_name+'公告</a><span>'+item.holdTime+'</span></div>');
           $('#personalNoticeBox').append(content);

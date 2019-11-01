@@ -1964,23 +1964,26 @@ body {
 }
 .unChoice-case {
   background-color: #FFF;
-  color: #000;
+  color: #3C74BD;
   border: 1px solid #e8eaec;
 }
 .choice-case {
-  background-color: #A8AEDF;
-  color: #FFF;
+  border-bottom: 2px solid #3C74BD;
+}
+.case-title-box {
+  width: 100%;
+  position: absolute;
+  z-index: 10;
 }
 #financialCase {
-  font-size: 12px;
-  width: 102px;
-  height: 78%;
+  font-size: 14px;
+  width: 50%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
   cursor: pointer;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
   float: left;
-  margin-top: 5px;
-  margin-left: 10px;
+  border-right: none;
 }
 #financialCase p {
   height: 20px;
@@ -1989,14 +1992,14 @@ body {
   text-align: center;
 }
 #otherCase {
-  font-size: 12px;
-  width: 102px;
-  height: 78%;
+  font-size: 14px;
+  width: 50%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
   cursor: pointer;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
   float: left;
-  margin-top: 5px;
+  border-left: none;
 }
 #otherCase p {
   height: 20px;
@@ -2088,6 +2091,7 @@ body {
   text-align: center;
 }
 .footer-coda ul {
+  width: 1300px;
   min-width: 1280px;
   height: 60px;
   margin: 0 auto;
@@ -2123,6 +2127,9 @@ body {
 .footer-bottom .QRcode img {
   width: 75px;
   height: 75px;
+}
+strong {
+  font-weight: 500 !important;
 }
 /* 法院新闻的样式 */
 .info-content2 {
@@ -2200,7 +2207,7 @@ main {
   height: 35px;
 }
 .content p:last-child {
-  text-align: right;
+  text-align: left;
 }
 #Pagination {
   float: right;

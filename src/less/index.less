@@ -390,48 +390,51 @@ body{
 
     .unChoice-case {
         background-color: #FFF;
-        color: #000;
+        color: #3C74BD;
         border: 1px solid #e8eaec;
     }
 
     .choice-case {
-        background-color: #A8AEDF;
-        color: #FFF;
+        border-bottom: 2px solid #3C74BD;
+    }
+    .case-title-box {
+        width: 100%;
+        position: absolute;
+        z-index: 10;
     }
 
     #financialCase {
-        font-size: 12px;
-        width: 102px;
-        height: 78%;
+        font-size: 14px;
+        width: 50%;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
         cursor: pointer;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
+        float: left;
+        border-right: none;
         p{
             height: 20px;
             line-height: 20px;
             margin: 0;
             text-align: center;
         }
-        float: left;
-        margin-top: 5px;
-        margin-left: 10px;
     }
 
     #otherCase {
-        font-size: 12px;
-        width: 102px;
-        height: 78%;
+        font-size: 14px;
+        width: 50%;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
         cursor: pointer;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
+        float: left;
+        border-left: none;
         p{
             height: 20px;
             line-height: 20px;
             margin: 0;
             text-align: center;
         }
-        float: left;
-        margin-top: 5px;
     }
 
     .wordNews{
@@ -525,6 +528,7 @@ body{
         background-color: #F5F9FD;
         text-align: center;
         ul{
+            width:1300px;
             min-width: 1280px;
             height: 60px;
             margin: 0 auto;
@@ -562,6 +566,9 @@ body{
                 height: 75px;
             }
         }
+    }
+    strong{
+        font-weight: 500 !important;
     }
 
 /* 法院新闻的样式 */

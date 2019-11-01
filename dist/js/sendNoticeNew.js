@@ -1,9 +1,9 @@
 let nowNum = 1;
-let first = false;
+// let first = false;
 let type = '';
 $(document).ready(function () {
     search();
-    first = true;
+    // first = true;
 })
 
 function transform(noticeList){
@@ -22,9 +22,9 @@ function search(caseNo = '',litigantName = '',noticeType = ''){
     if(notice.total == 0){
         return sweetAlert({title: '查无数据！',type: "warning",timer: 1500});
     }
-    if(first){
-        sweetAlert({title: notice.message,type: "success",timer: 1500});
-    }
+    // if(first){
+    //     sweetAlert({title: notice.message,type: "success",timer: 1500});
+    // }
     transform(notice.date);
     $("#Pagination").paging({
         nowPage: 1, // 当前页码,默认为1
@@ -70,9 +70,9 @@ function financialSearch (name = ''){
     if(financial.data.total == 0){
         return sweetAlert({title: '查无数据！',type: "warning",timer: 1500});
     }
-    if(first){
-        sweetAlert({title: financial.message,type: "success",timer: 1500});
-    }
+    // if(first){
+    //     sweetAlert({title: financial.message,type: "success",timer: 1500});
+    // }
     $('#financialList').empty();
     for (const item of financial.data.data){
         const tr = ('<tr align="center"><td><a class="financial-word" index="'+item.id+'" name="'+item.name+'">'+item.noticeName+'</a></td><td>'+item.date+'</td></tr>');
@@ -97,7 +97,9 @@ function financialSearch (name = ''){
 $('.unChoice-case').click(function(){
     $('.unChoice-case').removeClass('choice-case');
     $(this).addClass('choice-case');
+    if($(this).attr('id') == type) return;
     type = $(this).attr('id');
+    $('#litigantName').val('');
     if(type == 'financial'){
         $('.m-left-search').addClass('hide');
         $('.other-option').addClass('hide');

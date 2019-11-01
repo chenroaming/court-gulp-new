@@ -395,6 +395,7 @@ function openLogin() {
         $('.rsPwdPhone').addClass('hide');
         $('.newPwd').removeClass('hide');
         steps1.setActive(steps1.getActive()+1);
+        $('#forgetPwd-cd').val('');
       }else{
         sweetAlert({
           title: res.message,
@@ -422,7 +423,7 @@ function openLogin() {
       const regx = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
       if(!regx.test(firPwd) || !regx.test(secPwd)){
         return sweetAlert({
-          title: '密码需为8-20位的数字和英文字母组合！',
+          title: '密码需为8-16位的数字和英文字母组合！',
           type: "warning",
           timer: 3000
         });
