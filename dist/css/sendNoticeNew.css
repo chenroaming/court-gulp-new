@@ -204,41 +204,39 @@ td a {
   cursor: pointer;
 }
 .choice-box {
-  width: 1280px;
+  width: 75%;
+  height: 90px;
   margin: 0 auto;
 }
 #financial {
   font-size: 12px;
-  width: 102px;
-  height: 78%;
+  font-weight: 700;
+  width: 120px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
   cursor: pointer;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   float: left;
-  margin-top: 25px;
-  margin-left: 330px;
-}
-#financial p {
-  height: 20px;
-  line-height: 20px;
-  margin: 0;
-  text-align: center;
+  margin-top: 10px;
 }
 #other {
   font-size: 12px;
-  width: 102px;
-  height: 78%;
+  font-weight: 700;
+  width: 120px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
   cursor: pointer;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   float: left;
-  margin-top: 25px;
+  margin-top: 10px;
 }
-#other p {
-  height: 20px;
-  line-height: 20px;
-  margin: 0;
-  text-align: center;
+.choice-case2 {
+  color: #FFF;
+  background-color: #3F79C5;
 }
 .hide {
   display: none;

@@ -95,8 +95,8 @@ function financialSearch (name = ''){
 
 
 $('.unChoice-case').click(function(){
-    $('.unChoice-case').removeClass('choice-case');
-    $(this).addClass('choice-case');
+    $('.unChoice-case').removeClass('choice-case2');
+    $(this).addClass('choice-case2');
     if($(this).attr('id') == type) return;
     type = $(this).attr('id');
     $('#litigantName').val('');
