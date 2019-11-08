@@ -220,6 +220,7 @@ td a {
   border-bottom-left-radius: 20px;
   float: left;
   margin-top: 10px;
+  box-shadow: -3px 5px 5px #e8eaec;
 }
 #other {
   font-size: 12px;
@@ -233,6 +234,7 @@ td a {
   border-bottom-right-radius: 20px;
   float: left;
   margin-top: 10px;
+  box-shadow: 3px 5px 5px #e8eaec;
 }
 .choice-case2 {
   color: #FFF;

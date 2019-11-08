@@ -61,7 +61,7 @@ $(document).ready(function () {
     $('#news-pic').attr('src',courtNewsList.content[0].img_url);
     const courtNewsAll = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{count:5,newsType:'1,2',pageSize:4,top:true,ids:unique_id.slice(0,unique_id.length-1)});
     for(const item of holdCourts.data){
-      const content = ('<div class="notice-item"><div><img src="../images/hammer.png" alt=""><span title="'+item.content+'">'+item.content+'</span></div><p>承办法官：<strong>'+item.judge+'&nbsp&nbsp&nbsp&nbsp&nbsp</strong><strong>'+item.caseNo+'</strong></p></div>');
+      const content = ('<div class="notice-item"><div><img src="../images/hammer.png" alt=""><span title="'+item.content+'">'+item.content+'</span></div><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp承办法官：<strong>'+item.judge+'&nbsp&nbsp&nbsp&nbsp&nbsp</strong><strong>'+item.caseNo+'</strong></p></div>');
       $('#box').append(content);
       $('#box2').append(content);
     }
@@ -72,7 +72,7 @@ $(document).ready(function () {
     }
     for(const item of courtNewsAll.content){
       const time = new Date(item.create_date);
-      const content = ('<div class="notice-item2"><img src="../images/mark.png" alt=""><a href="news.html?id='+item.id+'" class="wordNews" title="'+item.news_title+'" target="_blank">'+item.news_title+'</a><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');
+      const content = ('<div class="notice-item2"><img src="../images/mark.png" alt=""><a href="news.html?id='+item.unique_id+'" class="wordNews" title="'+item.news_title+'" target="_blank">'+item.news_title+'</a><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');
       $('#courtAllNews').append(content);
     }
     for(const item of personalNotice.date){
@@ -107,7 +107,7 @@ $(document).ready(function () {
       $(this).addClass('choice-case');
       $('#personalNoticeBox').empty();
       $('#personalNoticeBox2').empty();
-      if($(this).attr('id') == 'financialCase'){
+      if($(this).attr('id') == 'financialCase2'){
         for(const item of financial.data.data){
           const content = ('<div class="notice-item2"><img src="../images/laba.png" alt=""><a class="wordNews financial-word" target="_blank" index="'+item.id+'" name="'+item.name+'" title='+item.noticeName+'>'+item.noticeName+'</a><span>'+item.date+'</span></div>');
           $('#personalNoticeBox').append(content);

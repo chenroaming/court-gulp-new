@@ -1963,17 +1963,23 @@ body {
   position: absolute;
 }
 .unChoice-case {
-  background-color: #FFF;
+  display: inline-block;
+  width: 175px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 20px;
   color: #3C74BD;
-  border: 1px solid #e8eaec;
 }
 .choice-case {
-  border-bottom: 2px solid #3C74BD;
+  background-color: #3C74BD;
+  color: #fff;
 }
 .case-title-box {
   width: 100%;
   position: absolute;
   z-index: 10;
+  background-color: #fff;
+  box-shadow: 1px 5px 10px #DEDEDE;
 }
 #financialCase {
   font-size: 14px;

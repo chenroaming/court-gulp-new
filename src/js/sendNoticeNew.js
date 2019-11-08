@@ -83,7 +83,9 @@ function financialSearch (name = ''){
         pageNum: financial.data.totalPages, // 总页码
         buttonNum: 7, //要展示的页码数量，默认为7，若小于5则为5
         callback: function(num) { //回调函数,num为当前页码
-            const financial = ajaxGet('/api/main/homeNews/getFinanceInfo.jhtml',{pageNum:num,pageSize:10});
+            if(nowNum == num) return;
+            nowNum = num;
+            const financial = ajaxGet('/api/main/homeNews/getFinanceInfo.jhtml',{name:name,pageNum:num,pageSize:10});
             $('#financialList').empty();
             for (const item of financial.data.data){
                 const tr = ('<tr align="center"><td><a class="financial-word" index="'+item.id+'" name="'+item.name+'">'+item.noticeName+'</a></td><td>'+item.date+'</td></tr>');
