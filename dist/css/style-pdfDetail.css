@@ -1863,11 +1863,13 @@ body {
   overflow: hidden;
   height: 100%;
   cursor: pointer;
+  position: relative;
 }
 .swiper-pagination2 {
   z-index: 10;
   float: right;
   position: absolute;
+  top: 309px;
   text-align: right;
 }
 .news-title {
@@ -1880,7 +1882,7 @@ body {
   color: #fff;
   text-align: left;
   line-height: 55px;
-  font-size: 16px;
+  font-size: 14px;
 }
 .notice-item {
   width: 90%;
@@ -2039,18 +2041,26 @@ body {
 }
 .court-news-title {
   width: 91%;
-  height: 19%;
+  height: 68px;
+  line-height: 66px;
   border-bottom: 1px solid #e6e6e6;
   text-align: left;
-  display: table;
   margin: 0 auto;
 }
 .court-news-title a {
   font-size: 16px;
-  display: table-cell;
+  display: inline-block;
+  width: 75%;
   vertical-align: middle;
   color: #000000;
   font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.court-news-title span {
+  vertical-align: middle;
 }
 /* 尾巴部分样式 */
 .footer-title {

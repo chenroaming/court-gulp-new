@@ -40,6 +40,14 @@ function jumpBigData(e) {
     openLogin()
 }
 
+$('#opinion').click(function(){
+  sweetAlert({
+    type:'warning',
+    title:'该功能暂未开通！',
+    timer: 1500
+  })
+})
+
 $(function () {
   getUserInfo()
 })

@@ -6,7 +6,7 @@ $(document).ready(function () {
     transform();
     function transform(){
       $('#list').empty();
-      const notice = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pageNum:1,pageSize:7,newsType:type,keyWords:nowWord});
+      const notice = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pageNum:1,pageSize:7,keyWords:nowWord});
       if(typeof(notice) == 'string') return sweetAlert({title: '网络错误！',type: "warning",timer: 1500});
       if(notice.total == 0){
         sweetAlert({title: '查无数据！',type: "warning",timer: 1500});
@@ -26,7 +26,7 @@ $(document).ready(function () {
         callback: function(num) { //回调函数,num为当前页码
           if(nowPage == num) return;
           nowPage = num;
-          const notice = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pageNum:num,pageSize:7,newsType:type,keyWords:nowWord});
+          const notice = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pageNum:num,pageSize:7,keyWords:nowWord});
           $('#list').empty();
           for (const item of notice.content){
             const time = new Date(item.create_date);
