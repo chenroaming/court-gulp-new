@@ -62,7 +62,7 @@ $(document).ready(function () {
     // $('#news-pic').attr('src',courtNewsList.content[0].img_url);
     const courtNewsAll = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{count:5,pageSize:4,top:true,ids:unique_id.slice(0,unique_id.length-1)});
     for(const item of holdCourts.data){
-      const content = ('<div class="notice-item"><div><img src="../images/hammer.png" alt=""><span title="'+item.content+'">'+item.content+'</span></div><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp承办法官：<strong>'+item.judge+'&nbsp&nbsp&nbsp&nbsp&nbsp</strong><strong>'+item.caseNo+'</strong></p></div>');
+      const content = ('<div class="notice-item"><div><img src="../images/hammer.png" alt=""><span title="'+item.content+'">'+item.content+'</span></div><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp承办法官：<strong>'+item.judge+'&nbsp&nbsp&nbsp&nbsp&nbsp</strong><strong>案号：'+item.caseNo+'</strong></p></div>');
       $('#box').append(content);
       $('#box2').append(content);
     }

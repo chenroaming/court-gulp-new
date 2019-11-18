@@ -436,7 +436,7 @@ function openLogin() {
           timer: 3000
         });
       }
-      let data = {phone: phoneNum,code: authCode,fir_password: MD5(firPwd),sec_password: MD5(secPwd)};
+      let data = {phone: phoneNum,code: resetPwdChkCode,fir_password: MD5(firPwd),sec_password: MD5(secPwd)};
       let res = ajaxPost('/api/main/resetPassword.jhtml',data);
       if(res.state == 100){
         sweetAlert({
