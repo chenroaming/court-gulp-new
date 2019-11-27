@@ -6,7 +6,7 @@ $(document).ready(function () {
     transform();
     function transform(){
       $('#list').empty();
-      const notice = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pageNum:1,pageSize:7,keyWords:nowWord});
+      const notice = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pageNum:1,pageSize:7,keyWords:nowWord,newsType:'3'});
       if(typeof(notice) == 'string') return sweetAlert({title: '网络错误！',type: "warning",timer: 1500});
       if(notice.total == 0){
         sweetAlert({title: '查无数据！',type: "warning",timer: 1500});
@@ -16,12 +16,11 @@ $(document).ready(function () {
       const totalPage = Math.ceil(notice.total / 7);
       for (const item of notice.content){
         const time = new Date(item.create_date);
-        // if(type == 3){
-        //   const div = ('<div class="content"><div><img src="../images/mark.png" alt=""></div><a href="docx.html?url=http://court1.ptnetwork001.com'+item.classic_path+'" target="_blank">'+item.classic_cases+'</a><p>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'</p></div>');
-        //   $('#list').append(div);
-        // }
-        const div = ('<div class="content"><div><img src="../images/mark.png" alt=""></div><a href="news.html?id='+item.unique_id+'" target="_blank">'+item.news_title+'</a><p>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'</p></div>');
-        $('#list').append(div);
+        if(type == 3){
+          const div = ('<div class="content"><div><img src="../images/mark.png" alt=""></div><a href="docx.html?url=http://court1.ptnetwork001.com'+item.classic_path+'" target="_blank">'+item.classic_cases+'</a><p>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'</p></div>');
+          $('#list').append(div);
+        }
+        // const div = ('<div class="content"><div><img src="../images/mark.png" alt=""></div><a href="news.html?id='+item.unique_id+'" target="_blank">'+item.news_title+'</a><p>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'</p></div>');
       }
       $("#Pagination").paging({
         nowPage: 1, // 当前页码,默认为1
@@ -30,16 +29,16 @@ $(document).ready(function () {
         callback: function(num) { //回调函数,num为当前页码
           if(nowPage == num) return;
           nowPage = num;
-          const notice = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pageNum:num,pageSize:7,keyWords:nowWord});
+          const notice = ajaxGet('/api/main/homeNews/getHomeNews.jhtml',{pageNum:num,pageSize:7,keyWords:nowWord,newsType:'3'});
           $('#list').empty();
           for (const item of notice.content){
             const time = new Date(item.create_date);
-            // if(type == 3){
-            //   const div = ('<div class="content"><div><img src="../images/mark.png" alt=""></div><a href="docx.html?url=http://court1.ptnetwork001.com'+item.classic_path+'" target="_blank">'+item.classic_cases+'</a><p>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'</p></div>');
-            //   $('#list').append(div);
-            // }
-            const div = ('<div class="content"><div><img src="../images/mark.png" alt=""></div><a href="news.html?id='+item.unique_id+'" target="_blank">'+item.news_title+'</a><p>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'</p></div>');
-            $('#list').append(div);
+            if(type == 3){
+              const div = ('<div class="content"><div><img src="../images/mark.png" alt=""></div><a href="docx.html?url=http://court1.ptnetwork001.com'+item.classic_path+'" target="_blank">'+item.classic_cases+'</a><p>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'</p></div>');
+              $('#list').append(div);
+            }
+            // const div = ('<div class="content"><div><img src="../images/mark.png" alt=""></div><a href="news.html?id='+item.unique_id+'" target="_blank">'+item.news_title+'</a><p>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'</p></div>');
+            
           }
         }
       });

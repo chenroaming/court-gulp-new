@@ -50,8 +50,10 @@ $(document).ready(function () {
     const holdCourts = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml');
     const courtNewsList = ajaxGet('api/main/homeNews/getHomeNews.jhtml',{count:5,top:true});
     const personalNotice = ajaxGet('/api/main/homeNews/getSendNoticeList.jhtml',{pageSize:10});
-    const wordNews = ajaxGet('api/main/homeNews/getHomeNews.jhtml',{count:3,top:true});
+    const wordNews = ajaxGet('api/main/homeNews/getHomeNews.jhtml',{count:3,top:true,newsType:'3'});
+    console.log(wordNews);
     const financial = ajaxGet('/api/main/homeNews/getFinanceInfo.jhtml',{pageNum:1,pageSize:10});
+    // const updateLog = ajaxGet('/api/main/homeNews/getUpdateLog.jhtml',{pageNum:1,pageSize:5});
     let unique_id = '';
     for (const item of courtNewsList.content){
       const time = new Date(item.create_date);
@@ -66,12 +68,16 @@ $(document).ready(function () {
       $('#box').append(content);
       $('#box2').append(content);
     }
-    //暂时不用
-    // for(const item of wordNews.content){
-    //   const time = new Date(item.create_date);
-    //   const content = ('<div class="notice-item2"><img src="../images/mark.png" alt=""><a href="news.html?id='+item.unique_id+'" class="wordNews" title="'+item.news_title+'" target="_blank">'+item.news_title+'</a><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');
-    //   $('#caseList').append(content);
+    // for(const item of updateLog.content){
+    //   const content = ('<div class="notice-item2"><img src="../images/mark.png" alt=""><a href="updateLog.html?id='+item.Id+'" class="wordNews" title="'+item.updateName+'" target="_blank">'+item.updateName+'</a><span>'+item.createTime+'</span></div>');
+    //   $('#courtAllNews').append(content);
     // }
+    //暂时不用
+    for(const item of wordNews.content){
+      const time = new Date(item.create_date);
+      const content = ('<div class="notice-item2"><img src="../images/mark.png" alt=""><a href="docx.html?url=http://court1.ptnetwork001.com/'+item.classic_path+'" class="wordNews" title="'+item.classic_cases+'" target="_blank">'+item.classic_cases+'</a><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');
+      $('#caseList').append(content);
+    }
     // for(const item of courtNewsAll.content){
     //   const time = new Date(item.create_date);
     //   const content = ('<div class="notice-item2"><img src="../images/mark.png" alt=""><a href="news.html?id='+item.unique_id+'" class="wordNews" title="'+item.news_title+'" target="_blank">'+item.news_title+'</a><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');

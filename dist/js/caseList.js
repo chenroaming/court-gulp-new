@@ -18,7 +18,7 @@ function transform(){
   }
   const totalPage = Math.ceil(notice.total / 7);
   for (const item of notice.data){
-      const div = ('<div class="content"><div><img src="../images/hammer.png" alt=""></div><p>'+item.content+'</p><p>承办法官：<span>'+item.judge+'</span><span>'+item.caseNo+'</span></p></div>');
+      const div = ('<div class="content"><div><img src="../images/hammer.png" alt=""></div><p>'+item.content+'</p><p>承办法官：<span>'+item.judge+'</span><span>案号：'+item.caseNo+'</span></p></div>');
       $('#list').append(div);
   }
   $("#Pagination").paging({
@@ -31,7 +31,7 @@ function transform(){
       const notice = ajaxGet('/api/main/homeNews/getHoldCourts.jhtml',{pageNum:num,pageSize:7,caseNo:caseNo,name:litigantName,startT:startT,endT:enT});
       $('#list').empty();
       for (const item of notice.data){
-        const div = ('<div class="content"><div><img src="../images/hammer.png" alt=""></div><p>'+item.content+'</p><p>承办法官：<span>'+item.judge+'</span><span>'+item.caseNo+'</span></p></div>');
+        const div = ('<div class="content"><div><img src="../images/hammer.png" alt=""></div><p>'+item.content+'</p><p>承办法官：<span>'+item.judge+'</span><span>案号：'+item.caseNo+'</span></p></div>');
         $('#list').append(div);
       }
     }
