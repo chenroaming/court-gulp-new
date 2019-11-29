@@ -1722,7 +1722,10 @@ body {
   float: left;
   height: 25px;
   margin-top: 37px;
-  width: 158px;
+}
+#userName {
+  width: 240px;
+  text-align: right;
 }
 .big-title {
   height: 50px;
@@ -2018,14 +2021,13 @@ body {
 }
 .wordNews {
   overflow: hidden;
-  color: #000;
   width: 67%;
   display: inline-block;
   text-overflow: ellipsis;
   white-space: nowrap;
   vertical-align: middle;
-  cursor: pointer;
   font-weight: 700;
+  cursor: pointer;
 }
 .top-news-pic {
   width: 50%;
@@ -2238,4 +2240,7 @@ main {
 #content {
   width: 100%;
   height: 1000px;
+}
+.footer-null {
+  height: 100px;
 }

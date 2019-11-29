@@ -53,7 +53,7 @@ $(document).ready(function () {
     const wordNews = ajaxGet('api/main/homeNews/getHomeNews.jhtml',{count:3,top:true,newsType:'3'});
     console.log(wordNews);
     const financial = ajaxGet('/api/main/homeNews/getFinanceInfo.jhtml',{pageNum:1,pageSize:10});
-    // const updateLog = ajaxGet('/api/main/homeNews/getUpdateLog.jhtml',{pageNum:1,pageSize:5});
+    const updateLog = ajaxGet('/api/main/homeNews/getUpdateLog.jhtml',{pageNum:1,pageSize:4});
     let unique_id = '';
     for (const item of courtNewsList.content){
       const time = new Date(item.create_date);
@@ -68,10 +68,10 @@ $(document).ready(function () {
       $('#box').append(content);
       $('#box2').append(content);
     }
-    // for(const item of updateLog.content){
-    //   const content = ('<div class="notice-item2"><img src="../images/mark.png" alt=""><a href="updateLog.html?id='+item.Id+'" class="wordNews" title="'+item.updateName+'" target="_blank">'+item.updateName+'</a><span>'+item.createTime+'</span></div>');
-    //   $('#courtAllNews').append(content);
-    // }
+    for(const item of updateLog.content){
+      const content = ('<div class="notice-item2"><img src="../images/mark.png" alt=""><a href="logDetail.html?id='+item.Id+'" class="wordNews" title="'+item.updateName + '" target="_blank">'+item.updateName +'</a><span>'+item.createTime+'</span></div>');
+      $('#courtAllNews').append(content);
+    }
     //暂时不用
     for(const item of wordNews.content){
       const time = new Date(item.create_date);

@@ -2,26 +2,25 @@
 <html lang="zh-CN">
 
 <head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta charset="UTF-8" />
-  <meta name="renderer" content="webkit">
-  <title>湖里区人民法院互联网法庭-新闻</title>
-  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="keywords" content="厦门市湖里区人民法院" />
-  <link href="./css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="./css/style-index.css" />
-  <link rel="stylesheet" type="text/css" href="./css/news-index.css" />
-  <link rel="stylesheet" href="./css/swiper4.2.6.css  ">
-  <link href="./css/bootstrap.min.css" rel="stylesheet">
-  <link href="./css/steps.css" type="text/css" rel="stylesheet">
-  <script src="./js/jquery-1.10.2.min.js"></script>
-  <script src="./js/swiper.min.js"></script>
-  <script src="./js/sweetalert2.all.min.js"></script>
-  <script src="./js/md5.min.js"></script>
-  <script src="./js/steps.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit">
+    <title>湖里区人民法院-更新日志</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="厦门市湖里区人民法院" />
+    <link rel="stylesheet" href="./css/swiper4.2.6.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/steps.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/style-logList.css" />
+    <script src="./js/jquery-1.10.2.min.js"></script>
+    <script src="./js/swiper.min.js"></script>
+    <script src="./js/sweetalert2.all.min.js"></script>
+    <script src="./js/md5.min.js"></script>
+    <script src="./js/steps.js"></script>
 </head>
 
 <body class="language-cn">
+  <!-- 头部 -->
   <!-- 头部 -->
   <header>
       <div class="header">
@@ -510,89 +509,42 @@
     
   <!-- 主体部分 -->
     <main>
-      <div class="main">
-        <div class="info-content-title2">
-          <span class="title-left">首页>法院新闻</span>
-          <div>
-              <!-- <img src="../images/menu-w.png" alt=""> -->
-              <a href="index.html" class="title-right" target="_blank">返回首页</a>
+      <!-- 轮播图 -->
+      <!-- <div id="banner">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="./images/banner-1.jpg" alt="banner" width="100%">
+            </div>
+            <div class="swiper-slide">
+              <img src="./images/banner-2.jpg" alt="banner" width="100%">
+            </div>
+            <div class="swiper-slide">
+              <img src="./images/banner-3.jpg" alt="banner" width="100%">
+            </div>
           </div>
+          <div class="swiper-pagination"></div>
         </div>
-          <div class="title-box">
-              <p id="newsTitle" class="news-title2"></p>
-              <p id="newsTime" class="news-time"></p>
-          </div>
-          <div class="content">
-            
-          </div>
-          <div class="pic-box2">
-            
-          </div>
-      </div>
+      </div> -->
+      <!-- 主体信息部分 -->
+        <div class="list">
+            <p class="m-title">
+               <span class="m-title-text"></span>
+               <!-- <span class="search-box">
+                 <input type="text" id="search" placeholder="关键字搜索">
+                 <i id="searchIcon"></i>
+               </span> -->
+            </p>
+            <div id="list">
+                
+            </div>
+            <div id="Pagination"></div>           
+        </div>
+        
     </main>
-    <div class="footer-null"></div>
+
   <!-- 尾巴 -->
-    <!-- 尾巴 -->
     <footer>
-        <!-- <div class="footer-title">
-          <p>诉讼服务</p>
-          <ul>
-            <li class="footer-item">
-              <div>
-                  <img src="../images/icon/首页资源 10.png" alt="">
-              </div>
-              <a href="">法律法规</a>
-            </li>
-            <li class="footer-item">
-              <div>
-                  <img src="../images/icon/首页资源 8.png" alt="">
-              </div>
-              <a href="">文书样式</a>
-            </li>
-            <li class="footer-item">
-              <div>
-                <img src="../images/icon/首页组 2377.png" alt="">
-              </div>
-              <a href="">诉讼指南</a>
-            </li>
-            <li class="footer-item">
-              <div>
-                <img src="../images/icon/首页资源 7.png" alt="">
-              </div>
-              <a href="">图文识别</a>
-            </li>
-            <li class="footer-item">
-              <div>
-                <img src="../images/icon/首页组 2377.png" alt="">
-              </div>
-              <a href="">诉讼风险评估</a>
-            </li>
-            <li class="footer-item">
-              <div>
-                <img src="../images/icon/首页资源 4.png" alt="">
-              </div>
-              <a href="">诉讼计算</a>
-            </li>
-            <li class="footer-item">
-              <div>
-                <img src="../images/icon/首页组 2382.png" alt="">
-              </div>
-              <a href="">庭审旁听</a>
-            </li>
-            <li class="footer-item">
-              <div>
-                <img src="../images/icon/首页资源 3.png" alt="">
-              </div>
-              <a href="">庭审评论</a>
-            </li>
-            <li class="footer-item">
-              <div>
-                <img src="../images/icon/首页资源 5.png" alt="">
-              </div>
-              <a href="">庭审网上信访</a>
-            </li>
-          </ul>
-        </div> -->
         <div class="footer-coda">
             <ul>
                 <li style="color: #53647A;">
@@ -630,10 +582,9 @@
                 <p>技术支持：厦门纵横科技股份有限公司</p>
             </div>
         </div>
-      </footer>
-      <script src="./js/public.js"></script>
-      <script src="./js/news.js"></script>
+    </footer>
+    <script src="./js/xlPaging.js"></script>
+    <script src="./js/public.js"></script>
+    <script src="./js/logList.js"></script>
 </body>
 </html>
-
-
