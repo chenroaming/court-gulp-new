@@ -86,6 +86,7 @@
   float: left;
   width: 82%;
   font-weight: 700;
+  color: #000;
 }
 .content p:last-child {
   text-align: right;

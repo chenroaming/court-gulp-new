@@ -1947,6 +1947,7 @@ body {
 }
 .notice-item2 span:nth-child(3) {
   vertical-align: middle;
+  font-weight: 700;
 }
 #box {
   width: 100%;
@@ -2028,6 +2029,7 @@ body {
   vertical-align: middle;
   font-weight: 700;
   cursor: pointer;
+  color: #000;
 }
 .top-news-pic {
   width: 50%;
@@ -2174,6 +2176,27 @@ body {
   margin-right: 28px;
   color: #fff;
 }
+#roll {
+  height: 81px;
+  line-height: 81px;
+  position: fixed;
+  width: 260px;
+  text-align: center;
+  background-color: #3BB7ED;
+  z-index: 99;
+}
+#roll a {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  font-family: SimSum;
+}
+#roll img {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
 .list {
   width: 1000px;
   height: 1200px;
@@ -2262,6 +2285,7 @@ body {
   float: left;
   width: 82%;
   font-weight: 700;
+  color: #000;
 }
 .content p:last-child {
   text-align: right;

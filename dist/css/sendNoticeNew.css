@@ -191,6 +191,7 @@ td a {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: #000;
 }
 .download-box {
   width: 30px;

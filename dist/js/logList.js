@@ -18,7 +18,7 @@ $(document).ready(function () {
         // const time = new Date(item.create_date);
         // if(type == 3){
         //   const div = ('<div class="content"><div><img src="../images/mark.png" alt=""></div><a href="docx.html?url=http://court1.ptnetwork001.com'+item.classic_path+'" target="_blank">'+item.classic_cases+'</a><p>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'</p></div>');
-        //   $('#list').append(div);d
+        //   $('#list').append(div);
         // }
         // const div = ('<div class="content"><div><img src="../images/mark.png" alt=""></div><a target="_blank">'+item.updateName + '：' + item.features +'</a><p>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日'+'</p></div>');
         const div = ('<div class="content"><div><img src="../images/mark.png" alt=""></div><a href="logDetail.html?id='+item.Id+'" target="_blank">'+item.updateName+'</a><p>'+item.createTime+'</p></div>');
