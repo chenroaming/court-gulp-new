@@ -2182,7 +2182,8 @@ body {
   position: fixed;
   width: 260px;
   text-align: center;
-  background-color: #3BB7ED;
+  background-image: url('../images/roll.png');
+  background-size: contain;
   z-index: 99;
 }
 #roll a {
@@ -2196,8 +2197,8 @@ body {
 }
 #roll img {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 3px;
+  right: 2px;
   cursor: pointer;
 }
 .list {
