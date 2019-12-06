@@ -165,7 +165,7 @@ $(document).ready(function () {
         this.y = this.y + (this.statusY ? -1 : 1)
         if (this.y < 0) { this.statusY = 0 }
         if (this.y > this.winH) { this.statusY = 1 }
-  
+
       }
     };
     let interval = setInterval(function(){

@@ -18,8 +18,8 @@ if(res.data.imgUrl){
     $('.pic-box2').append(pic);
   }
 }
-const newsContent = res.data.content.replace(/(\r\n|\n|\r)/gm, '<br>');//换行符正则替换
-$('.content').html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+newsContent);
+// const newsContent = res.data.content.replace(/(\r\n|\n|\r)/gm, '<br>');//换行符正则替换
+$('.content').html(res.data.content);
 const time = new Date(res.data.createDate);
 
 $('.login-wrapper').hover(function() {
