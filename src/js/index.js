@@ -74,7 +74,7 @@ $(document).ready(function () {
     //暂时不用
     for(const item of wordNews.content){
       const time = new Date(item.create_date);
-      const content = ('<div class="notice-item2"><img src="../images/mark.png" alt=""><a href="docx.html?url=http://court1.ptnetwork001.com/'+item.classic_path+'" class="wordNews" title="'+item.classic_cases+'" target="_blank">'+item.classic_cases+'</a><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');
+      const content = ('<div class="notice-item2"><img src="../images/mark.png" alt=""><a href="docx.html?url=http://dq.hlcourt.gov.cn//'+item.classic_path+'" class="wordNews" title="'+item.classic_cases+'" target="_blank">'+item.classic_cases+'</a><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');
       $('#caseList').append(content);
     }
     // for(const item of courtNewsAll.content){

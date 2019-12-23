@@ -9,7 +9,8 @@ $(document).ready(function () {
 function transform(noticeList){
     $('#noticeList').empty();
     for (const item of noticeList){
-        const tr = ('<tr align="center"><td><a href="pdfDetail.html?url='+item.address+'" target="_blank">'+item.caseNo+'</a></td><td><a href="pdfDetail.html?url='+item.address+'" target="_blank">'+item.litigant_name+'</a></td><td>'+item.briefName+'</td><td>'+item.holdTime+'</td><td><a href="'+item.address+'" target="_blank" download class="download-box"><i title="下载" class="download"></i></a></td></tr>');
+        const litigantName = item.notice_people ? item.notice_people : item.litigant_name;
+        const tr = ('<tr align="center"><td><a href="pdfDetail.html?url='+item.address+'" target="_blank">'+item.caseNo+'</a></td><td><a href="pdfDetail.html?url='+item.address+'" target="_blank">'+ litigantName +'</a></td><td>'+item.briefName+'</td><td>'+item.holdTime+'</td><td><a href="'+item.address+'" target="_blank" download class="download-box"><i title="下载" class="download"></i></a></td></tr>');
         $('#noticeList').append(tr);
     }
 }
