@@ -224,6 +224,7 @@ function ajaxGet(url,data =''){
 // 打开登录弹框
 function openLogin() {
     $("#login-d").removeClass("hide");
+    $("#lawyer").addClass("hide");
     $(".back-h").removeClass('hide');
     $(".code-ch").attr("src", "/api/main/code.jhtml?tm=" + Math.random())
   }
@@ -1423,12 +1424,12 @@ function openLogin() {
     });
   })
   $("#nextBtnLawyerBtn").unbind("click").click(function () {
-    // $('#phonenumLawyer').val('')
-    // $('#phoneCodeLawyer').val('')
-    // $(".signform1Lawyer").addClass("hide");
-    // $(".signform2Lawyer").removeClass("hide");
-    // $("#signLawyerBtn").removeClass("hide");
-    // $("#nextBtnLawyerBtn").addClass("hide");
+      // $('#phonenumLawyer').val('')
+      // $('#phoneCodeLawyer').val('')
+      // $(".signform1Lawyer").addClass("hide");
+      // $(".signform2Lawyer").removeClass("hide");
+      // $("#signLawyerBtn").removeClass("hide");
+      // $("#nextBtnLawyerBtn").addClass("hide");
 
 
       var phone = $.trim($('#phonenumLawyer').val());
