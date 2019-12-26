@@ -223,11 +223,11 @@ function ajaxGet(url,data =''){
 
 // 打开登录弹框
 function openLogin() {
-    $("#login-d").removeClass("hide");
-    $("#lawyer").addClass("hide");
-    $(".back-h").removeClass('hide');
-    $(".code-ch").attr("src", "/api/main/code.jhtml?tm=" + Math.random())
-  }
+  $("#login-d").removeClass("hide");
+  $("#lawyer").addClass("hide");
+  $(".back-h").removeClass('hide');
+  $(".code-ch").attr("src", "/api/main/code.jhtml?tm=" + Math.random())
+}
   //打开注册弹框
   function openSign() {
     $(".signform1").removeClass("hide");
@@ -353,7 +353,37 @@ function openLogin() {
     steps1.setActive(0);
     $('.rsPwdPhone').removeClass('hide');
     $('.newPwd').addClass('hide');
+    clearForm();
   })
+  //清空表单
+  function clearForm(){
+    $('#lawyerName').val('');
+    $('#lawyerPassword').val('');
+    $('#lawyerPassword2').val('');
+    $('#lawyerIdCard').val('');
+    $('#lawyerEmail').val('');
+    $('#lawerNum').val('');
+    $('#lawFirm').val('');
+    $('#phonenumLawyer').val('');
+    $('#phoneCodeLawyer').val('');
+    $('#companyName').val('');
+    $('#companyPassword').val('');
+    $('#companyPassword2').val('');
+    $('#companyIdCard').val('');
+    $('#companyEmail').val('');
+    $('#companyAddress').val('');
+    $('#companyLegalName').val('');
+    $('#companyPhone').val('');
+    $('#companyLegalId').val('');
+    $('#phonenum').val('');
+    $('#phoneCode').val('');
+    $('#idCard').val('');
+    $('#name').val('');
+    $('#password').val('');
+    $('#password2').val('');
+    $('#email').val('');
+    $('#trueAddress').val('');
+  }
   //切换注册页面
   function changeSign() {
     $("#login-d").addClass('hide');
