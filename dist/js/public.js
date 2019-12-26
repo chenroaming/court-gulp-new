@@ -233,6 +233,8 @@ function openLogin() {
     $(".signform2").addClass("hide");
     $("#signBtn").addClass("hide");
     $("#nextBtn").removeClass("hide");
+    $('label').show();
+    $('.swal2-checkbox').hide();
     // sweetAlert({
     //   title: '请选择注册角色',
     //   showCancelButton: true,
@@ -284,11 +286,11 @@ function openLogin() {
                     title: '请选择您代理人的身份',
                     input: 'select',
                     inputOptions: {
-                        '1': '律师 ',
-                        '2': '法律工作者',
-                        '3': '单位工作人员',
-                        '4': '近亲属',
-                        '5': '公民',
+                        1: '律师 ',
+                        2: '法律工作者',
+                        3: '单位工作人员',
+                        4: '近亲属',
+                        5: '公民',
                     },
                     inputPlaceholder: '请选择您代理人的身份',
                     showCancelButton: true,
@@ -306,7 +308,12 @@ function openLogin() {
                         LawyerState=result.value
                         console.log(LawyerState)
                         $("#lawyer").removeClass("hide");
+                        $('.signform1Lawyer').removeClass('hide');
+                        $('.signform2Lawyer').addClass('hide');
+                        $('label').show();
+                        $('.swal2-checkbox').hide();
                         $(".back-h").removeClass('hide');
+                        $('#nextBtnLawyerBtn').removeClass('hide');
                         if (LawyerState==1) {
                             $('#lawerNumBox').removeClass("hide");
                             $('#lawFirmBox').removeClass("hide");
@@ -1104,126 +1111,121 @@ function openLogin() {
   }
 
 
-  $('#signCompanyBtn').on('click', function () {
-    var companyName = $('#companyName').val();
-    var companyPassword = $('#companyPassword').val();
-    var companyIdCard = $('#companyIdCard').val();
-    var companyEmail = $('#companyEmail').val();
-    var companyAddress = $('#companyAddress').val();
-    var companyLegalName = $('#companyLegalName').val();
-    var companyPhone = $('#companyPhone').val();
-    var companyLegalId = $('#companyLegalId').val();
-    var laborContractUrl = $('#laborContractUrl').attr('src')
-    var powerAttorneyUrl = $('#powerAttorneyUrl').attr('src')
-    console.log('11')
-    if (laborContractUrl == './images/pic.png' || powerAttorneyUrl == './images/pic.png') {
-      sweetAlert({
-        title: '前上传相应图片',
-        type: 'error',
-        confirmButtonText: "好的"
-      })
-      return
-    }
-    $.ajax({
-      url: '/api/main/registerAdmin.jhtml',
-      type: 'post',
-      dataType: 'json',
-      contentType: 'application/json; charset=utf-8',
-      dataType: 'json',
-      async: false,
-      data: JSON.stringify({
-        name: companyName,
-        password: companyPassword,
-        idCard: companyIdCard,
-        email: companyEmail,
-        trueAddress: companyAddress,
-        legalManName: companyLegalName,
-        legalManPhone: companyPhone,
-        legalManId: companyLegalId,
-        laborContractUrl: laborContractUrl,
-        powerAttorneyUrl: powerAttorneyUrl,
-        litigantType: 1
-      }),
-      success: function (data) {
-        if (data.state == 100) {
-          $('#companyName').val('');
-          $('#companyPassword').val('');
-          $('#companyIdCard').val('');
-          $('#companyEmail').val('');
-          $('#companyAddress').val('');
-          $('#companyLegalName').val('');
-          v$('#companyPhone').val('');
-          $('#companyLegalId').val('');
-          $('#laborContractUrl')[0].src = './images/pic.png';
-          $('#powerAttorneyUrl')[0].src = './images/pic.png';
-          $("#legal").addClass("hide");
-          swal({
-            title: data.message,
-            type: "success",
-            confirmButtonText: "好的"
-          });
-          $(".back-h").addClass('hide');
-        } else {
-          swal({
-            title: data.message,
-            type: "error",
-            confirmButtonText: "好的"
-          });
-          $(".back-h").addClass('hide');
-          $('.form-data').addClass("hide");
-        }
-      },
-      error: function () {
-        status = false;
-      }
-    });
-  })
+  // $('#signCompanyBtn').on('click', function () {
+  //   var companyName = $('#companyName').val();
+  //   var companyPassword = $('#companyPassword').val();
+  //   var companyIdCard = $('#companyIdCard').val();
+  //   var companyEmail = $('#companyEmail').val();
+  //   var companyAddress = $('#companyAddress').val();
+  //   var companyLegalName = $('#companyLegalName').val();
+  //   var companyPhone = $('#companyPhone').val();
+  //   var companyLegalId = $('#companyLegalId').val();
+  //   var laborContractUrl = $('#laborContractUrl').attr('src')
+  //   var powerAttorneyUrl = $('#powerAttorneyUrl').attr('src')
+  //   console.log('11')
+  //   if (laborContractUrl == './images/pic.png' || powerAttorneyUrl == './images/pic.png') {
+  //     sweetAlert({
+  //       title: '前上传相应图片',
+  //       type: 'error',
+  //       confirmButtonText: "好的"
+  //     })
+  //     return
+  //   }
+  //   $.ajax({
+  //     url: '/api/main/registerAdmin.jhtml',
+  //     type: 'post',
+  //     dataType: 'json',
+  //     contentType: 'application/json; charset=utf-8',
+  //     dataType: 'json',
+  //     async: false,
+  //     data: JSON.stringify({
+  //       name: companyName,
+  //       password: companyPassword,
+  //       idCard: companyIdCard,
+  //       email: companyEmail,
+  //       trueAddress: companyAddress,
+  //       legalManName: companyLegalName,
+  //       legalManPhone: companyPhone,
+  //       legalManId: companyLegalId,
+  //       laborContractUrl: laborContractUrl,
+  //       powerAttorneyUrl: powerAttorneyUrl,
+  //       litigantType: 1
+  //     }),
+  //     success: function (data) {
+  //       if (data.state == 100) {
+  //         $('#companyName').val('');
+  //         $('#companyPassword').val('');
+  //         $('#companyIdCard').val('');
+  //         $('#companyEmail').val('');
+  //         $('#companyAddress').val('');
+  //         $('#companyLegalName').val('');
+  //         v$('#companyPhone').val('');
+  //         $('#companyLegalId').val('');
+  //         $('#laborContractUrl')[0].src = './images/pic.png';
+  //         $('#powerAttorneyUrl')[0].src = './images/pic.png';
+  //         $("#legal").addClass("hide");
+  //         swal({
+  //           title: data.message,
+  //           type: "success",
+  //           confirmButtonText: "好的"
+  //         });
+  //         $(".back-h").addClass('hide');
+  //       } else {
+  //         swal({
+  //           title: data.message,
+  //           type: "error",
+  //           confirmButtonText: "好的"
+  //         });
+  //         $(".back-h").addClass('hide');
+  //         $('.form-data').addClass("hide");
+  //       }
+  //     },
+  //     error: function () {
+  //       status = false;
+  //     }
+  //   });
+  // })
 
 
-  $("#nextBtnLawyerBtn").unbind("click").click(function () {
-    var phone = $.trim($('#phonenumLawyer').val());
-    var phoneCode = $.trim($('#phoneCodeLawyer').val());
-    if (phone == '') {
-      $("#phoneWarnLawyer").removeClass('hide').find("em").text('手机号不能为空');
-      return false;
-    }
-    $.ajax({
-      url: '/api/main/registerPhone.jhtml',
-      type: 'post',
-      contentType: 'application/json; charset=utf-8',
-      dataType: 'json',
-      async: false,
-      data: JSON.stringify({
-        phone: phone,
-        mcode: phoneCode
-      }),
-      success: function (data) {
-        if (data.state == 100) {
-          $('#phonenumLawyer').val('')
-          $('#phoneCodeLawyer').val('')
-          $(".signform1Lawyer").addClass("hide");
-          $(".signform2Lawyer").removeClass("hide");
-          $("#signLawyerBtn").removeClass("hide");
-          $("#nextBtnLawyerBtn").addClass("hide");
-        } else {
-          sweetAlert({
-            title: data.message,
-            type: "error",
-            confirmButtonText: "好的"
-          });
-        }
-      },
-      error: function () {
-        status = false;
-      }
-    });
-  //   $('#phonenumLawyer').val('')
+  // $("#nextBtnLawyerBtn").unbind("click").click(function () {
+  //   var phone = $.trim($('#phonenumLawyer').val());
+  //   var phoneCode = $.trim($('#phoneCodeLawyer').val());
+  //   if (phone == '') {
+  //     $("#phoneWarnLawyer").removeClass('hide').find("em").text('手机号不能为空');
+  //     return false;
+  //   }
+  //   $.ajax({
+  //     url: '/api/main/registerPhone.jhtml',
+  //     type: 'post',
+  //     contentType: 'application/json; charset=utf-8',
+  //     dataType: 'json',
+  //     async: false,
+  //     data: JSON.stringify({
+  //       phone: phone,
+  //       mcode: phoneCode
+  //     }),
+  //     success: function (data) {
+        
+  //       if (data.state == 100) {
+  //         $('#phonenumLawyer').val('')
   //         $('#phoneCodeLawyer').val('')
   //         $(".signform1Lawyer").addClass("hide");
   //         $(".signform2Lawyer").removeClass("hide");
   //         $("#signLawyerBtn").removeClass("hide");
   //         $("#nextBtnLawyerBtn").addClass("hide");
-  })
+  //       } else {
+  //         sweetAlert({
+  //           title: data.message,
+  //           type: "error",
+  //           confirmButtonText: "好的"
+  //         });
+  //       }
+  //     },
+  //     error: function () {
+  //       status = false;
+  //     }
+  //   });
+  // })
 
   $(".send").click(function () {
     var phone = $.trim($('#phonenum').val());
@@ -1245,13 +1247,33 @@ function openLogin() {
     }
   })
 
+  $(".sendLawyer").click(function () {
+    var phone = $.trim($('#phonenumLawyer').val());
+    if (checkPhone(phone)) {
+      sign();
+      $(".timeLawyer").removeClass('hide');
+      $(".sendLawyer").addClass('hide');
+      var countText = 59;
+      $("#miaoLawyer").html(countText);
+      var timmer = setInterval(function () {
+        countText -= 1;
+        $("#miaoLawyer").html(countText);
+        if (countText == 0) {
+          $(".timeLawyer").addClass('hide');
+          $(".sendLawyer").removeClass('hide');
+          clearInterval(timmer);
+        }
+      }, 1000);
+    }
+  })
+
   function checkPhone(phone) {
     var status = true;
     if (phone == '') {
       $('.num2-err').removeClass('hide').find("em").text('请输入手机号');
       return false;
     }
-    var param = /^1[34578]\d{9}$/;
+    var param = /^1[3456789]\d{9}$/;
     if (!param.test(phone)) {
       // globalTip({'msg':'手机号不合法，请重新输入','setTime':3});
       $('.num2-err').removeClass('hide');
@@ -1309,6 +1331,7 @@ function openLogin() {
   $('#signCompanyBtn').on('click', function () {
     var companyName = $('#companyName').val();
     var companyPassword = $('#companyPassword').val();
+    var companyPassword2 = $('#companyPassword2').val();
     var companyIdCard = $('#companyIdCard').val();
     var companyEmail = $('#companyEmail').val();
     var companyAddress = $('#companyAddress').val();
@@ -1318,6 +1341,21 @@ function openLogin() {
     var laborContractUrl = $('#laborContractUrl').attr('src')
     var powerAttorneyUrl = $('#powerAttorneyUrl').attr('src')
     console.log('11')
+    if(companyPassword != companyPassword2){
+      return sweetAlert({
+        title: '两次输入的密码不一致！',
+        type: 'error',
+        confirmButtonText: "好的"
+      })
+    }
+    const regx = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
+    if(!regx.test(companyPassword)){
+      return sweetAlert({
+        title: '密码需为8-16位的数字和英文字母组合！',
+        type: "warning",
+        timer: 3000
+      });
+    }
     if (laborContractUrl == './images/pic.png' || powerAttorneyUrl == './images/pic.png') {
       sweetAlert({
         title: '前上传相应图片',
@@ -1335,7 +1373,7 @@ function openLogin() {
       async: false,
       data: JSON.stringify({
         name: companyName,
-        password: companyPassword,
+        password: MD5(companyPassword),
         idCard: companyIdCard,
         email: companyEmail,
         trueAddress: companyAddress,
@@ -1350,29 +1388,33 @@ function openLogin() {
         if (data.state == 100) {
           $('#companyName').val('');
           $('#companyPassword').val('');
+          $('#companyPassword2').val('');
           $('#companyIdCard').val('');
           $('#companyEmail').val('');
           $('#companyAddress').val('');
           $('#companyLegalName').val('');
-          v$('#companyPhone').val('');
+          $('#companyPhone').val('');
           $('#companyLegalId').val('');
           $('#laborContractUrl')[0].src = './images/pic.png';
           $('#powerAttorneyUrl')[0].src = './images/pic.png';
           $("#legal").addClass("hide");
+          $('label').show();
+          $('.swal2-checkbox').hide();
           swal({
             title: data.message,
             type: "success",
             confirmButtonText: "好的"
           });
           $(".back-h").addClass('hide');
+          // $('#legal').addClass('hide');
         } else {
           swal({
             title: data.message,
             type: "error",
             confirmButtonText: "好的"
           });
-          $(".back-h").addClass('hide');
-          $('.form-data').addClass("hide");
+          // $(".back-h").addClass('hide');
+          // $('.form-data').addClass("hide");
         }
       },
       error: function () {
@@ -1381,6 +1423,14 @@ function openLogin() {
     });
   })
   $("#nextBtnLawyerBtn").unbind("click").click(function () {
+    // $('#phonenumLawyer').val('')
+    // $('#phoneCodeLawyer').val('')
+    // $(".signform1Lawyer").addClass("hide");
+    // $(".signform2Lawyer").removeClass("hide");
+    // $("#signLawyerBtn").removeClass("hide");
+    // $("#nextBtnLawyerBtn").addClass("hide");
+
+
       var phone = $.trim($('#phonenumLawyer').val());
       var phoneCode = $.trim($('#phoneCodeLawyer').val());
       if (phone == '') {
@@ -1417,12 +1467,6 @@ function openLogin() {
           status = false;
         }
       });
-    //   $('#phonenumLawyer').val('')
-    //         $('#phoneCodeLawyer').val('')
-    //         $(".signform1Lawyer").addClass("hide");
-    //         $(".signform2Lawyer").removeClass("hide");
-    //         $("#signLawyerBtn").removeClass("hide");
-    //         $("#nextBtnLawyerBtn").addClass("hide");
     })
     $('#signLawyerBtn').on('click',function(){
         var lawyerName = $.trim($('#lawyerName').val());
@@ -1457,6 +1501,14 @@ function openLogin() {
             });
             return false;
         }
+        const regx = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
+        if(!regx.test(lawyerPassword)){
+          return sweetAlert({
+            title: '密码需为8-16位的数字和英文字母组合！',
+            type: "warning",
+            timer: 3000
+          });
+        }
         if (lawyerIdCard == '') {
             swal({
                 title: '身份证号码不能为空',
@@ -1479,7 +1531,7 @@ function openLogin() {
             }
             if (lawFirm == '') {
                 swal({
-                    title: '律师证件号码不能为空',
+                    title: '律师事务所不能为空',
                     type: "warning",
                     confirmButtonText: "好的"
                 });
@@ -1494,7 +1546,7 @@ function openLogin() {
                 return false;
             }
             lawyerData={
-                agentType:LawyerState,
+                agentType:Number(LawyerState),
                 name: lawyerName,
                 idCard: lawyerIdCard,
                 password: MD5(lawyerPassword),
@@ -1508,7 +1560,7 @@ function openLogin() {
             lawerNum = ''
             lawerCardUrl=''
             lawyerData={
-                agentType:LawyerState,
+                agentType:Number(LawyerState),
                 name: lawyerName,
                 idCard: lawyerIdCard,
                 password: MD5(lawyerPassword),
@@ -1542,6 +1594,8 @@ function openLogin() {
                     confirmButtonText: "好的"
                 });
                 $(".back-h").addClass('hide');
+                $('label').show();
+                $('.swal2-checkbox').hide();
             } else {
                 console.log(data)
                 swal({
@@ -1625,6 +1679,14 @@ function openLogin() {
       if (password != password2) {
         $('#pass2Warn').removeClass('hide').find("em").text('密码不一致');
         return false;
+      }
+      const regx = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
+      if(!regx.test(password)){
+        return sweetAlert({
+          title: '密码需为8-16位的数字和英文字母组合！',
+          type: "warning",
+          timer: 3000
+        });
       }
       var email = $.trim($('#email').val());
       var trueAddress = $.trim($('#trueAddress').val());
