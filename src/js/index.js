@@ -138,19 +138,18 @@ $(document).ready(function () {
       window.open(res.data,'_blank')
     })
 
-    const Roll={                                     //创建对象直接量
-      roll:document.getElementById("roll"),          //获取id属性为roll的对象
-      speed:20,                                      //飘动速度，即为定时器函数多长时间执行一次
-      statusX:1,                                     //规定每执行一次函数，left属性值变化的幅度
-      statusY:1,                                     //规定每执行一次函数，top属性值变化的幅度
-      x:100,                                         //规定初始状态下left属性的值
-      y:300,                                         //规定初始状态下top属性的值
-      //差值用来测算left属性值的极限
-      winW:document.documentElement.clientWidth-document.getElementById("roll").offsetWidth, 
-      //差值用来测算top属性值的极限
-      winH:document.documentElement.clientHeight-document.getElementById("roll").offsetHeight, 
-      //声明函数
-      Go: function () {                                                               
+    class Drift{
+      constructor(speed,statusX,statusY,x,y){
+        this.roll = document.getElementById("roll");//获取属性
+        this.speed = speed;//速度
+        this.statusX = statusX;//x轴变化幅度
+        this.statusY = statusY;//y轴变化幅度
+        this.x = x;//初始x坐标
+        this.y = y;//初始y坐标
+        this.winW = document.documentElement.clientWidth-document.getElementById("roll").offsetWidth;//测算left值的极限
+        this.winH = document.documentElement.clientHeight-document.getElementById("roll").offsetHeight;//测算top值得极限
+      }
+      Go(){
         //设置div的left属性值
         this.roll.style.left = this.x + 'px';                                      
         //设置div的top属性值
@@ -160,24 +159,23 @@ $(document).ready(function () {
         //如果left属性值小于0，也就是div要超出左边界了，就将statusX设置为0
         if (this.x < 0) { this.statusX = 0 }                                       
         //如果top属性值大于winW，也就是div要超出右边界了，就将statusX设置为1
-        if (this.x > this.winW) { this.statusX = 1 }                               
-        
+        if (this.x > this.winW) { this.statusX = 1 }
         this.y = this.y + (this.statusY ? -1 : 1)
         if (this.y < 0) { this.statusY = 0 }
         if (this.y > this.winH) { this.statusY = 1 }
-
       }
-    };
+    }
+    const bayWindow = new Drift(20,1,1,100,300);
     let interval = setInterval(function(){
-      Roll.Go();
-    },Roll.speed);
+      bayWindow.Go();
+    },bayWindow.speed);
     $('#roll').mouseover(function(){
       clearInterval(interval);
     })//鼠标移入停止飘移
-    $('#roll').mouseout(function(){
+    $('#roll').mouseleave(function(){
       interval = setInterval(function(){
-        Roll.Go();
-      },Roll.speed);
+        bayWindow.Go();
+      },bayWindow.speed);
     })//鼠标移出继续飘移
     // $('#roll').click(function(){
     //   window.open('https://court1.ptnetwork001.com//upload/classicCases/民事诉讼小知识（二维码版）.pdf','_blank')
