@@ -20,6 +20,12 @@ if(res.data.imgUrl){
 }
 // const newsContent = res.data.content.replace(/(\r\n|\n|\r)/gm, '<br>');//换行符正则替换
 $('.content').html(res.data.content);
+if(res.list.length > 0){
+  for(const item of res.list){
+    const list = '<a href="' + item.url + '" target="_blank" >' + item.name + '</a>';
+    $('.list').append(list);
+  }
+}
 const time = new Date(res.data.createDate);
 
 $('.login-wrapper').hover(function() {

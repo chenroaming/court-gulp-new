@@ -46,6 +46,13 @@ $('#opinion').click(function(){
     title:'该功能暂未开通！',
     timer: 1500
   })
+  // const picNews = ajaxGet('/api/test');
+  // console.log(picNews);
+  // sweetAlert({
+  //   type:'warning',
+  //   title:picNews.state,
+  //   timer: 1500
+  // })
 })
 
 $(function () {

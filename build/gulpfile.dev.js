@@ -16,14 +16,49 @@ let Config = require('./gulpfile.config.js')
 // 反向代理
 let proxyMiddleware = require('http-proxy-middleware')
 
-let proxy = proxyMiddleware('/api', {
-  target: 'http://47.112.14.54:8688', //'http://114.115.133.183:8780',
-//   target: 'http://47.105.189.44:8780', //'http://114.115.133.183:8780',
-  pathRewrite: {
-    '^/api': ''
-  },
-  changeOrigin: true
-})
+// let proxy = proxyMiddleware(
+//   '/api',{
+//   target: 'http://47.112.14.54:8688',//'http://47.112.14.54:8688',// //'http://114.115.133.183:8780',
+// //   target: 'http://47.105.189.44:8780', //'http://114.115.133.183:8780',
+//   pathRewrite: {
+//     '^/api': ''
+//   },
+//   changeOrigin: true
+// },
+// )
+
+const proxy = [
+  proxyMiddleware(
+    ['/api'],{
+      target: 'http://47.112.14.54:8688',
+      // target:'http://192.168.86.62:7300/mock/5e00b4aaf234a30034cdbc85/test',//'http://47.112.14.54:8688',// //'http://114.115.133.183:8780',
+    //   target: 'http://47.105.189.44:8780', //'http://114.115.133.183:8780',
+      pathRewrite: {
+        '^/api': ''
+      },
+      changeOrigin: true
+    },
+  ),
+  proxyMiddleware(
+    ['/apitest'],{
+      target:'http://192.168.86.62:7300/mock/5e00b4aaf234a30034cdbc85/test',
+      pathRewrite:{
+        '^/apitest':''
+      },
+      changeOrigin: true
+    }
+  )
+]
+
+const proxy2 = proxyMiddleware(
+  '/apitest',{
+    target:'http://192.168.86.62:7300/mock/5e00b4aaf234a30034cdbc85/test',
+    pathRewrite:{
+      '^/apitest':''
+    },
+    changeOrigin: true
+  }
+)
 
 //======= gulp dev 开发环境下 ===============
 
@@ -88,7 +123,7 @@ function dev () {
     browserSync.init({
       server: {
         baseDir: Config.dist,
-        middleware: proxy
+        middleware: proxy,
       },
       notify: false
     });

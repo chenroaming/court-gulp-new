@@ -484,3 +484,10 @@ main {
 .footer-null {
   height: 100px;
 }
+.list {
+  width: 90%;
+  margin: 0 auto;
+}
+.list a {
+  display: block;
+}
