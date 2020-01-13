@@ -90,20 +90,20 @@ $(document).ready(function () {
     //公告栏滚动效果
     let top = 0;
     let top2 = 1000;
-    setInterval(function(){
-      top --;
-      top2 --;
-      $('#box').css('top',top);
-      $('#personalNoticeBox').css('top',top);
-      $('#box2').css('top',top2);
-      $('#personalNoticeBox2').css('top',top2);
-      if(top == parseInt(-$('.info-content-box').height()*1.5)){
-        top2 = $('.info-content-box').height();
-      }
-      if(top2 == parseInt(-$('.info-content-box').height()*1.5)){
-        top = $('.info-content-box').height();
-      }
-    },30);
+    // setInterval(function(){
+    //   top --;
+    //   top2 --;
+    //   $('#box').css('top',top);
+    //   $('#personalNoticeBox').css('top',top);
+    //   $('#box2').css('top',top2);
+    //   $('#personalNoticeBox2').css('top',top2);
+    //   if(top == parseInt(-$('.info-content-box').height()*1.5)){
+    //     top2 = $('.info-content-box').height();
+    //   }
+    //   if(top2 == parseInt(-$('.info-content-box').height()*1.5)){
+    //     top = $('.info-content-box').height();
+    //   }
+    // },30);
 
     // $('.court-news-title a').mouseover(function(){
     //   $('#news-pic').attr('src',$(this).attr('imgUrl'));
