@@ -540,7 +540,21 @@
             </div>
             <div class="search-option2">
                 <p class="other-option">公告类型</p>
-                <input type="text" class="other-option" id="noticeType" placeholder="请输入要查询的公告类型">
+                <!-- <input type="text" class="other-option" id="noticeType" placeholder="请输入要查询的公告类型"> -->
+                <div class="new-select other-option" style="width: 100%;">
+                  <select class="select-box" id="noticeType">
+                    <option value ="起诉状副本及开庭传票">起诉状副本及开庭传票</option>
+                    <option value ="上诉状副本">上诉状副本</option>
+                    <option value="裁判文书">裁判文书</option>
+                    <option value="公示催告">公示催告</option>
+                    <option value="破产文书">破产文书</option>
+                    <option value="宣告失踪、死亡">宣告失踪、死亡</option>
+                    <option value="执行文书">执行文书</option>
+                    <option value="无主财产认领公告">无主财产认领公告</option>
+                    <option value="其他">其他</option>
+                  </select>
+                  <i class="arrow2"></i>
+                </div>
                 <p>当事人</p>
                 <input type="text" id="litigantName" placeholder="请输入当事人">
                 <p class="other-option">案号</p>
@@ -590,7 +604,7 @@
                         <th style="width: 15%;">当事人</th>
                         <th style="width: 10%;">案由</th>
                         <th style="width: 10%;">公告时间</th>
-                        <th style="width: 10%;">公告类型</th>
+                        <th style="width: 10%;">类型</th>
                         <th style="width: 5%;">下载</th>
                     </tr>
                 </thead>
