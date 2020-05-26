@@ -74,7 +74,7 @@ $(document).ready(function () {
     //暂时不用
     for(const item of wordNews.content){
       const time = new Date(item.create_date);
-      const content = ('<div class="notice-item2"><img src="../images/mark.png" alt=""><a href="docx.html?url=http://dq.hlcourt.gov.cn//'+item.classic_path+'" class="wordNews" title="'+item.classic_cases+'" target="_blank">'+item.classic_cases+'</a><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');
+      const content = ('<div class="notice-item2"><img src="../images/mark.png" alt=""><a href="docx.html?url=https://dq.hlcourt.gov.cn/'+item.classic_path+'" class="wordNews" title="'+item.classic_cases+'" target="_blank">'+item.classic_cases+'</a><span>'+time.getFullYear()+'年'+(time.getMonth()+1)+'月'+time.getDate()+'日</span></div>');
       $('#caseList').append(content);
     }
     // for(const item of courtNewsAll.content){
@@ -138,51 +138,51 @@ $(document).ready(function () {
       window.open(res.data,'_blank')
     })
 
-    class Drift{
-      constructor(speed,statusX,statusY,x,y){
-        this.roll = document.getElementById("roll");//获取属性
-        this.speed = speed;//速度
-        this.statusX = statusX;//x轴变化幅度
-        this.statusY = statusY;//y轴变化幅度
-        this.x = x;//初始x坐标
-        this.y = y;//初始y坐标
-        this.winW = document.documentElement.clientWidth-document.getElementById("roll").offsetWidth;//测算left值的极限
-        this.winH = document.documentElement.clientHeight-document.getElementById("roll").offsetHeight;//测算top值得极限
-      }
-      Go(){
-        //设置div的left属性值
-        this.roll.style.left = this.x + 'px';                                      
-        //设置div的top属性值
-        this.roll.style.top = this.y + 'px';                                       
-        //如果statusX=1则每次减少1px,否则增加1px
-        this.x = this.x + (this.statusX ? -1 : 1)                                  
-        //如果left属性值小于0，也就是div要超出左边界了，就将statusX设置为0
-        if (this.x < 0) { this.statusX = 0 }                                       
-        //如果top属性值大于winW，也就是div要超出右边界了，就将statusX设置为1
-        if (this.x > this.winW) { this.statusX = 1 }
-        this.y = this.y + (this.statusY ? -1 : 1)
-        if (this.y < 0) { this.statusY = 0 }
-        if (this.y > this.winH) { this.statusY = 1 }
-      }
-    }
-    const bayWindow = new Drift(20,1,1,100,300);
-    let interval = setInterval(function(){
-      bayWindow.Go();
-    },bayWindow.speed);
-    $('#roll').mouseover(function(){
-      clearInterval(interval);
-    })//鼠标移入停止飘移
-    $('#roll').mouseleave(function(){
-      interval = setInterval(function(){
-        bayWindow.Go();
-      },bayWindow.speed);
-    })//鼠标移出继续飘移
-    // $('#roll').click(function(){
-    //   window.open('https://court1.ptnetwork001.com//upload/classicCases/民事诉讼小知识（二维码版）.pdf','_blank')
+    // class Drift{
+    //   constructor(speed,statusX,statusY,x,y){
+    //     this.roll = document.getElementById("roll");//获取属性
+    //     this.speed = speed;//速度
+    //     this.statusX = statusX;//x轴变化幅度
+    //     this.statusY = statusY;//y轴变化幅度
+    //     this.x = x;//初始x坐标
+    //     this.y = y;//初始y坐标
+    //     this.winW = document.documentElement.clientWidth-document.getElementById("roll").offsetWidth;//测算left值的极限
+    //     this.winH = document.documentElement.clientHeight-document.getElementById("roll").offsetHeight;//测算top值得极限
+    //   }
+    //   Go(){
+    //     //设置div的left属性值
+    //     this.roll.style.left = this.x + 'px';                                      
+    //     //设置div的top属性值
+    //     this.roll.style.top = this.y + 'px';                                       
+    //     //如果statusX=1则每次减少1px,否则增加1px
+    //     this.x = this.x + (this.statusX ? -1 : 1)                                  
+    //     //如果left属性值小于0，也就是div要超出左边界了，就将statusX设置为0
+    //     if (this.x < 0) { this.statusX = 0 }                                       
+    //     //如果top属性值大于winW，也就是div要超出右边界了，就将statusX设置为1
+    //     if (this.x > this.winW) { this.statusX = 1 }
+    //     this.y = this.y + (this.statusY ? -1 : 1)
+    //     if (this.y < 0) { this.statusY = 0 }
+    //     if (this.y > this.winH) { this.statusY = 1 }
+    //   }
+    // }
+    // const bayWindow = new Drift(20,1,1,100,300);
+    // let interval = setInterval(function(){
+    //   bayWindow.Go();
+    // },bayWindow.speed);
+    // $('#roll').mouseover(function(){
+    //   clearInterval(interval);
+    // })//鼠标移入停止飘移
+    // $('#roll').mouseleave(function(){
+    //   interval = setInterval(function(){
+    //     bayWindow.Go();
+    //   },bayWindow.speed);
+    // })//鼠标移出继续飘移
+    // // $('#roll').click(function(){
+    // //   window.open('https://court1.ptnetwork001.com//upload/classicCases/民事诉讼小知识（二维码版）.pdf','_blank')
+    // // })
+    // $('#closeRoll').click(function(){
+    //   $('#roll').hide();
     // })
-    $('#closeRoll').click(function(){
-      $('#roll').hide();
-    })
 })
 function ajaxGet(url,data =''){let response = '';$.ajax({url: url,type: 'get',async: false,data:data,success: (res)=> {response = res;},error: ()=> {sweetAlert({title: '网络错误，请重试！',type: "warning",timer: 1500});}});return response;}
 

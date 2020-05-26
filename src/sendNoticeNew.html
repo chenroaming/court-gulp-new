@@ -79,10 +79,12 @@
                     在线举证质证
                   </a>
                 </li>
-                <li>
-                  <a href="/rtc/index.html" style="margin-left: 75px;" class="topa" target="_blank">
+                <li style="position: relative;">
+                  <a style="margin-left: 75px;cursor: pointer;" onclick="showItem()" class="topa">
                     在线庭审
                   </a>
+                  <span class="trial" style="top: 45px;"><a href="/rtc/index.html" target="_blank">全在线庭审平台（全流程版）</a></span>
+                  <span class="trial" style="top: 90px;"><a href="https://trial.olcourt.cn/#/" target="_blank">全在线庭审平台（通用版）</a></span>
                 </li>
                 <li style="text-align: right;">
                   <a href="/bigData/index.html" class="topa" target="blank">
@@ -518,7 +520,7 @@
             <p class="m-left-title"><span>公告搜索</span></p>
             <div class="choice-box">
               <div id="financial" class="unChoice-case">涉自贸区金融案件</div>
-              <div id="other" class="choice-case2 unChoice-case">其他案件</div>
+              <div id="other" class="choice-case2 unChoice-case">民事案件</div>
             </div>
             <div class="m-left-search">
                 <p>
@@ -543,6 +545,7 @@
                 <!-- <input type="text" class="other-option" id="noticeType" placeholder="请输入要查询的公告类型"> -->
                 <div class="new-select other-option" style="width: 100%;">
                   <select class="select-box" id="noticeType">
+                    <option value ="" style="display: none;">请选择</option>
                     <option value ="起诉状副本及开庭传票">起诉状副本及开庭传票</option>
                     <option value ="上诉状副本">上诉状副本</option>
                     <option value="裁判文书">裁判文书</option>
@@ -555,14 +558,15 @@
                   </select>
                   <i class="arrow2"></i>
                 </div>
-                <p>当事人</p>
-                <input type="text" id="litigantName" placeholder="请输入当事人">
+                <p>送达对象</p>
+                <input type="text" id="litigantName" placeholder="请输入送达对象">
                 <p class="other-option">案号</p>
                 <div class="new-select other-option">
                     <select class="select-box" id="years">
-                        <option value ="(2019)">(2019)</option>
-                        <option value ="(2018)">(2018)</option>
-                        <option value="(2017)">(2017)</option>
+                      <option value ="(2020)">(2020)</option>
+                      <option value ="(2019)">(2019)</option>
+                      <option value ="(2018)">(2018)</option>
+                      <option value="(2017)">(2017)</option>
                     </select>
                     <i class="arrow2"></i>
                 </div> 
@@ -594,14 +598,14 @@
                   </tr>
               </thead>
               <tbody id="financialList">
-
+          
               </tbody>
           </table>
             <table id="otherBox" border="1" width="930" align="center" cellspacing="0" cellpadding="6">
                 <thead>
                     <tr align="center">
                         <th style="width: 10%;">案号</th>
-                        <th style="width: 15%;">当事人</th>
+                        <th style="width: 15%;">送达对象</th>
                         <th style="width: 10%;">案由</th>
                         <th style="width: 10%;">公告时间</th>
                         <th style="width: 10%;">类型</th>

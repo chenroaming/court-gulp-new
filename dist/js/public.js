@@ -67,6 +67,12 @@ function noIn(e){
     alert('你好！系统正在优化升级中')
 
 }
+function showItem(){
+  $('.trial').toggle();
+}
+// $('body').click(() => {
+//   $('.trial').hide();
+// })
 function getUserInfo() {
   var hasLogin = false
   $.ajax({

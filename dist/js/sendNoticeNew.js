@@ -77,6 +77,8 @@ function financialSearch (name = ''){
     //     sweetAlert({title: financial.message,type: "success",timer: 1500});
     // }
     $('#financialList').empty();
+    const firstTr = ('<tr align="center"><td><a target="_blank" style="width: 316px;font-weight: bold;font-size: 15px;" href="temporary.html">关于涉自贸区金融案件电子送达公告的通知</a></td><td>2020年4月26日</td></tr>');
+    $('#financialList').append(firstTr);
     for (const item of financial.data.data){
         const tr = ('<tr align="center"><td><a class="financial-word" index="'+item.id+'" name="'+item.name+'">'+item.noticeName+'</a></td><td>'+item.date+'</td></tr>');
         $('#financialList').append(tr);
@@ -90,6 +92,8 @@ function financialSearch (name = ''){
             nowNum = num;
             const financial = ajaxGet('/api/main/homeNews/getFinanceInfo.jhtml',{name:name,pageNum:num,pageSize:10});
             $('#financialList').empty();
+            const firstTr = ('<tr align="center"><td><a target="_blank" style="width: 316px;font-weight: bold;font-size: 15px;" href="temporary.html">关于涉自贸区金融案件电子送达公告的通知</a></td><td>2020年4月26日</td></tr>');
+            $('#financialList').append(firstTr);
             for (const item of financial.data.data){
                 const tr = ('<tr align="center"><td><a class="financial-word" index="'+item.id+'" name="'+item.name+'">'+item.noticeName+'</a></td><td>'+item.date+'</td></tr>');
                 $('#financialList').append(tr);

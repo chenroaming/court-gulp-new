@@ -2176,54 +2176,18 @@ body {
   margin-right: 28px;
   color: #fff;
 }
-#roll {
-  height: 470px;
-  line-height: 81px;
-  position: fixed;
-  width: 260px;
-  text-align: center;
-  z-index: 99;
-}
-#roll a {
-  font-size: 28px;
-  font-weight: 700;
-  color: #fff;
-  font-family: SimSum;
-  width: 100%;
-  height: 49%;
+.trial {
+  width: 200px;
+  height: 60px;
   display: inline-block;
-  background-size: 100% 100%;
-}
-#roll a:nth-child(1) {
-  height: 25%;
-  background-image: url('../images/roll3.jpg');
-}
-#roll a:nth-child(3) {
-  height: 25%;
+  font-size: 12px;
+  text-align: center;
+  background-color: #fff;
   position: absolute;
-  top: 119px;
-  left: 0;
-  background-image: url('../images/roll.png');
-}
-#roll a:nth-child(4) {
-  height: 25%;
-  position: absolute;
-  top: 239px;
-  left: 0;
-  background-image: url('../images/roll2.jpg');
-}
-#roll a:nth-child(5) {
-  height: 25%;
-  position: absolute;
-  top: 358px;
-  left: 0;
-  background-image: url('../images/roll3.png');
-}
-#roll img {
-  position: absolute;
-  top: 3px;
-  right: 2px;
-  cursor: pointer;
+  left: 17px;
+  display: none;
+  box-shadow: 1px 3px 5px #dedede;
+  z-index: 9;
 }
 html {
   font-size: 14px;
